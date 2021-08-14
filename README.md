@@ -1,4 +1,4 @@
-#Destination Unknown
+# Destination Unknown
 A working full-stack application using the MERN stack (Node.js, MongoDB/Mongoose, Express, React).
 
 App highlights off-the-beaten-track destinations.
@@ -24,7 +24,7 @@ Must be logged in to created/edit/delete.
 **Use React Router**
 Need 12 routes, which I think may be too many for this app.
 
-# Will Pull From Following Third Party API
+## Will Pull From Following Third Party API
 
 [__Atlas Obscura__](https://github.com/TruitMeGood/node-atlas-obscura)
 [__Atlas Obscura__](https://github.com/csshen/atlas-obscura-api)
