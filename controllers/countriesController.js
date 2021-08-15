@@ -14,7 +14,15 @@ router.post('/', async(req, res) => {
 });
 
 //Read (Index /Root Route)
-
+router.get('/', async(req, res) => {
+  try {
+    const foundCountries = await Country.find({})
+    res.status(200).json(foundCountries)
+  } catch(error){
+    console.error(error)
+    res.status(400).json({message:error.message})
+  }
+});
 
 //Read (Show)
 
