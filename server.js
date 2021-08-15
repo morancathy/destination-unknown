@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const path = require('path');
-
+const countryController = require('./controllers/countriesController')
 const MONGODB_URI = process.env.MONGODB_URI
 const db = mongoose.connection;
 
@@ -22,6 +22,9 @@ if (process.env.NODE_ENV !== 'development'){
 }
 
 /* Controller Goes Here Remove the test*/
+// app.use('/api/country', require('./controllers/countriesController.js'));
+app.use('/api/countries', countryController)
+
 app.get('/test', (req, res)=>{
 	res.status(200).json({
 		website: 'My Website',
