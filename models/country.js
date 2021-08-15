@@ -2,7 +2,7 @@ const {Schema, model} = require('mongoose');
 
 const countrySchema = new Schema({
   country:    {type: String, required: true},
-  suggestions: [{ type: Schema.Types.ObjectId, ref: 'Destination'}]
+  destinations: [ {type: Schema.Types.ObjectId, ref: 'Destination'} ]
 }, {
   timestamps: true
 });

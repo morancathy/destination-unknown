@@ -47,9 +47,33 @@ router.put('/:id', async (req, res) => {
 });
 
 //Update (Add Destination)
+router.put('/:id/addDestination', async (req, res) => {
+  const createDestinationQuery = Destination.create(req.body)
 
+  createDestinationQuery.exec((err, createdDestination) => {
+    const updateCountryQuery = Country.findByIdAndUpdate(req.params.id, { $addToSet: { destinations: createdDestination._id }}, { new: true })
+
+    updateCountryQuery.exec((err, updatedCountry) => {
+      if(err){
+        console.error(error)
+        res.status(400).json({message: error.message})
+      } else {
+        res.status(200).json(createdDestination)
+      }
+    })
+  })
+});
 
 //Delete
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletedCountry = await Country.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedCountry)
+  } catch(error) {
+    console.error(error)
+    res.status(400).json({message: error.message})
+  }
+});
 
 
 
