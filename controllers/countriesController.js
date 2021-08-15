@@ -25,7 +25,15 @@ router.get('/', async(req, res) => {
 });
 
 //Read (Show)
-
+router.get('/:id', async (req, res) => {
+  try {
+    const foundCountry = await Country.findById(req.params.id)
+    res.status(200).json(foundCountry)
+  } catch(error) {
+    console.error(error)
+    res.status(400).json({message:error.message})
+  }
+});
 
 //Update (Update)
 
