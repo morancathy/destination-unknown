@@ -36,7 +36,15 @@ router.get('/:id', async (req, res) => {
 });
 
 //Update (Update)
-
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedCountry = await Country.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    res.status(200).json(updatedCountry)
+  } catch(error) {
+    console.error(error)
+    res.status(400).json({message: error.message})
+  }
+});
 
 //Update (Add Destination)
 
