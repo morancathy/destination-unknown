@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Home(props) {
-	const [countries, setCountries] = useState([]);
+	const [destinations, setDestinations] = useState([]);
 
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await fetch('/api/countries');
+				const response = await fetch('/api/destinations');
 				const data = await response.json();
-				setCountries(data);
+				setDestinations(data);
 			} catch (error) {
 				console.error(error);
 			}
@@ -20,13 +20,15 @@ export default function Home(props) {
 		<div className="HomePage">
 			This is the {props.page} page
 			<ul>
-				{countries.map(country => {
+				{destinations.map(destination => {
 					return (
-						<li key={country._id}>
-							<Link to={`/${country._id}`}>
-								<h3>{country.country}</h3>
+						<li key={destination._id}>
+							<Link to={`/${destination._id}`}>
+								<h3>{destination.title}</h3>
 							</Link>
-							<p>{country.destinations}</p>
+							<h4>{destination.country}</h4>
+							<h4>{destination.city}</h4>
+							<p>{destination.destinations}</p>
 						</li>
 					);
 				})}
