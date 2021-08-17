@@ -13,11 +13,24 @@ const CreateForm = props => {
 		name: ''
 	});
 
+	// useEffect(() => {
+	// 	(async () => {
+	// 		try {
+	// 			const response = await fetch('/api/destinations');
+	// 			const data = await response.json();
+	// 			setDestinations(data);
+	// 		} catch (error) {
+	// 			console.error(error);
+	// 		}
+	// 	})(); //what did this last () do?
+	// 	console.log('useffect ran');
+	// }, []);
+
 	const handleSubmit = async e => {
 		e.preventDefault();
 
 		try {
-			const response = await fetch('api/destinations', {
+			const response = await fetch('/api/destinations', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -26,6 +39,7 @@ const CreateForm = props => {
 			});
 			const data = await response.json();
 			setDestinations([...destinations, data]);
+			console.log('hello');
 			setNewDestination({
 				title: '',
 				country: '',
@@ -46,9 +60,13 @@ const CreateForm = props => {
 
 	return (
 		<div className="CreateForm">
+			{console.log(props)}
 			<h3>Know an off-the-beaten track suggestion? Add here!</h3>
 
-			<form onSubmit={handleSubmit}>
+			<form
+				onSubmit={handleSubmit}
+				style={{ display: 'flex', flexDirection: 'column' }}
+			>
 				<input
 					type="text"
 					id="title"

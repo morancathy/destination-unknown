@@ -18,19 +18,38 @@ export default function Show(props) {
 		})();
 	}, []);
 
-	useEffect(() => {
-		(async () => {
-			try {
-				const response = await fetch(
-					`/api/destinations/${props.match.params.id}/addComment`
-				);
-				const data = await response.json();
-				setDestination(data);
-			} catch (error) {
-				console.error(error);
-			}
-		})();
-	}, []);
+	// useEffect(() => {
+	// 	(async () => {
+	// 		try {
+	// 			const response = await fetch(
+	// 				`/api/destinations/${props.match.params.id}/addComment`
+	// 			);
+	// 			const data = await response.json();
+	// 			setDestination(data);
+	// 		} catch (error) {
+	// 			console.error(error);
+	// 		}
+	// 	})();
+	// }, []);
+
+	const handleDelete = async id => {
+		try {
+			const response = await fetch(
+				`/api/destinations/${props.match.params.id}`,
+				{
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}
+			);
+			setDestination(destination.filter(dest => dest._id !== id));
+		} catch (error) {
+			console.error(error);
+		} finally {
+			window.location.assign('/home');
+		}
+	};
 
 	return (
 		<div className="ShowPage">
@@ -44,6 +63,8 @@ export default function Show(props) {
 					<h3>{destination.img}</h3>
 					<h5>Created by: {destination.name}</h5>
 					<h5>Comments: {destination.comments}</h5>
+
+					<button onClick={() => handleDelete(destination._id)}>Delete</button>
 
 					<Link to={`/${destination._id}/comment`}>
 						<p>Make a Comment</p>

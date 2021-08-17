@@ -20,7 +20,7 @@ export default function Home(props) {
 	return (
 		<div className="HomePage">
 			This is the {props.page} page
-			<Create />
+			<Create destinations={destinations} />
 			<ul>
 				{destinations.map(destination => {
 					return (
