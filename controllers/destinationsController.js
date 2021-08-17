@@ -38,7 +38,8 @@ router.get('/:id', async (req, res) => {
 //Update (Update)
 router.put('/:id', async (req, res) => {
   try {
-    const updatedDestination = await Destination.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    const updatedDestination =
+      await Destination.findByIdAndUpdate(req.params.id, req.body, {new: true})
     res.status(200).json(updatedDestination)
   } catch(error) {
     console.error(error)
@@ -46,23 +47,29 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-//Update (Add Destination)
-router.put('/:id/addComment', async (req, res) => {
-  const createCommentQuery = Comment.create(req.body)
+//Update (Add Comment)
+router.put('/:id/addComment', (req, res) => {
+  // const createCommentQuery = Comment.create(req.body);
 
-  createCommentQuery.exec((err, createdComment) => {
-    const updateDestinationQuery = Destination.findByIdAndUpdate(req.params.id, { $addToSet: { destinations: createdDestination._id }}, { new: true })
-
-    updateDestinationQuery.exec((err, updatedDestination) => {
-      if(err){
-        console.error(error)
-        res.status(400).json({message: error.message})
-      } else {
-        res.status(200).json(ccreatedComment)
-      }
-    })
-  })
+  Comment.create(req.body, (err, createdComment) => {
+    if (err){
+      console.error(err);
+      res.status(400).json({ message: err.message})
+    } else {
+      const updateDestinationQuery = Destination.findByIdAndUpdate(req.params.id, { $addToSet: { comments: createdComment._id }}, { new: true })
+      updateDestinationQuery.exec((err, updatedDestination) => {
+        if(err){
+          console.error(err);
+          res.status(400).json({ message: err.message })
+        } else {
+          res.status(200).json(createdComment)
+        }
+      })
+    };
+  });
 });
+
+
 
 //Delete
 router.delete('/:id', async (req, res) => {
@@ -78,3 +85,9 @@ router.delete('/:id', async (req, res) => {
 
 
 module.exports = router;
+
+
+/*
+  const createdComment = await Comment.create(req.body)
+  const updatedBlog = await Blog.findByIdAndUpdate()
+*/

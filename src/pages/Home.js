@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Create from '../components/CreateForm';
 
 export default function Home(props) {
 	const [destinations, setDestinations] = useState([]);
@@ -19,6 +20,7 @@ export default function Home(props) {
 	return (
 		<div className="HomePage">
 			This is the {props.page} page
+			<Create />
 			<ul>
 				{destinations.map(destination => {
 					return (

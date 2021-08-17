@@ -17,6 +17,10 @@ const AppRouter = () => {
 						component={() => <Component page={key} />}
 					></Route>
 				))}
+				{/*<Route
+					path={`/:id/comment`}
+					render={routerProps => <Show {...routerProps} />}
+				></Route>*/}
 				<Route
 					path={'/:id'}
 					render={routerProps => <Show {...routerProps} />}
