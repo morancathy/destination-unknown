@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Create from '../components/CreateForm';
+import CreateForm from '../components/CreateForm';
 
 export default function Home(props) {
 	const [destinations, setDestinations] = useState([]);
@@ -27,7 +27,7 @@ export default function Home(props) {
 	return (
 		<div className="HomePage">
 			<h1>Destination Unknown</h1>
-			<Create fetchData={fetchData} />
+			<CreateForm fetchData={fetchData} />
 			<ul className="Dest-List">
 				{destinations.map(destination => {
 					return (
