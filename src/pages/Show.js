@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import UpdateForm from '../components/UpdateForm';
 
 export default function Show(props) {
 	const [destination, setDestination] = useState({});
+	const [showForm, setShowForm] = useState(false);
+
+	const fetchData = async () => {
+		const response = await fetch(`/api/destinations/${props.match.params.id}`);
+		const data = await response.json();
+		setDestination(data);
+	};
 
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await fetch(
-					`/api/destinations/${props.match.params.id}`
-				);
-				const data = await response.json();
-				setDestination(data);
+				fetchData();
 			} catch (error) {
 				console.error(error);
 			}
@@ -51,6 +55,14 @@ export default function Show(props) {
 		}
 	};
 
+	const toggleForm = () => {
+		if (!showForm) {
+			setShowForm(true);
+		} else {
+			setShowForm(false);
+		}
+	};
+
 	return (
 		<div className="ShowPage">
 			{Object.keys(destination).length ? (
@@ -64,6 +76,18 @@ export default function Show(props) {
 					<h5>Created by: {destination.name}</h5>
 					<h5>Comments: {destination.comments}</h5>
 
+					<button onClick={toggleForm}>Update</button>
+
+					{showForm && (
+						<UpdateForm
+							destination={destination}
+							props={props}
+							fetchData={fetchData}
+						>
+							{' '}
+						</UpdateForm>
+					)}
+
 					<button onClick={() => handleDelete(destination._id)}>Delete</button>
 
 					<Link to={`/${destination._id}/comment`}>
@@ -76,7 +100,11 @@ export default function Show(props) {
 		</div>
 	);
 }
+// <Link to={`/Contact`}></Link>
 
 // <Link to={`/${destination._id}/update`}>
 //   <button>Update</button>
 // </Link>
+//
+// <Link to={'/contact'}>
+// 	</Link>
