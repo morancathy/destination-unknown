@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 
 const UpdateForm = ({ props, destination, fetchData }) => {
 	const [updatedDest, setUpdatedDest] = useState({});
@@ -24,10 +23,6 @@ const UpdateForm = ({ props, destination, fetchData }) => {
 			console.error(error);
 		}
 	};
-
-	// const handleChange = e => {
-	// 	setUpdatedDest({[e.target.id]: e.target.value });
-	// };
 
 	const handleChange = e => {
 		setUpdatedDest({ [e.target.id]: e.target.value });

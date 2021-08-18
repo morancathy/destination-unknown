@@ -9,32 +9,18 @@ export default function Show(props) {
 	const fetchData = async () => {
 		const response = await fetch(`/api/destinations/${props.match.params.id}`);
 		const data = await response.json();
-		setDestination(data);
+		return data;
 	};
 
 	useEffect(() => {
 		(async () => {
 			try {
-				fetchData();
+				setDestination(await fetchData());
 			} catch (error) {
 				console.error(error);
 			}
 		})();
 	}, []);
-
-	// useEffect(() => {
-	// 	(async () => {
-	// 		try {
-	// 			const response = await fetch(
-	// 				`/api/destinations/${props.match.params.id}/addComment`
-	// 			);
-	// 			const data = await response.json();
-	// 			setDestination(data);
-	// 		} catch (error) {
-	// 			console.error(error);
-	// 		}
-	// 	})();
-	// }, []);
 
 	const handleDelete = async id => {
 		try {
@@ -100,11 +86,3 @@ export default function Show(props) {
 		</div>
 	);
 }
-// <Link to={`/Contact`}></Link>
-
-// <Link to={`/${destination._id}/update`}>
-//   <button>Update</button>
-// </Link>
-//
-// <Link to={'/contact'}>
-// 	</Link>

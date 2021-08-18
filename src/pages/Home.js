@@ -8,16 +8,13 @@ export default function Home(props) {
 	const fetchData = async () => {
 		const response = await fetch('/api/destinations');
 		const data = await response.json();
-		setDestinations(data);
+		return data;
 	};
 
 	useEffect(() => {
 		(async () => {
 			try {
-				fetchData();
-				// const response = await fetch('/api/destinations');
-				// const data = await response.json();
-				// setDestinations(data);
+				setDestinations(await fetchData());
 			} catch (error) {
 				console.error(error);
 			}
