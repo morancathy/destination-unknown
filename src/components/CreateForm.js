@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 
-const CreateForm = props => {
+const CreateForm = ({ fetchData }) => {
 	const [destinations, setDestinations] = useState([]);
 	const [newDestination, setNewDestination] = useState({
 		title: '',
@@ -12,19 +12,6 @@ const CreateForm = props => {
 		img: '',
 		name: ''
 	});
-
-	// useEffect(() => {
-	// 	(async () => {
-	// 		try {
-	// 			const response = await fetch('/api/destinations');
-	// 			const data = await response.json();
-	// 			setDestinations(data);
-	// 		} catch (error) {
-	// 			console.error(error);
-	// 		}
-	// 	})(); //what did this last () do?
-	// 	console.log('useffect ran');
-	// }, []);
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -39,7 +26,7 @@ const CreateForm = props => {
 			});
 			const data = await response.json();
 			setDestinations([...destinations, data]);
-			console.log('hello');
+			fetchData();
 			setNewDestination({
 				title: '',
 				country: '',
@@ -60,10 +47,10 @@ const CreateForm = props => {
 
 	return (
 		<div className="CreateForm">
-			{console.log(props)}
-			<h3>Know an off-the-beaten track suggestion? Add here!</h3>
-
+			{console.log('hi')}
+			<h4>Know an off-the-beaten track suggestion? Add here!</h4>
 			<form
+				className=""
 				onSubmit={handleSubmit}
 				style={{ display: 'flex', flexDirection: 'column' }}
 			>

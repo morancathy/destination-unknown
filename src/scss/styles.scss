@@ -6,6 +6,10 @@ body {
   font-size: 16px;
 }
 
+#app {
+  border: solid yellow;
+  padding: 5px;
+}
 .NavBar {
   display: flex;
   justify-content: space-around;
@@ -14,7 +18,13 @@ body {
 }
 
 .HomePage {
-
+  height: 100vh;
+  border: solid red;
+    h1{
+      text-align: center;
+      font-size: 35px;
+      border: solid purple;
+    }
 }
 
 .AboutPage {
@@ -27,4 +37,25 @@ body {
 
 .AppPage {
 
+}
+
+.CreateForm {
+  width: 50vw;
+  margin: 5px;
+  padding: 5px;
+  border: solid orange;
+
+
+}
+
+.Dest-List {
+  border: solid pink;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+    li {
+      border: solid blue;
+      width: 25%;
+    }
 }

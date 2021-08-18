@@ -5,12 +5,19 @@ import Create from '../components/CreateForm';
 export default function Home(props) {
 	const [destinations, setDestinations] = useState([]);
 
+	const fetchData = async () => {
+		const response = await fetch('/api/destinations');
+		const data = await response.json();
+		setDestinations(data);
+	};
+
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await fetch('/api/destinations');
-				const data = await response.json();
-				setDestinations(data);
+				fetchData();
+				// const response = await fetch('/api/destinations');
+				// const data = await response.json();
+				// setDestinations(data);
 			} catch (error) {
 				console.error(error);
 			}
@@ -19,9 +26,9 @@ export default function Home(props) {
 
 	return (
 		<div className="HomePage">
-			This is the {props.page} page
-			<Create destinations={destinations} />
-			<ul>
+			<h1>Destination Unknown</h1>
+			<Create fetchData={fetchData} />
+			<ul className="Dest-List">
 				{destinations.map(destination => {
 					return (
 						<li key={destination._id}>
