@@ -23,7 +23,28 @@ router.get('/', async(req, res) => {
     res.status(400).json({message:error.message})
   }
 });
-
+//##################################################################
+// /Read COMMENTS (Index)
+router.get('/comments', async(req, res) => {
+  try {
+    const foundComments = await Comment.find({})
+    res.status(200).json(foundComments)
+  } catch(error){
+    console.error(error)
+    res.status(400).json({message:error.message})
+  }
+});
+// /Read COMMENTS (Show)
+router.get('/comments/:id', async(req, res) => {
+  try {
+    const foundComment = await Comment.findById(req.params.id)
+    res.status(200).json(foundComment)
+  } catch(error){
+    console.error(error)
+    res.status(400).json({message:error.message})
+  }
+});
+//##################################################################
 //Read (Show)
 router.get('/:id', async (req, res) => {
   try {
@@ -68,8 +89,6 @@ router.put('/:id/addComment', (req, res) => {
     };
   });
 });
-
-
 
 //Delete
 router.delete('/:id', async (req, res) => {
