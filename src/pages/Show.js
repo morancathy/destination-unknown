@@ -6,21 +6,22 @@ export default function Show(props) {
 	const [destination, setDestination] = useState({});
 	const [showForm, setShowForm] = useState(false);
 
-	const fetchData = async () => {
-		const response = await fetch(`/api/destinations/${props.match.params.id}`);
-		const data = await response.json();
-		return data;
-	};
-
 	useEffect(() => {
 		(async () => {
 			try {
-				setDestination(await fetchData());
+				fetchData();
 			} catch (error) {
 				console.error(error);
 			}
 		})();
 	}, []);
+
+	const fetchData = async () => {
+		const response = await fetch(`/api/destinations/${props.match.params.id}`);
+		const data = await response.json();
+		setDestination(data); //this needs to be here, not in useeffect for update to work properly
+		return data;
+	};
 
 	const handleDelete = async id => {
 		try {
@@ -60,7 +61,6 @@ export default function Show(props) {
 					<h4>How to Get There: {destination.howToGetThere}</h4>
 					<h3>{destination.img}</h3>
 					<h5>Created by: {destination.name}</h5>
-					<h5>Comments: {destination.comments}</h5>
 
 					<button onClick={toggleForm}>Update</button>
 
@@ -76,7 +76,7 @@ export default function Show(props) {
 
 					<button onClick={() => handleDelete(destination._id)}>Delete</button>
 
-					<Link to={`/${destination._id}/comment`}>
+					<Link to={`/${destination._id}/addComment`}>
 						<p>Make a Comment</p>
 					</Link>
 				</>
