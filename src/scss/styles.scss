@@ -7,8 +7,8 @@ body {
 }
 
 #app {
-  border: solid yellow;
-  padding: 5px;
+  // border: solid yellow;
+  // padding: 5px;
 }
 .NavBar {
   display: flex;
@@ -18,12 +18,31 @@ body {
 }
 
 .HomePage {
-  height: 100vh;
-  border: solid red;
+  // height: 100vh;
+  // border: solid red;
+    .toCreateForm{
+      h4{
+     margin: 0 auto;
+      }
+      button{
+        // margin: 0 auto;
+      }
+    }
+
     h1{
-      text-align: center;
-      font-size: 35px;
-      border: solid purple;
+      // text-align: center;
+      // font-size: 35px;
+      // border: solid purple;
+    }
+    ul{
+      div {
+        li {
+          #cards {
+            // width: 18rem;
+            border: solid red;
+          }
+        }
+      }
     }
 }
 
@@ -40,25 +59,28 @@ body {
 }
 
 .CreateForm {
-  width: 50vw;
+  width: 55%;
   margin: 5px;
   padding: 5px;
   border: solid orange;
-
-
-}
-
-.Dest-List {
-  border: solid pink;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
 
-    li {
-      border: solid blue;
-      width: 25%;
-    }
+
 }
+//
+// .Dest-List {
+//   border: solid pink;
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//
+//     li {
+//       border: solid blue;
+//       width: 25%;
+//     }
+// }
 
 .comment-box {
   display: flex;

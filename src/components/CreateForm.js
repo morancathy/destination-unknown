@@ -47,7 +47,7 @@ const CreateForm = ({ fetchData }) => {
 	return (
 		<div className="CreateForm">
 			{console.log('hi')}
-			<h4>Know an off-the-beaten track suggestion? Add here!</h4>
+
 			<form
 				className=""
 				onSubmit={handleSubmit}

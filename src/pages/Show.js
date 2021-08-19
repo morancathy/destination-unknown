@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import UpdateForm from '../components/UpdateForm';
+import CommentForm from '../components/CommentForm';
 
-export default function Show(props) {
+export default function Show(props, comms) {
 	const [destination, setDestination] = useState({});
-	const [comments, setComments] = useState({});
+	const [comments, setComments] = useState([]);
 	const [showForm, setShowForm] = useState(false);
+	const [showCommentForm, setShowCommentForm] = useState(false);
 
 	useEffect(() => {
 		(async () => {
@@ -27,6 +29,7 @@ export default function Show(props) {
 
 	const fetchComment = async comm => {
 		try {
+			console.log('cathy', comm);
 			const response = await fetch(`/api/destinations/comments/${comm}`);
 			const data = await response.json();
 			setComments(data);
@@ -61,6 +64,24 @@ export default function Show(props) {
 			setShowForm(false);
 		}
 	};
+	const toggleCommentForm = () => {
+		if (!showCommentForm) {
+			setShowCommentForm(true);
+		} else {
+			setShowCommentForm(false);
+		}
+	};
+
+	// const displayComments = (para) => {
+	// 	for (let i = 0; i < para; i++) {
+	// 		return (
+	// 			<div className="comment-box">
+	// 				<h5>comments: {comments.[i].message}</h5>
+	// 				<h5>written by: {comments.[i].name}</h5>
+	// 			</div>
+	// 		);
+	// 	}
+	// };
 
 	return (
 		<div className="ShowPage">
@@ -74,7 +95,8 @@ export default function Show(props) {
 					<h3>{destination.img}</h3>
 					<h5>Added by: {destination.name}</h5>
 					<p>{destination.createdAt}</p>
-					{console.log(destination)}
+					{console.log('86', destination.comments)}
+					{console.log('87', comments)}
 
 					<button onClick={toggleForm}>Update</button>
 
@@ -102,6 +124,19 @@ export default function Show(props) {
 					<Link to={`/${destination._id}/addComment`}>
 						<p>Make a Comment</p>
 					</Link>
+
+					<button onClick={toggleCommentForm}>Comment</button>
+
+					{showCommentForm && (
+						<CommentForm
+							commentsIds={destination.comments}
+							destination={destination}
+							props={props}
+							fetchData={fetchData}
+						>
+							{' '}
+						</CommentForm>
+					)}
 				</>
 			) : (
 				<h1> Finding Destination... </h1>
@@ -109,3 +144,42 @@ export default function Show(props) {
 		</div>
 	);
 }
+
+// {destination.comments.length ? (
+// 	<ul>
+// 		{comments.map(comment => {
+// 			return (
+// 				<li key={comment._id}>
+// 					<div className="comment-box">
+// 						<h5>comments: {comment.message}</h5>
+// 						<h5>written by: {comment.name}</h5>
+// 					</div>
+// 				</li>
+// 			);
+// 		})}
+// 	</ul>
+// ) : (
+// 	<></>
+// )}
+
+// {destination.comments.length ? (
+// 	<div className="comment-box">
+// 		<h5>comments: {comments.message}</h5>
+// 		<h5>written by: {comments.name}</h5>
+// 	</div>
+// ) : (
+// 	<></>
+// )}
+
+// const fetchComment = async comm => {
+// 	try {
+// 		console.log('cathy', comm);
+// 		for (let i = 0; i < comm.length; i++) {
+// 			const response = await fetch(`/api/destinations/comments/${i}`);
+// 			const data = await response.json();
+// 			setComments(data);
+// 		}
+// 	} catch (error) {
+// 		console.error(error);
+// 	}
+// };
