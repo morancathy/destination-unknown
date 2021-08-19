@@ -72,9 +72,9 @@ export default function Show(props) {
 					<h4>Description: {destination.description}</h4>
 					<h4>How to Get There: {destination.howToGetThere}</h4>
 					<h3>{destination.img}</h3>
-					<h5>Created by: {destination.name}</h5>
-					<h5>Comments: {comments.name}</h5>
-					<h5>Comments: {comments.message}</h5>
+					<h5>Added by: {destination.name}</h5>
+					<p>{destination.createdAt}</p>
+					{console.log(destination)}
 
 					<button onClick={toggleForm}>Update</button>
 
@@ -89,6 +89,15 @@ export default function Show(props) {
 					)}
 
 					<button onClick={() => handleDelete(destination._id)}>Delete</button>
+
+					{destination.comments.length ? (
+						<div className="comment-box">
+							<h5>comments: {comments.message}</h5>
+							<h5>written by: {comments.name}</h5>
+						</div>
+					) : (
+						<></>
+					)}
 
 					<Link to={`/${destination._id}/addComment`}>
 						<p>Make a Comment</p>

@@ -59,3 +59,17 @@ body {
       width: 25%;
     }
 }
+
+.comment-box {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  // justify-content: flex-end;
+  // align-content: flex-end;
+  // align-self: flex-end;
+  border: solid pink;
+  width: 50%;
+    h5 {
+      font-size: 12px;
+    }
+}
