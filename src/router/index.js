@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import routes from './routes';
 import Show from '../pages/Show';
+import Contact from '../pages/Contact';
 
 const AppRouter = () => {
 	return (
@@ -17,10 +18,10 @@ const AppRouter = () => {
 						component={() => <Component page={key} />}
 					></Route>
 				))}
-				{/*<Route
-					path={`/:id/comment`}
-					render={routerProps => <Show {...routerProps} />}
-				></Route>*/}
+				<Route
+					path={'/:id/addComment'}
+					render={routerProps => <Contact {...routerProps} />}
+				></Route>
 				<Route
 					path={'/:id'}
 					render={routerProps => <Show {...routerProps} />}

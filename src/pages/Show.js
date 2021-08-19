@@ -4,6 +4,7 @@ import UpdateForm from '../components/UpdateForm';
 
 export default function Show(props) {
 	const [destination, setDestination] = useState({});
+	const [comments, setComments] = useState({});
 	const [showForm, setShowForm] = useState(false);
 
 	useEffect(() => {
@@ -20,7 +21,18 @@ export default function Show(props) {
 		const response = await fetch(`/api/destinations/${props.match.params.id}`);
 		const data = await response.json();
 		setDestination(data); //this needs to be here, not in useeffect for update to work properly
+		fetchComment(data.comments);
 		return data;
+	};
+
+	const fetchComment = async comm => {
+		try {
+			const response = await fetch(`/api/destinations/comments/${comm}`);
+			const data = await response.json();
+			setComments(data);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	const handleDelete = async id => {
@@ -61,6 +73,8 @@ export default function Show(props) {
 					<h4>How to Get There: {destination.howToGetThere}</h4>
 					<h3>{destination.img}</h3>
 					<h5>Created by: {destination.name}</h5>
+					<h5>Comments: {comments.name}</h5>
+					<h5>Comments: {comments.message}</h5>
 
 					<button onClick={toggleForm}>Update</button>
 
