@@ -55,7 +55,7 @@ const UpdateForm = ({ props, destination, fetchData }) => {
 					defaultValue={destination.city}
 					onChange={handleChange}
 				/>
-				<input
+				<textarea
 					type="text"
 					id="description"
 					defaultValue={destination.description}

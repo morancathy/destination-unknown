@@ -87,56 +87,68 @@ export default function Show(props, comms) {
 		<div className="ShowPage">
 			{Object.keys(destination).length ? (
 				<>
-					<h1>{destination.title}</h1>
-					<h2>{destination.country}</h2>
-					<h3>{destination.city}</h3>
-					<h4>Description: {destination.description}</h4>
-					<h4>How to Get There: {destination.howToGetThere}</h4>
-					<h3>{destination.img}</h3>
-					<h5>Added by: {destination.name}</h5>
-					<p>{destination.createdAt}</p>
-					{console.log('86', destination.comments)}
-					{console.log('87', comments)}
+					<div className="showTitle">
+						<h1>{destination.title}</h1>
+						<h2>
+							{destination.city}, {destination.country}
+						</h2>
+						<img src="" alt="Card image" />
+					</div>
+					<div id="showDescript">
+						<h4>{destination.description}</h4>
+						<h5>
+							<strong>How to Get There:</strong>
+							<p>{destination.howToGetThere}</p>
+						</h5>
 
-					<button onClick={toggleForm}>Update</button>
+						<p>Added by: {destination.name}</p>
+						<p>{destination.createdAt}</p>
 
-					{showForm && (
-						<UpdateForm
-							destination={destination}
-							props={props}
-							fetchData={fetchData}
-						>
-							{' '}
-						</UpdateForm>
-					)}
+						{console.log('86', destination.comments)}
+						{console.log('87', comments)}
 
-					<button onClick={() => handleDelete(destination._id)}>Delete</button>
+						<button onClick={toggleForm}>Update</button>
 
-					{destination.comments.length ? (
-						<div className="comment-box">
-							<h5>comments: {comments.message}</h5>
-							<h5>written by: {comments.name}</h5>
-						</div>
-					) : (
-						<></>
-					)}
+						{showForm && (
+							<UpdateForm
+								destination={destination}
+								props={props}
+								fetchData={fetchData}
+							>
+								{' '}
+							</UpdateForm>
+						)}
 
-					<Link to={`/${destination._id}/addComment`}>
-						<p>Make a Comment</p>
-					</Link>
+						<button onClick={() => handleDelete(destination._id)}>
+							Delete
+						</button>
 
-					<button onClick={toggleCommentForm}>Comment</button>
+						{destination.comments.length ? (
+							<div className="comment-box">
+								<h5>comments: {comments.message}</h5>
+								<h5>written by: {comments.name}</h5>
+							</div>
+						) : (
+							<></>
+						)}
 
-					{showCommentForm && (
-						<CommentForm
-							commentsIds={destination.comments}
-							destination={destination}
-							props={props}
-							fetchData={fetchData}
-						>
-							{' '}
-						</CommentForm>
-					)}
+						<Link to={`/${destination._id}/addComment`}>
+							<p>Make a Comment</p>
+						</Link>
+
+						<button onClick={toggleCommentForm}>Comment</button>
+
+						{showCommentForm && (
+							<CommentForm
+								commentsIds={destination.comments}
+								destination={destination}
+								props={props}
+								fetchData={fetchData}
+							>
+								{' '}
+							</CommentForm>
+						)}
+					</div>
 				</>
 			) : (
 				<h1> Finding Destination... </h1>

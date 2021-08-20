@@ -88,7 +88,7 @@ const CreateForm = ({ fetchData }) => {
 					placeholder="city"
 					onChange={handleChange}
 				/>
-				<input
+				<textarea
 					type="text"
 					id="description"
 					placeholder="description"

@@ -57,6 +57,61 @@ body {
 .AppPage {
 
 }
+//#################################################################
+
+.ShowPage {
+
+  font-family: "Platform Web", "Helvetica Neue", sans-serif;
+  font-size: 19px;
+  line-height: 1.428571429;
+  color: #333333;
+
+  .showTitle {
+    margin: 4% 7%;
+    // border: solid red;
+    h1 {
+      font-weight: 600;
+      letter-spacing: .03em;
+      line-height: 1em;
+      color: #382c14;
+      font-size: 60px;
+    }
+    h2  {
+      font-weight: 400;
+      letter-spacing: .03em;
+      line-height: 1em;
+      color: #888071;
+      font-size: 35px;
+    }
+    img {
+
+    }
+  }
+
+  #showDescript {
+    background-color: #e3dac9;
+    font-family: "Freight Pro", Georgia, "Times New Roman", serif;
+    // font-size: 8px;
+    // line-height: 20px;
+    font-variant-ligatures: common-ligatures;
+    letter-spacing: normal;
+    margin: 0px;
+    padding-left: 7%;
+    padding-right: 7%;
+    h4{
+      padding-top: 10px;
+      margin-bottom: 25px;
+      font-size: 20px;
+    }
+    h5 > p{
+
+    }
+    p {
+
+    }
+  }
+}
+//#################################################################
 
 .CreateForm {
   width: 55%;
