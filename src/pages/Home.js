@@ -34,31 +34,82 @@ export default function Home(props) {
 
 	return (
 		<div className="HomePage">
-			<div class="jumbotron jumbotron-fluid bg-info text-white text-center">
-				<div class="container">
+			<div
+				class="topographic wide-container bg-info text-white text-center"
+				style={{ backgroundColor: '' }}
+			>
+				<div class="container hero-search-wrapper">
 					<h1 class="display-1">Destination Unknown</h1>
+					<p class="lead">
+						Random, Odd, unknown, non-touristy, behind-thescences...whatever you
+						want to call it, you won't find these suggestions on a top-10 travel
+						list here. Find weird and inspiring ideas here.
+					</p>
 				</div>
 			</div>
-			<ul className="Dest-List" class="row">
+			<ul
+				className="Dest-List"
+				class="row"
+				style={{
+					padding: '20px 10px',
+					border: '1px solid orange',
+					margin: '0px 17%'
+				}}
+			>
 				{destinations.map(destination => {
 					return (
-						<div class="col-md-6 col-lg-3">
+						<div
+							class="col-md-6 col-lg-3"
+							style={{ padding: '20px 10px', border: '1px solid red' }}
+						>
 							<li
 								key={destination._id}
 								id="cards"
 								class="card"
 								style={{
 									border: 'solid #964B00',
-									marginTop: '20px'
+									marginTop: '20px',
+									padding: '20px 10px',
+									border: '1px solid pink',
+									height: '90%'
 								}}
 							>
 								<img class="card-img-top" src="" alt="Card image" />
 								<div class="card-body">
-									<h3 class=" card-tile">{destination.title}</h3>
-									<h4 class="card-subtitle mb-2 text-muted">
+									<h4
+										class="card-subtitle mb-2 text-muted"
+										style={{
+											color: '#1b624f',
+											fontSize: '15px',
+											fontWeight: '600',
+											lineHeight: '1em',
+											letteSpacing: '0.12em',
+											textTransform: 'uppercase'
+										}}
+									>
 										{destination.city}, {destination.country}
 									</h4>
-									<p class="card-text">{destination.description}</p>
+									<h3
+										class=" card-tile"
+										style={{
+											fontSize: '39px',
+											color: '#382c14',
+											lineHeight: '1.42'
+										}}
+									>
+										{destination.title}
+									</h3>
+									<p
+										class="card-text"
+										style={{
+											display: 'block',
+											textOverflow: 'ellipsis'
+										}}
+									>
+										{destination.description.length > 100
+											? `${destination.description.substring(0, 100)}...`
+											: destination.description}
+									</p>
 									<Link to={`/${destination._id}`} comms={destination.comments}>
 										<button class="btn btn-primary">Explore</button>
 									</Link>
