@@ -12,8 +12,25 @@ const CreateForm = ({ fetchData }) => {
 		name: ''
 	});
 
+	// Function to Check if required input has been added
+	const submitCheck = () => {
+		if (!newDestination.title) {
+			alert('Please add title');
+		} else if (!newDestination.country) {
+			alert('Please add country');
+		} else if (!newDestination.city) {
+			alert('Please add city');
+		} else if (!newDestination.description) {
+			alert('Please add description');
+		} else if (!newDestination.name) {
+			alert('Please add name');
+			return;
+		}
+	};
+
 	const handleSubmit = async e => {
 		e.preventDefault();
+		submitCheck();
 
 		try {
 			const response = await fetch('/api/destinations', {
