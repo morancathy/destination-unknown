@@ -60,14 +60,16 @@ body {
 //#################################################################
 
 .ShowPage {
-
+  // border: solid red;
+  height: 90vh;
   font-family: "Platform Web", "Helvetica Neue", sans-serif;
   font-size: 19px;
   line-height: 1.428571429;
   color: #333333;
+  height: 100vh;
 
   .showTitle {
-    margin: 4% 7%;
+    margin: 4% 7% 2% 7%;
     // border: solid red;
     h1 {
       font-weight: 600;
@@ -84,12 +86,15 @@ body {
       font-size: 35px;
     }
     img {
-
+      border: solid tan;
+      padding-right: 86%;
+      padding-bottom: 200px;
     }
   }
 
   #showDescript {
     background-color: #e3dac9;
+
     font-family: "Freight Pro", Georgia, "Times New Roman", serif;
     // font-size: 8px;
     // line-height: 20px;
@@ -102,12 +107,18 @@ body {
       padding-top: 10px;
       margin-bottom: 25px;
       font-size: 20px;
+      // border: solid pink;
     }
-    h5 > p{
 
+    .added-by {
+      text-align: right;
+      font-size: 12px;
     }
-    p {
-
+    .date {
+      text-align: right;
+      margin-top: -15px;
+      font-size: 12px;
+      // border: solid red;
     }
   }
 }
@@ -137,16 +148,34 @@ body {
 //     }
 // }
 
+
+.CommentForm {
+  border: solid purple;
+
+}
+
 .comment-box {
   display: flex;
   flex-direction: column;
-  text-align: right;
+  // text-align: right;
   // justify-content: flex-end;
   // align-content: flex-end;
   // align-self: flex-end;
-  border: solid pink;
-  width: 50%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  margin: 0px auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  width: 70%;
     h5 {
-      font-size: 12px;
+      font-size: 15px;
     }
+}
+
+
+.Footer {
+  background-color: #d1bea8;
+  color: white;
+  font-weight: bolder;
 }

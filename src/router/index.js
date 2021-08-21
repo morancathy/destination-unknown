@@ -18,10 +18,10 @@ const AppRouter = () => {
 						component={() => <Component page={key} />}
 					></Route>
 				))}
-				<Route
+				{/*<Route
 					path={'/:id/addComment'}
 					render={routerProps => <Contact {...routerProps} />}
-				></Route>
+				></Route>*/}
 				<Route
 					path={'/:id'}
 					render={routerProps => <Show {...routerProps} />}

@@ -1,26 +1,27 @@
 require('dotenv').config()
 const bcrypt = require('bcryptjs');
-const crypto = require('crypto')
-const jwt = reqiure('jsonwebtoken')
-const Usser = require('../models/user.js')
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
+const User = require('../models/user.js')
 const SECRET = process.env.SECRET;
+
 
 // Hashing function
 const hash = (password) => {
   const levelOne = crypto.createHmac('sha256', process.env.SECRET)
-            .update(password)
-            .diget('hex')
-            .split('')
-            .reverse()
-            .join('c')
-  return crypto.createHmac('sha256', process.env.SECRET)
-            .update(levelOne)
-            .diget('hex')
-            .split('')
-            .revers()
-            .join('')
+              .update(password)
+              .digest('hex')
+              .split('')
+              .reverse()
+              .join('j')
+ return crypto.createHmac('sha256', process.env.SECRET)
+              .update(levelOne)
+              .digest('hex')
+              .split('')
+              .reverse()
+              .join('')
 };
-module.exports.hash = hash;
+module.exports.hash = hash
 
 // Register
 const registerService = async (req, res) => {

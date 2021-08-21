@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import UpdateForm from '../components/UpdateForm';
 import CommentForm from '../components/CommentForm';
+import Footer from '../components/Footer';
 
 export default function Show(props, comms) {
 	const [destination, setDestination] = useState({});
@@ -92,17 +93,16 @@ export default function Show(props, comms) {
 						<h2>
 							{destination.city}, {destination.country}
 						</h2>
-						<img src="" alt="Card image" />
+						<img src="../public/img/ImagePlaceholder2.png" alt="Card image" />
 					</div>
 					<div id="showDescript">
 						<h4>{destination.description}</h4>
 						<h5>
 							<strong>How to Get There:</strong>
-							<p>{destination.howToGetThere}</p>
+							<p className="getting-there">{destination.howToGetThere}</p>
 						</h5>
-
-						<p>Added by: {destination.name}</p>
-						<p>{destination.createdAt}</p>
+						<p className="added-by">added by: {destination.name}</p>
+						<p className="date">{destination.createdAt}</p>
 
 						{console.log('86', destination.comments)}
 						{console.log('87', comments)}
@@ -132,10 +132,6 @@ export default function Show(props, comms) {
 							<></>
 						)}
 
-						<Link to={`/${destination._id}/addComment`}>
-							<p>Make a Comment</p>
-						</Link>
-
 						<button onClick={toggleCommentForm}>Comment</button>
 
 						{showCommentForm && (
@@ -153,6 +149,7 @@ export default function Show(props, comms) {
 			) : (
 				<h1> Finding Destination... </h1>
 			)}
+			<Footer />
 		</div>
 	);
 }

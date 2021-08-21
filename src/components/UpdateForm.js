@@ -30,7 +30,6 @@ const UpdateForm = ({ props, destination, fetchData }) => {
 
 	return (
 		<div className="UpdateForm">
-			<p>This is the Update Form</p>
 			{console.log(destination.name)}
 			<form
 				className=""

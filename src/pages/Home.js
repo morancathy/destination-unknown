@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CreateForm from '../components/CreateForm';
-import CommentForm from '../components/CommentForm';
+// import CommentForm from '../components/CommentForm';
+import Footer from '../components/Footer';
 
 export default function Home(props) {
 	const [destinations, setDestinations] = useState([]);
@@ -41,9 +42,10 @@ export default function Home(props) {
 				<div class="container hero-search-wrapper">
 					<h1 class="display-1">Destination Unknown</h1>
 					<p class="lead">
-						Random, Odd, unknown, non-touristy, behind-thescences...whatever you
-						want to call it, you won't find these suggestions on a top-10 travel
-						list here. Find weird and inspiring ideas here.
+						Random, Odd, Unknown, Non-Touristy, Behind-the-Scences...whatever
+						you want to call it, you won't find these suggestions on any top-10
+						travel list. Find weird and inspiring ideas here. Blah blah blah,
+						write more.
 					</p>
 				</div>
 			</div>
@@ -143,15 +145,7 @@ export default function Home(props) {
 			<div class="container-fluid" style={{ background: 'pink' }}>
 				<h2>Add more stuff</h2>
 			</div>
-
-			<footer class="text-center text-lg-start bg-light text-muted">
-				<div
-					class="text-center p-4"
-					style={{ backgroundColor: 'rgba 0, 0, 0, 0.05' }}
-				>
-					© 2021 Copyright Moran Inc.
-				</div>
-			</footer>
+			<Footer />
 		</div>
 	);
 }
