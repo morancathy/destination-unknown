@@ -4,9 +4,6 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const path = require('path');
-const destinationsController = require('./controllers/destinationsController')
-// const commentsController = require('./controllers/commentsController')
-// const usersController = require('./controllers/usersController')
 const {hash, register, login} = require('./controllers/auth')
 
 const MONGODB_URI = process.env.MONGODB_URI
@@ -26,12 +23,11 @@ if (process.env.NODE_ENV !== 'development'){
 }
 
 /* Controller Goes Here Remove the test*/
-// app.use('/api/destinations', require('./controllers/destinationsController.js'));
-app.use('/api/destinations', destinationsController)
-// app.use('/api/destinations/comments', commentsController)
+app.use('/api/destinations', require('./controllers/destinationsController.js'));
+// app.use('/api/destinations/comments', require('./controllers/commentsController.js'));
 app.post('/register', register)
-// app.use('/api/register', usersController)
-app.post('/login', login)
+app.use('/register', require('./controllers/registerController'));
+// app.post('/login', login)
 
 
 app.get('/test', (req, res)=>{
