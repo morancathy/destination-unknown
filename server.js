@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const path = require('path');
 const destinationsController = require('./controllers/destinationsController')
 // const commentsController = require('./controllers/commentsController')
+// const usersController = require('./controllers/usersController')
+const {hash, register, login} = require('./controllers/auth')
 
 const MONGODB_URI = process.env.MONGODB_URI
 const db = mongoose.connection;
@@ -27,7 +29,9 @@ if (process.env.NODE_ENV !== 'development'){
 // app.use('/api/destinations', require('./controllers/destinationsController.js'));
 app.use('/api/destinations', destinationsController)
 // app.use('/api/destinations/comments', commentsController)
-
+app.post('/register', register)
+// app.use('/api/register', usersController)
+app.post('/login', login)
 
 
 app.get('/test', (req, res)=>{
