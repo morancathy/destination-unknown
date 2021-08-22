@@ -9,6 +9,7 @@ const LogIn = props => {
 	});
 	const [loggedInUser, setLoggedInUser] = useState('');
 	const [toggle, setToggle] = useState(false);
+	const [showForm, setShowForm] = useState(true);
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.id]: e.target.value });
@@ -48,10 +49,10 @@ const LogIn = props => {
 			const data = await response.json();
 			setToken(data.token);
 			setLoggedInUser(data.user.username);
-			setToken(data.token);
-			setLoggedInUser(data.user.username);
 			window.localStorage.setItem('token', data.token);
 			window.localStorage.setItem('loggedInUser', data.user.username);
+			setToggle(!toggle);
+			displayForm();
 		} catch (error) {
 			console.error(error);
 			alert('Username already taken');
@@ -65,58 +66,81 @@ const LogIn = props => {
 		}
 	}, []);
 
-	const displayForm = () => {};
+	const displayForm = () => {
+		setShowForm(!showForm);
+	};
 
 	return (
 		<div className="LogIn">
-			{!token ? (
-				<>
-					<form className="loginForm" onSubmit={handleLogin}>
+			<div className="logInPage">
+				{showForm && (
+					<>
+						{!token ? (
+							<>
+								<form className="loginForm" onSubmit={handleLogin}>
+									<input
+										type="text"
+										id="username"
+										value={user.username}
+										placeHolder="username"
+										onChange={handleChange}
+									/>
+									<input
+										type="text"
+										id="password"
+										value={user.password}
+										placeHolder="password"
+										onChange={handleChange}
+									/>
+									<input
+										className="logInBut btn btn-primary"
+										type="submit"
+										value="Log In"
+									/>
+									<div className="addLine"></div>
+								</form>
+
+								<button
+									className="regBut btn btn-success"
+									onClick={() => {
+										setToggle(!toggle);
+										displayForm();
+									}}
+								>
+									Create New Account
+								</button>
+							</>
+						) : (
+							<div>hello {loggedInUser}, you are logged in</div> //disable the log in button and display Hello user name
+						)}
+					</>
+				)}
+
+				{toggle && (
+					<form className="regForm" onSubmit={handleRegister}>
+						<p>Create New Account</p>
 						<input
 							type="text"
 							id="username"
 							value={user.username}
+							placeHolder="username"
 							onChange={handleChange}
 						/>
 						<input
-							type="text"
+							type="password"
 							id="password"
 							value={user.password}
+							placeHolder="password"
 							onChange={handleChange}
 						/>
-						<input className="btn btn-primary" type="submit" value="Log In" />
+						<input
+							className="submitBut  btn btn-primary"
+							type="submit"
+							value="Submit"
+						/>
 					</form>
-
-					<button
-						className="btn btn-success"
-						onClick={() => {
-							setToggle(!toggle);
-							displayForm();
-						}}
-					>
-						Create New Account
-					</button>
-					{toggle && (
-						<form onSubmit={handleRegister}>
-							<input
-								type="text"
-								id="username"
-								value={user.username}
-								onChange={handleChange}
-							/>
-							<input
-								type="password"
-								id="password"
-								value={user.password}
-								onChange={handleChange}
-							/>
-							<input type="submit" value="Submit" />
-						</form>
-					)}
-				</>
-			) : (
-				<div>hello {loggedInUser}</div> //disable the log in button and display Hello user name
-			)}
+				)}
+			</div>
 		</div>
 	);
 };
