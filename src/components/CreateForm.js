@@ -14,7 +14,7 @@ const CreateForm = ({ fetchData }) => {
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-		submitCheck();
+		// submitCheck();
 
 		try {
 			const response = await fetch('/api/destinations', {

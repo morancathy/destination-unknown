@@ -7,8 +7,9 @@ import Footer from '../components/Footer';
 export default function Show(props, comms) {
 	const [destination, setDestination] = useState({});
 	const [comments, setComments] = useState([]);
-	const [showForm, setShowForm] = useState(false);
 	const [showCommentForm, setShowCommentForm] = useState(false);
+	const [showForm, setShowForm] = useState(false);
+	const [showUpdateBut, setShowUpdateBut] = useState(true);
 
 	useEffect(() => {
 		(async () => {
@@ -39,25 +40,6 @@ export default function Show(props, comms) {
 		}
 	};
 
-	const handleDelete = async id => {
-		try {
-			const response = await fetch(
-				`/api/destinations/${props.match.params.id}`,
-				{
-					method: 'DELETE',
-					headers: {
-						'Content-Type': 'application/json'
-					}
-				}
-			);
-			setDestination(destination.filter(dest => dest._id !== id));
-		} catch (error) {
-			console.error(error);
-		} finally {
-			window.location.assign('/home');
-		}
-	};
-
 	const toggleForm = () => {
 		if (!showForm) {
 			setShowForm(true);
@@ -71,6 +53,9 @@ export default function Show(props, comms) {
 		} else {
 			setShowCommentForm(false);
 		}
+	};
+	const toggleUpdateBut = () => {
+		setShowUpdateBut(!showUpdateBut);
 	};
 
 	// const displayComments = (para) => {
@@ -93,7 +78,7 @@ export default function Show(props, comms) {
 						<h2>
 							{destination.city}, {destination.country}
 						</h2>
-						<img src="../public/img/ImagePlaceholder2.png" alt="Card image" />
+						<img src=".../public/img/smoothie.png" alt="Card image" />
 					</div>
 					<div id="showDescript">
 						<h4>{destination.description}</h4>
@@ -107,21 +92,28 @@ export default function Show(props, comms) {
 						{console.log('86', destination.comments)}
 						{console.log('87', comments)}
 
-						<button onClick={toggleForm}>Update</button>
+						{showUpdateBut && (
+							<button
+								onClick={() => {
+									toggleForm();
+									toggleUpdateBut();
+								}}
+							>
+								Update
+							</button>
+						)}
 
 						{showForm && (
 							<UpdateForm
 								destination={destination}
 								props={props}
 								fetchData={fetchData}
+								toggleUpdateBut={toggleUpdateBut}
+								toggleForm={toggleForm}
 							>
 								{' '}
 							</UpdateForm>
 						)}
-
-						<button onClick={() => handleDelete(destination._id)}>
-							Delete
-						</button>
 
 						{destination.comments.length ? (
 							<div className="comment-box">
