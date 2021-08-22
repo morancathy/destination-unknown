@@ -7,6 +7,7 @@ const LogIn = props => {
 		username: '',
 		password: ''
 	});
+	const [loggedInUser, setLoggedInUser] = useState('');
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.id]: e.target.value });
@@ -24,10 +25,20 @@ const LogIn = props => {
 			});
 			const data = await response.json();
 			setToken(data.token);
+			setLoggedInUser(data.user.username);
+			window.localStorage.setItem('token', data.token);
+			window.localStorage.setItem('loggedInUser', data.user.username);
 		} catch (error) {
 			console.error(error);
 		}
 	};
+
+	useEffect(() => {
+		if (window.localStorage.getItem('token')) {
+			setToken(window.localStorage.getItem('token'));
+			setLoggedInUser(window.localStorage.getItem('loggedInUser'));
+		}
+	}, []);
 
 	return (
 		<div className="LogIn">
