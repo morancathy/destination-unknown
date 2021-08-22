@@ -4,8 +4,8 @@ import React from 'react';
 const Footer = props => {
 	return (
 		<div className="Footer">
-			<footer class="text-center text-lg-start">
-				<div class="text-center p-4">© 2021 Copyright Moran Inc.</div>
+			<footer className="text-center text-lg-start">
+				<div className="text-center p-4">© 2021 Copyright Moran Inc.</div>
 			</footer>
 		</div>
 	);

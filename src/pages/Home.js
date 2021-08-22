@@ -55,7 +55,7 @@ export default function Home(props) {
 				style={{
 					padding: '20px 10px',
 					border: '1px solid orange',
-					margin: '0px 17%'
+					margin: '0px 19%'
 				}}
 			>
 				{destinations.map(destination => {

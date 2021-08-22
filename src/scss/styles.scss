@@ -10,12 +10,43 @@ body {
   // border: solid yellow;
   // padding: 5px;
 }
+
+
 .NavBar {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  align-items: center;
+  height: 50px;
   background-color: #f0f0f0;
+  justify-content: flex-end;
+  width: 100%;
+  font-size: 14px;
+  .links {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: black;
+  }
+
+  .sign-in-btn {
+    margin-right: 19%;
+    button {
+      // display: inline-block;
+      // vertical-align: middle;
+      padding: 7px 22px;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 17px;
+      text-align: center;
+    }
+  }
 }
+
+.LogIn {
+
+
+}
+
+
+
 
 .HomePage {
   // height: 100vh;

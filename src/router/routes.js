@@ -6,14 +6,14 @@ import Contact from '../pages/Contact';
 
 const routes = [
 	{
-		Component: Contact,
-		key: 'Contact',
-		path: '/contact'
-	},
-	{
 		Component: Home,
 		key: 'Home',
 		path: '/'
+	},
+	{
+		Component: Contact,
+		key: 'Contact',
+		path: '/contact'
 	},
 	{
 		Component: About,

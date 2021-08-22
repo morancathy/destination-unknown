@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import routes from './routes';
 import Show from '../pages/Show';
 import Contact from '../pages/Contact';
+import LogIn from '../pages/LogIn';
 
 const AppRouter = () => {
 	return (
@@ -18,6 +19,10 @@ const AppRouter = () => {
 						component={() => <Component page={key} />}
 					></Route>
 				))}
+				<Route
+					path={'/login'}
+					render={routerProps => <LogIn {...routerProps} />}
+				></Route>
 				{/*<Route
 					path={'/:id/addComment'}
 					render={routerProps => <Contact {...routerProps} />}
