@@ -40,7 +40,7 @@ const CommentForm = ({ props, destination, fetchData, commentsIds }) => {
 
 	return (
 		<div className="CommentForm">
-			<button className="comment-button" onClick={toggleCommentForm}>
+			<button className="comment-button2" onClick={toggleCommentForm}>
 				{' '}
 				{!showCommentForm ? 'Make a Comment' : 'x'}
 			</button>
@@ -65,7 +65,11 @@ const CommentForm = ({ props, destination, fetchData, commentsIds }) => {
 						required
 						onChange={handleChange}
 					/>
-					<input type="submit" value="Add Comment" />
+					<input
+						className="add-commment-but"
+						type="submit"
+						value="Add Comment"
+					/>
 				</form>
 			)}
 		</div>

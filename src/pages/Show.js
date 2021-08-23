@@ -8,7 +8,6 @@ import Footer from '../components/Footer';
 export default function Show(props, comms) {
 	const [destination, setDestination] = useState({});
 	const [comments, setComments] = useState([]);
-	const [showComments, setShowComments] = useState(false);
 	const [showForm, setShowForm] = useState(false);
 	const [showUpdateBut, setShowUpdateBut] = useState(true);
 
@@ -55,50 +54,6 @@ export default function Show(props, comms) {
 	const toggleUpdateBut = () => {
 		setShowUpdateBut(!showUpdateBut);
 	};
-	const toggleShowComments = () => {
-		setShowComments(!showComments);
-	};
-
-	// const displayComments = (para) => {
-	// 	for (let i = 0; i < para; i++) {
-	// 		return (
-	// 			<div className="comment-box">
-	// 				<h5>comments: {comments.[i].message}</h5>
-	// 				<h5>written by: {comments.[i].name}</h5>
-	// 			</div>
-	// 		);
-	// 	}
-	// };
-
-	const searchComments = (destCommId, commId) => {
-		// if (destCommId === commId) {
-		console.log(`75 ${destCommId}`);
-		console.log(`76 ${commId}`);
-		return true;
-		// }
-	};
-
-	// const iterateThroughDestCommentsArray = () => {
-	// 	for (let i = 0; i < destination.comments.length; i++) {
-	// 		console.log('dests comments', destination.comments[i]);
-	// 		for (let a = 0; a < comments.length; a++) {
-	// 			if (destination.comments[i] === comments[a]._id) {
-	// 				console.log('matching', comments[a]._id);
-	// 				return comments[a]._id;
-	// 			}
-	// 		}
-	// 	}
-	// };
-	const iterateThroughDestCommentsArray = comId => {
-		for (let i = 0; i < destination.comments.length; i++) {
-			console.log('dests comments', destination.comments[i]);
-			console.log('comId', comId._id);
-			if (destination.comments[i] === comId._id) {
-				console.log('matching', comId._id);
-				return true;
-			}
-		}
-	};
 
 	return (
 		<div className="ShowPage">
@@ -121,54 +76,9 @@ export default function Show(props, comms) {
 						</h5>
 						<p className="added-by">added by: {destination.name}</p>
 						<p className="date">{destination.createdAt}</p>
-
-						{console.log('96comments', comments)}
-
-						<div className="commentDiv">
-							{destination.comments.length ? (
-								<div className="comment-box">
-									<button
-										onClick={() => {
-											toggleShowComments();
-										}}
-									>
-										{!showComments ? 'Comments' : 'Close'}
-									</button>
-									<ul>
-										{comments.map(comment => {
-											return (
-												<div>
-													{console.log(
-														`destination.comments: ${destination.comments}`
-													)}
-													{console.log(`comment._id: ${comment._id}`)}
-													{iterateThroughDestCommentsArray(comment) && (
-														<li key={comment._id} id="comment-cards">
-															{/*	<p>id: {comment._id}</p>
-															<p>destinationcomments: {destination.comments}</p>}*/}
-															<h5>{comment.message}</h5>
-															<h5>written by: {comment.name}</h5>
-														</li>
-													)}
-												</div>
-											);
-										})}
-									</ul>
-								</div>
-							) : (
-								<CommentForm
-									commentsIds={destination.comments}
-									destination={destination}
-									props={props}
-									fetchData={fetchData}
-								/>
-							)}
-
-							{showComments && <Comments props={props}> </Comments>}
-						</div>
-
 						{showUpdateBut && (
 							<button
+								className="update-but float-right"
 								onClick={() => {
 									toggleForm();
 									toggleUpdateBut();
@@ -177,7 +87,6 @@ export default function Show(props, comms) {
 								Update
 							</button>
 						)}
-
 						{showForm && (
 							<UpdateForm
 								destination={destination}
@@ -189,6 +98,26 @@ export default function Show(props, comms) {
 								{' '}
 							</UpdateForm>
 						)}
+						{console.log('96comments', comments)}
+
+						{/*<div className="commentDiv">*/}
+						{destination.comments.length ? (
+							<Comments
+								props={props}
+								destination={destination}
+								comments={comments}
+							>
+								{' '}
+							</Comments>
+						) : (
+							<CommentForm
+								commentsIds={destination.comments}
+								destination={destination}
+								props={props}
+								fetchData={fetchData}
+							/>
+						)}
+						{/*	</div>*/}
 					</div>
 				</>
 			) : (
@@ -237,22 +166,3 @@ export default function Show(props, comms) {
 // 		console.error(error);
 // 	}
 // };
-
-// <div className="comments">
-// 	<h5>{comments.message}</h5>
-// 	<h5>written by: {comments.name}</h5>
-// </div>
-
-// searchComments(
-// 	comment._id,
-// 	destination.comments
-// )
-
-// {`${comment._id}` === `${destination.comments}` && (
-// 	<li key={comment._id} id="comment-cards">
-// 		<p>id: {comment._id}</p>
-// 		<p>destinationcomments: {destination.comments}</p>
-// 		<h5>{comment.message}</h5>
-// 		<h5>written by: {comment.name}</h5>
-// 	</li>
-// )}
