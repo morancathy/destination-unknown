@@ -85,6 +85,7 @@ const CreateForm = ({ fetchData }) => {
 				<input
 					type="text"
 					id="howToGetThere"
+					required
 					placeholder="how to get there"
 					onChange={handleChange}
 				/>

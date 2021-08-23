@@ -6,22 +6,26 @@
 
 }
 @media (min-width: 768px) {
-	#gradient{
-		height: 15%;
-	}
+
 }
 
 @media (min-width: 992px){
+	.ShowPage{
 
+	}
 }
 
 body {
-  font-size: 16px;
+  // font-size: 16px;
+	// background-color: red;
 }
 
 #app {
   // border: solid yellow;
   // padding: 5px;
+		// background-color: red;
+		// min-height: 100vh;
+
 }
 
 
@@ -200,17 +204,29 @@ body {
   font-size: 19px;
   line-height: 1.428571429;
   color: #333333;
-  height: 100vh;
+  // height: 100vh;
+		min-height: 100vh;
+
+		.header{
+			border: solid blue;
+		}
+		.content{
+			border: solid yellow;
+		}
 
   .showTitle {
-    margin: 4% 7% 2% 7%;
+    margin-top: 1%;
     // border: solid red;
+		padding-left: 20%;
+		padding-right: 20%;
     h1 {
+			// border: solid purple;
       font-weight: 600;
       letter-spacing: .03em;
       line-height: 1em;
       color: #382c14;
-      font-size: 60px;
+      font-size: 50px;
+			margin-right: 30%;
     }
     h2  {
       font-weight: 400;
@@ -218,40 +234,55 @@ body {
       line-height: 1em;
       color: #888071;
       font-size: 35px;
+			// border: solid pink;
+			margin-right: 30%;
     }
-    img {
+    .imgDiv {
       border: solid tan;
-      padding-right: 86%;
       padding-bottom: 200px;
+			margin-right: 30%;
     }
   }
 
-  #showDescript {
+  .showDescript {
     background-color: #e3dac9;
-
+		// min-height: 48vh;  If I want grey to fill bottom screen
     font-family: "Freight Pro", Georgia, "Times New Roman", serif;
     // font-size: 8px;
     // line-height: 20px;
     font-variant-ligatures: common-ligatures;
     letter-spacing: normal;
     margin: 0px;
-    padding-left: 7%;
-    padding-right: 7%;
+    padding-left: 20%;
+    padding-right: 20%;
+		// border: solid green;
     h4{
       padding-top: 10px;
       margin-bottom: 25px;
       font-size: 20px;
       // border: solid pink;
+			text-align: justify;
+  text-justify: inter-word;
+
     }
+		h5{
+			// border: solid orange;
+			text-align: justify;
+  text-justify: inter-word;
+		}
 
     .added-by {
+			margin-top: -7px;
       text-align: right;
       font-size: 12px;
+			margin-right: 5px;
+			  // border: solid red;
     }
     .date {
       text-align: right;
       margin-top: -15px;
       font-size: 12px;
+				margin-right: 5px;
       // border: solid red;
     }
   }
@@ -283,30 +314,69 @@ body {
 // }
 
 
+
+
+
+
 .CommentForm {
-  border: solid purple;
+	// display: flex;
+	// flex-direction: column;
+		position: absolute;
+  border: solid #B7C68B;
 
+	.comment-button{
+		border: solid yellow;
+		// position: absolute;
+		// margin-bottom: 200px;
+	}
+	.comment-form{
+			border: solid blue;
+			// margin-left: : 50px;
+			// position: absolute;
+			// margin-bottom: 200px;
+			// margin-left: -540px;
+
+	}
 }
 
-.comment-box {
-  display: flex;
-  flex-direction: column;
-  // text-align: right;
-  // justify-content: flex-end;
-  // align-content: flex-end;
-  // align-self: flex-end;
-  background: #fff;
-  border-radius: 10px;
-  padding: 24px;
-  margin: 0px auto;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  width: 70%;
-    h5 {
-      font-size: 15px;
-    }
-}
 
+
+.commentDiv {
+	display: flex;
+	border: solid purple;
+	// text-align: right;
+	justify-content: flex-end;
+	padding-left: 10%;
+	// padding-top: 20px;
+
+
+
+  .comment-box {
+		border: solid red;
+		border-radius: 10px;
+		// border: solid #B7C68B;
+		margin-left: 10%;
+	  width: 50%;
+		max-width: 500px;
+		p {
+			color: #3C412E;
+			margin-bottom: 1px;
+			margin-left: 10px;
+		}
+		.comments {
+			background: #fff;
+
+			border: solid tan;
+			padding: 15px;
+			border-radius: 10px;
+			box-shadow: 3px 3px 3px 1px #B7C68B;
+			h5 {
+				font-size: 16px;
+				// border: solid red;
+			}
+		}
+	}
+}
 
 .UpdateForm{
 	// border: solid pink;
@@ -353,7 +423,7 @@ body {
 	input, textarea  {
 		// margin: 5px;
 		padding: 0 10px 0px 5px;
-		color: Indigo;
+		color: #5E6547;
 		// border: solid red;
 		// margin-top: -10px;
 		font-size: 15px;

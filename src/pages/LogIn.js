@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import smoothie from '.../public/img/smoothie.png';
-// import testImg from '.../public/img/testImg.jpg';
 
 const LogIn = props => {
 	const [token, setToken] = useState('');
@@ -74,13 +72,7 @@ const LogIn = props => {
 
 	return (
 		<div className="LogIn">
-			<img
-				src={'../img/testImg.png'}
-				width={400}
-				height={300}
-				id="imgTag"
-				alt=" Test Image"
-			/>
+			<img width={400} height={300} id="imgTag" alt=" Test Image" />
 			<div className="logInPage">
 				{showForm && (
 					<>

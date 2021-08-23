@@ -6,6 +6,7 @@ const CommentForm = ({ props, destination, fetchData, commentsIds }) => {
 		name: '',
 		message: ''
 	});
+	const [showCommentForm, setShowCommentForm] = useState(false);
 
 	const handleUpdate = async e => {
 		e.preventDefault();
@@ -33,23 +34,44 @@ const CommentForm = ({ props, destination, fetchData, commentsIds }) => {
 	const handleChange = e => {
 		setComment({ ...comment, [e.target.id]: e.target.value });
 	};
+	const toggleCommentForm = () => {
+		setShowCommentForm(!showCommentForm);
+	};
 
 	return (
 		<div className="CommentForm">
-			<p>This is the Comment Form</p>
+			<button className="comment-button" onClick={toggleCommentForm}>
+				{' '}
+				{!showCommentForm ? 'Make a Comment' : 'x'}
+			</button>
 
-			{console.log(destination.name)}
-			<form
-				className=""
-				onSubmit={handleUpdate}
-				style={{ display: 'flex', flexDirection: 'column' }}
-			>
-				<input type="text" id="name" onChange={handleChange} />
-				<input type="text" id="message" onChange={handleChange} />
-				<input type="submit" value="update" />
-			</form>
+			{showCommentForm && (
+				<form
+					className="comment-form"
+					onSubmit={handleUpdate}
+					style={{ display: 'flex', flexDirection: 'column' }}
+				>
+					<input
+						type="text"
+						id="name"
+						placeholder="comment"
+						required
+						onChange={handleChange}
+					/>
+					<input
+						type="text"
+						id="message"
+						placeholder="name"
+						required
+						onChange={handleChange}
+					/>
+					<input type="submit" value="Add Comment" />
+				</form>
+			)}
 		</div>
 	);
 };
 
 export default CommentForm;
+
+// {console.log(destination.name)}

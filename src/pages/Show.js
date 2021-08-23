@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import UpdateForm from '../components/UpdateForm';
 import CommentForm from '../components/CommentForm';
+import Comments from '../components/Comments';
 import Footer from '../components/Footer';
 
 export default function Show(props, comms) {
 	const [destination, setDestination] = useState({});
 	const [comments, setComments] = useState([]);
-	const [showCommentForm, setShowCommentForm] = useState(false);
+	const [showComments, setShowComments] = useState(false);
 	const [showForm, setShowForm] = useState(false);
 	const [showUpdateBut, setShowUpdateBut] = useState(true);
 
@@ -47,15 +48,12 @@ export default function Show(props, comms) {
 			setShowForm(false);
 		}
 	};
-	const toggleCommentForm = () => {
-		if (!showCommentForm) {
-			setShowCommentForm(true);
-		} else {
-			setShowCommentForm(false);
-		}
-	};
+
 	const toggleUpdateBut = () => {
 		setShowUpdateBut(!showUpdateBut);
+	};
+	const toggleShowComments = () => {
+		setShowComments(!showComments);
 	};
 
 	// const displayComments = (para) => {
@@ -78,9 +76,11 @@ export default function Show(props, comms) {
 						<h2>
 							{destination.city}, {destination.country}
 						</h2>
-						<img src=".../public/img/smoothie.png" alt="Card image" />
+						<div className="imgDiv">
+							<img src=".../public/img/smoothie.png" alt="Card image" />
+						</div>
 					</div>
-					<div id="showDescript">
+					<div className="showDescript">
 						<h4>{destination.description}</h4>
 						<h5>
 							<strong>How to Get There:</strong>
@@ -91,6 +91,35 @@ export default function Show(props, comms) {
 
 						{console.log('86', destination.comments)}
 						{console.log('87', comments)}
+
+						<div className="commentDiv">
+							{destination.comments.length ? (
+								<div className="comment-box">
+									<button
+										onClick={() => {
+											toggleShowComments();
+										}}
+									>
+										{!showComments ? 'Comments' : 'Close'}
+									</button>
+									<div className="comments">
+										<h5>{comments.message}</h5>
+										<h5>written by: {comments.name}</h5>
+									</div>
+								</div>
+							) : (
+								<CommentForm
+									commentsIds={destination.comments}
+									destination={destination}
+									props={props}
+									fetchData={fetchData}
+								>
+									{' '}
+								</CommentForm>
+							)}
+
+							{showComments && <Comments props={props}> </Comments>}
+						</div>
 
 						{showUpdateBut && (
 							<button
@@ -113,28 +142,6 @@ export default function Show(props, comms) {
 							>
 								{' '}
 							</UpdateForm>
-						)}
-
-						{destination.comments.length ? (
-							<div className="comment-box">
-								<h5>comments: {comments.message}</h5>
-								<h5>written by: {comments.name}</h5>
-							</div>
-						) : (
-							<></>
-						)}
-
-						<button onClick={toggleCommentForm}>Comment</button>
-
-						{showCommentForm && (
-							<CommentForm
-								commentsIds={destination.comments}
-								destination={destination}
-								props={props}
-								fetchData={fetchData}
-							>
-								{' '}
-							</CommentForm>
 						)}
 					</div>
 				</>
