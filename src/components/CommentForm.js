@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CommentForm = ({ props, destination, fetchData, commentsIds }) => {
+const CommentForm = ({ props, destination, fetchData }) => {
 	const [comment, setComment] = useState({});
 	const [newComment, setNewComment] = useState({
 		name: '',
@@ -11,8 +11,6 @@ const CommentForm = ({ props, destination, fetchData, commentsIds }) => {
 	const handleUpdate = async e => {
 		e.preventDefault();
 		try {
-			console.log('13', commentsIds);
-
 			const response = await fetch(
 				`/api/destinations/${props.match.params.id}/addComment`,
 				{
@@ -26,6 +24,7 @@ const CommentForm = ({ props, destination, fetchData, commentsIds }) => {
 			const data = await response.json();
 			setComment(data);
 			fetchData();
+			toggleCommentForm();
 		} catch (error) {
 			console.error(error);
 		}
@@ -53,14 +52,14 @@ const CommentForm = ({ props, destination, fetchData, commentsIds }) => {
 				>
 					<input
 						type="text"
-						id="name"
+						id="message"
 						placeholder="comment"
 						required
 						onChange={handleChange}
 					/>
 					<input
 						type="text"
-						id="message"
+						id="name"
 						placeholder="name"
 						required
 						onChange={handleChange}

@@ -72,7 +72,6 @@ const LogIn = props => {
 
 	return (
 		<div className="LogIn">
-			<img width={400} height={300} id="imgTag" alt=" Test Image" />
 			<div className="logInPage">
 				{showForm && (
 					<>

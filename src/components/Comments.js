@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CommentForm from './CommentForm';
 
-const Comments = ({ props, destination, comments }) => {
+const Comments = ({ props, destination, comments, fetchData }) => {
 	const [showComments, setShowComments] = useState(false);
 
 	const toggleShowComments = () => {
@@ -10,10 +10,10 @@ const Comments = ({ props, destination, comments }) => {
 
 	const iterateThroughDestCommentsArray = comId => {
 		for (let i = 0; i < destination.comments.length; i++) {
-			console.log('dests comments', destination.comments[i]);
-			console.log('comId', comId._id);
+			// console.log('dests comments', destination.comments[i]);
+			// console.log('comId', comId._id);
 			if (destination.comments[i] === comId._id) {
-				console.log('matching', comId._id);
+				// console.log('matching', comId._id);
 				return true;
 			}
 		}
@@ -33,8 +33,6 @@ const Comments = ({ props, destination, comments }) => {
 				{comments.map(comment => {
 					return (
 						<div>
-							{console.log(`destination.comments: ${destination.comments}`)}
-							{console.log(`comment._id: ${comment._id}`)}
 							{iterateThroughDestCommentsArray(comment) && (
 								<li key={comment._id} id="comment-cards">
 									{/*	<p>id: {comment._id}</p>
@@ -48,7 +46,11 @@ const Comments = ({ props, destination, comments }) => {
 				})}
 			</ul>
 
-			{showComments && <CommentForm props={props}> </CommentForm>}
+			{showComments && (
+				<CommentForm props={props} fetchData={fetchData}>
+					{' '}
+				</CommentForm>
+			)}
 		</div>
 	);
 };

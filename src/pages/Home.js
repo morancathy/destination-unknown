@@ -4,7 +4,7 @@ import CreateForm from '../components/CreateForm';
 // import CommentForm from '../components/CommentForm';
 import Footer from '../components/Footer';
 
-export default function Home(props) {
+export default function Contact(props) {
 	const [destinations, setDestinations] = useState([]);
 	const [showForm, setShowForm] = useState(false);
 
@@ -36,11 +36,11 @@ export default function Home(props) {
 	return (
 		<div className="HomePage">
 			<div
-				className="topographic wide-container bg-info text-white text-center"
-				style={{ backgroundColor: '' }}
+				className="head topographic wide-container text-white text-center"
+				style={{ backgroundColor: '#759168' }}
 			>
 				<div className="container hero-search-wrapper">
-					<h1 className="display-1">Destination Unknown</h1>
+					<h1 className="head-title display-1">Destination Unknown</h1>
 					<p className="lead">
 						Random, Odd, Unknown, Non-Touristy, Behind-the-Scences...whatever
 						you want to call it, you won't find these suggestions on any top-10
@@ -49,65 +49,25 @@ export default function Home(props) {
 					</p>
 				</div>
 			</div>
-			<ul className="Dest-List row">
+			<ul className="destination-div">
 				{destinations.map(destination => {
 					return (
-						<div
-							className="destcards col-md-6 col-lg-3"
-							style={{ padding: '20px 10px' }}
-						>
-							<li
-								key={destination._id}
-								id="cards"
-								className="card"
-								style={{
-									border: 'solid #964B00',
-									marginTop: '20px',
-									padding: '20px 10px',
-									border: '1px solid pink',
-									height: '90%'
-								}}
-							>
-								<img className="card-img-top" src="" alt="Card image" />
+						<div>
+							<li key={destination._id} id="cards" className="dest-card">
+								<img className="card-image" src="" alt="Card image" />
 								<div className="card-body">
-									<h4
-										className="card-subtitle mb-2 text-muted"
-										style={{
-											color: '#1b624f',
-											fontSize: '15px',
-											fontWeight: '600',
-											lineHeight: '1em',
-											letteSpacing: '0.12em',
-											textTransform: 'uppercase'
-										}}
-									>
+									<h5>
 										{destination.city}, {destination.country}
-									</h4>
-									<h3
-										className="card-tile"
-										style={{
-											fontSize: '39px',
-											color: '#382c14',
-											lineHeight: '1.42'
-										}}
-									>
-										{destination.title}
-									</h3>
-									<p
-										className="card-text"
-										style={{
-											textOverflow: 'ellipsis'
-										}}
-									>
-										{destination.description.length > 100
-											? `${destination.description.substring(0, 100)}...`
+									</h5>
+									<Link to={`/${destination._id}`} comms={destination.comments}>
+										<h4 className="">{destination.title}</h4>
+									</Link>
+									<p className="">
+										{destination.description.length > 200
+											? `${destination.description.substring(0, 200)}...`
 											: destination.description}
 									</p>
-									<Link to={`/${destination._id}`} comms={destination.comments}>
-										<button className="btn btn-primary">Explore</button>
-									</Link>
 								</div>
-								{console.log('43', destination.comments)}
 							</li>
 						</div>
 					);
@@ -140,7 +100,3 @@ export default function Home(props) {
 		</div>
 	);
 }
-
-// <a class="text-reset fw-bold" href="https://mdbootstrap.com/">
-// 	Moran
-// </a>

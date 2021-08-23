@@ -106,12 +106,12 @@ export default function Show(props, comms) {
 								props={props}
 								destination={destination}
 								comments={comments}
+								fetchData={fetchData}
 							>
 								{' '}
 							</Comments>
 						) : (
 							<CommentForm
-								commentsIds={destination.comments}
 								destination={destination}
 								props={props}
 								fetchData={fetchData}
