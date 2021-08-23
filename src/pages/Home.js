@@ -36,12 +36,12 @@ export default function Home(props) {
 	return (
 		<div className="HomePage">
 			<div
-				class="topographic wide-container bg-info text-white text-center"
+				className="topographic wide-container bg-info text-white text-center"
 				style={{ backgroundColor: '' }}
 			>
-				<div class="container hero-search-wrapper">
-					<h1 class="display-1">Destination Unknown</h1>
-					<p class="lead">
+				<div className="container hero-search-wrapper">
+					<h1 className="display-1">Destination Unknown</h1>
+					<p className="lead">
 						Random, Odd, Unknown, Non-Touristy, Behind-the-Scences...whatever
 						you want to call it, you won't find these suggestions on any top-10
 						travel list. Find weird and inspiring ideas here. Blah blah blah,
@@ -49,25 +49,17 @@ export default function Home(props) {
 					</p>
 				</div>
 			</div>
-			<ul
-				className="Dest-List"
-				class="row"
-				style={{
-					padding: '20px 10px',
-					border: '1px solid orange',
-					margin: '0px 19%'
-				}}
-			>
+			<ul className="Dest-List row">
 				{destinations.map(destination => {
 					return (
 						<div
-							class="col-md-6 col-lg-3"
-							style={{ padding: '20px 10px', border: '1px solid red' }}
+							className="destcards col-md-6 col-lg-3"
+							style={{ padding: '20px 10px' }}
 						>
 							<li
 								key={destination._id}
 								id="cards"
-								class="card"
+								className="card"
 								style={{
 									border: 'solid #964B00',
 									marginTop: '20px',
@@ -76,10 +68,10 @@ export default function Home(props) {
 									height: '90%'
 								}}
 							>
-								<img class="card-img-top" src="" alt="Card image" />
-								<div class="card-body">
+								<img className="card-img-top" src="" alt="Card image" />
+								<div className="card-body">
 									<h4
-										class="card-subtitle mb-2 text-muted"
+										className="card-subtitle mb-2 text-muted"
 										style={{
 											color: '#1b624f',
 											fontSize: '15px',
@@ -92,7 +84,7 @@ export default function Home(props) {
 										{destination.city}, {destination.country}
 									</h4>
 									<h3
-										class=" card-tile"
+										className="card-tile"
 										style={{
 											fontSize: '39px',
 											color: '#382c14',
@@ -102,9 +94,8 @@ export default function Home(props) {
 										{destination.title}
 									</h3>
 									<p
-										class="card-text"
+										className="card-text"
 										style={{
-											display: 'block',
 											textOverflow: 'ellipsis'
 										}}
 									>
@@ -113,7 +104,7 @@ export default function Home(props) {
 											: destination.description}
 									</p>
 									<Link to={`/${destination._id}`} comms={destination.comments}>
-										<button class="btn btn-primary">Explore</button>
+										<button className="btn btn-primary">Explore</button>
 									</Link>
 								</div>
 								{console.log('43', destination.comments)}
@@ -142,7 +133,7 @@ export default function Home(props) {
 
 			{showForm && <CreateForm fetchData={fetchData} />}
 
-			<div class="container-fluid" style={{ background: 'pink' }}>
+			<div className="container-fluid" style={{ background: 'pink' }}>
 				<h2>Add more stuff</h2>
 			</div>
 			<Footer />

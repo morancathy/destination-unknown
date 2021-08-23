@@ -26,14 +26,17 @@ export default function Show(props, comms) {
 		const response = await fetch(`/api/destinations/${props.match.params.id}`);
 		const data = await response.json();
 		setDestination(data); //this needs to be here, not in useeffect for update to work properly
-		fetchComment(data.comments);
+		// fetchComment(data.comments);
+		fetchComment();
 		return data;
 	};
 
-	const fetchComment = async comm => {
+	// const fetchComment = async comm => {
+	const fetchComment = async () => {
 		try {
-			console.log('cathy', comm);
-			const response = await fetch(`/api/destinations/comments/${comm}`);
+			// console.log('cathy', comm);
+			// const response = await fetch(`/api/destinations/comments/${comm}`);
+			const response = await fetch(`/api/destinations/comments`);
 			const data = await response.json();
 			setComments(data);
 		} catch (error) {
@@ -67,6 +70,36 @@ export default function Show(props, comms) {
 	// 	}
 	// };
 
+	const searchComments = (destCommId, commId) => {
+		// if (destCommId === commId) {
+		console.log(`75 ${destCommId}`);
+		console.log(`76 ${commId}`);
+		return true;
+		// }
+	};
+
+	// const iterateThroughDestCommentsArray = () => {
+	// 	for (let i = 0; i < destination.comments.length; i++) {
+	// 		console.log('dests comments', destination.comments[i]);
+	// 		for (let a = 0; a < comments.length; a++) {
+	// 			if (destination.comments[i] === comments[a]._id) {
+	// 				console.log('matching', comments[a]._id);
+	// 				return comments[a]._id;
+	// 			}
+	// 		}
+	// 	}
+	// };
+	const iterateThroughDestCommentsArray = comId => {
+		for (let i = 0; i < destination.comments.length; i++) {
+			console.log('dests comments', destination.comments[i]);
+			console.log('comId', comId._id);
+			if (destination.comments[i] === comId._id) {
+				console.log('matching', comId._id);
+				return true;
+			}
+		}
+	};
+
 	return (
 		<div className="ShowPage">
 			{Object.keys(destination).length ? (
@@ -89,8 +122,7 @@ export default function Show(props, comms) {
 						<p className="added-by">added by: {destination.name}</p>
 						<p className="date">{destination.createdAt}</p>
 
-						{console.log('86', destination.comments)}
-						{console.log('87', comments)}
+						{console.log('96comments', comments)}
 
 						<div className="commentDiv">
 							{destination.comments.length ? (
@@ -102,10 +134,26 @@ export default function Show(props, comms) {
 									>
 										{!showComments ? 'Comments' : 'Close'}
 									</button>
-									<div className="comments">
-										<h5>{comments.message}</h5>
-										<h5>written by: {comments.name}</h5>
-									</div>
+									<ul>
+										{comments.map(comment => {
+											return (
+												<div>
+													{console.log(
+														`destination.comments: ${destination.comments}`
+													)}
+													{console.log(`comment._id: ${comment._id}`)}
+													{iterateThroughDestCommentsArray(comment) && (
+														<li key={comment._id} id="comment-cards">
+															{/*	<p>id: {comment._id}</p>
+															<p>destinationcomments: {destination.comments}</p>}*/}
+															<h5>{comment.message}</h5>
+															<h5>written by: {comment.name}</h5>
+														</li>
+													)}
+												</div>
+											);
+										})}
+									</ul>
 								</div>
 							) : (
 								<CommentForm
@@ -113,9 +161,7 @@ export default function Show(props, comms) {
 									destination={destination}
 									props={props}
 									fetchData={fetchData}
-								>
-									{' '}
-								</CommentForm>
+								/>
 							)}
 
 							{showComments && <Comments props={props}> </Comments>}
@@ -191,3 +237,22 @@ export default function Show(props, comms) {
 // 		console.error(error);
 // 	}
 // };
+
+// <div className="comments">
+// 	<h5>{comments.message}</h5>
+// 	<h5>written by: {comments.name}</h5>
+// </div>
+
+// searchComments(
+// 	comment._id,
+// 	destination.comments
+// )
+
+// {`${comment._id}` === `${destination.comments}` && (
+// 	<li key={comment._id} id="comment-cards">
+// 		<p>id: {comment._id}</p>
+// 		<p>destinationcomments: {destination.comments}</p>
+// 		<h5>{comment.message}</h5>
+// 		<h5>written by: {comment.name}</h5>
+// 	</li>
+// )}
