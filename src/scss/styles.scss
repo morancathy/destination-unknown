@@ -218,9 +218,6 @@ body {
 	}
 
 
-
-
-
 	.Dest-List {
 			// background-color: red;
 				padding-left: 20%;
@@ -234,32 +231,32 @@ body {
 		}
 	}
 
+	.toCreateForm {
+			display: flex;
+			flex-direction: column;
+			width: 55%;
+			margin: 0 auto;
+			// border: solid red;
+			justify-content: center;
+			h4{
+			 margin: 0 auto;
+			 margin-top: 30px;
+			 margin-bottom: 5px;
+			}
+			button{
 
-
-    .toCreateForm{
-      h4{
-     // margin: 0 auto;
-      }
-      button{
-        // margin: 0 auto;
-      }
-    }
-
-    h1{
-      // text-align: center;
-      // font-size: 35px;
-      // border: solid purple;
-    }
-    ul{
-      div {
-        li {
-          #cards {
-            // width: 18rem;
-            border: solid red;
-          }
-        }
-      }
-    }
+				border-radius: 10px;
+				border: solid #759168;
+				// max-width: 700px;
+				width: 700px;
+				margin: 0 auto;
+				margin-bottom: 5px;
+				justify-content: center;
+// background-color: #663300;
+// background-color: #660000;
+// color: white;
+			}
+	}
 }
 
 .AboutPage {
@@ -380,29 +377,79 @@ body {
 //#################################################################
 
 .CreateForm {
-  width: 55%;
-  margin: 5px;
-  padding: 5px;
-  border: solid orange;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+	border: solid pink;
+	background: white;
+	max-width: 700px;
+	height: auto;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+	border: solid #759168;
+	display: inline-block;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	color: #5E6547;
+	margin-bottom: 100px;
+		form {
+			margin: 20px 0px 10px 0px;
+			// border: solid green;
+			width: 100%;
+			label {
+				display: flex;
+				flex-direction: row;
+				// border: solid blue;
+				height: 40px;
 
+			.label {
+				// border: solid orange;
+				width: 190px;
+				white-space: nowrap;
+				padding-left: 10px;
+				text-align: left;
+				height: 40px;
+				font-size: 16px;
+				padding-top: 4px;
+			}
+			input, textarea  {
+				padding: 0 10px 0px 5px;
+				color: black;
+				// border: solid red;
+				font-size: 15px;
+				width: 100%;
+				height: 40px;
+				margin-right: 10px;
+			}
+		}
+	}
 
+	.entry {
+		display: flex;
+		flex-direction: row;
+
+		.label {
+			width: 190px;
+			height: 40px;
+			padding-left: 10px;
+			font-size: 16px;
+		}
+		textarea {
+			// border: solid yellow;
+			padding: 0 10px 0px 5px;
+			width: 100%;
+			margin-bottom: 16px;
+			margin-right: 10px;
+			font-size: 16px;
+		}
+	}
+	.add-but {
+		background-color: #759168;
+		color: white;
+		border-radius: 10px;
+		height: 50px;
+		margin-top: 10px;
+	}
 }
-//
-// .Dest-List {
-//   border: solid pink;
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//
-//     li {
-//       border: solid blue;
-//       width: 25%;
-//     }
-// }
-
 
 
 
@@ -494,7 +541,7 @@ body {
 
 //########################### Update Form
 
-.UpdateForm{
+.UpdateForm {
 	// margin-left: 100px;
 	// border: solid pink;
 	background: white;
@@ -527,8 +574,6 @@ body {
 	flex-direction: row;
 	// border: solid blue;
 		height: 40px;
-
-
 
 	.label {
 		// border: solid orange;
@@ -564,7 +609,7 @@ body {
 	textarea  {
 		// border: solid red;
 		padding: 0 10px 0px 5px;
-		color: Indigo;
+			color: #5E6547;
 		font-size: 15px;
 		width: 100%;
 		margin-bottom: 16px;

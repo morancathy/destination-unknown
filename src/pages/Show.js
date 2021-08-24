@@ -53,12 +53,7 @@ export default function Show(props, comms) {
 	};
 
 	const toggleForm = () => {
-		if (!showForm) {
-			setShowForm(true);
-		} else {
-			setShowForm(false);
-		}
-		console.log(token);
+		setShowForm(!showForm);
 	};
 
 	const toggleUpdateBut = () => {

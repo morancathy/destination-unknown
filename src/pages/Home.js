@@ -94,29 +94,25 @@ export default function Contact(props) {
 				})}
 			</ul>
 
-			<div
-				className="toCreateForm"
-				style={{
-					display: 'flex',
-					flexDirection: 'column',
-					width: '55%',
-					margin: '0 auto'
-				}}
-			>
-				<h4 style={{ margin: '0 auto', marginTop: '30px' }}>
-					Have an off-the-beaten track suggestion?
-				</h4>
+			<div className="toCreateForm">
+				<h4>Have an off-the-beaten track suggestion?</h4>
 				<button
 					onClick={() => {
 						checkToken() && toggleForm();
 					}}
-					style={{ margin: '0px 0px 30px 0px' }}
 				>
-					Add here!
+					{' '}
+					{!showForm ? 'Add here!' : 'close form'}
 				</button>
 			</div>
 
-			{showForm && <CreateForm fetchData={fetchData} />}
+			{showForm && (
+				<CreateForm
+					fetchData={fetchData}
+					toggleForm={toggleForm}
+					loggedInUser={loggedInUser}
+				/>
+			)}
 
 			<div className="container-fluid" style={{ background: 'pink' }}>
 				<h2>Add more stuff</h2>

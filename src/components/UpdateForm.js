@@ -115,7 +115,7 @@ const UpdateForm = ({
 				<label>
 					<h4 className="label">Upload Image: </h4>
 					<input
-						type="img"
+						type="text"
 						id="img"
 						defaultValue={destination.img}
 						// onChange={handleChange}
