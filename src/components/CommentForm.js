@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 const CommentForm = ({
 	props,
-	destination,
+	// destination,
 	fetchData,
-	checkToken,
-	token,
-	loggedInUser
+	checkToken
+	// token,
+	// loggedInUser
 }) => {
 	const [comment, setComment] = useState({});
 	const [newComment, setNewComment] = useState({
