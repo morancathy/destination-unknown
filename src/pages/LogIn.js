@@ -66,6 +66,11 @@ const LogIn = props => {
 		}
 	}, []);
 
+	const logout = () => {
+		window.localStorage.clear();
+		window.location.assign('/login');
+	};
+
 	const displayForm = () => {
 		setShowForm(!showForm);
 	};
@@ -82,14 +87,14 @@ const LogIn = props => {
 										type="text"
 										id="username"
 										value={user.username}
-										placeHolder="username"
+										placeholder="username"
 										onChange={handleChange}
 									/>
 									<input
 										type="text"
 										id="password"
 										value={user.password}
-										placeHolder="password"
+										placeholder="password"
 										onChange={handleChange}
 									/>
 									<input
@@ -115,7 +120,10 @@ const LogIn = props => {
 								<div style={{ textAlign: 'center' }}>
 									Hello {loggedInUser}, you are logged in
 								</div>
-								<button className="logOutBut"> Log Out </button>
+								<button onClick={logout} className="logOutBut">
+									{' '}
+									Log Out{' '}
+								</button>
 							</>
 						)}
 					</>
@@ -128,14 +136,14 @@ const LogIn = props => {
 							type="text"
 							id="username"
 							value={user.username}
-							placeHolder="username"
+							placeholder="username"
 							onChange={handleChange}
 						/>
 						<input
 							type="password"
 							id="password"
 							value={user.password}
-							placeHolder="password"
+							placeholder="password"
 							onChange={handleChange}
 						/>
 						<input

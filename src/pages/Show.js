@@ -110,7 +110,6 @@ export default function Show(props, comms) {
 								{' '}
 							</UpdateForm>
 						)}
-						{console.log('96comments', comments)}
 
 						{destination.comments.length ? (
 							<Comments
@@ -129,6 +128,7 @@ export default function Show(props, comms) {
 								props={props}
 								destination={destination}
 								fetchData={fetchData}
+								checkToken={checkToken}
 							/>
 						)}
 						{/*	</div>*/}
