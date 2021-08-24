@@ -181,36 +181,37 @@ body {
 		padding-right: 10%;
 
 		.dest-card{
-			border: solid blue;
+			// border: solid blue;
 			display: flex;
 			flex-flow: column;
 			width: 300px;
 			height: 100%;
-			background-color: white;
-			margin-top: 18px;
+			margin-top: 10px;
 			margin-left: 5px;
 			margin-right: 5px;
+			padding-top: 18px;
 				.card-image{
-					border: solid yellow;
-					height: 150px;
+					// border: solid yellow;
+					// height: 150px;
+					// width: 300px;
+					min-height: 150px;
+					width: 100%;
 				}
 				.card-body{
-					border: solid pink;
-
-					// height: 40%;
+					// border: solid pink;
+					background-color: white;
 					h5{
-						border: solid orange;
+						// border: solid orange;
 						font-size: 17px;
 						margin-top: -11px;
-
+  					color: #888071;
 					}
 					h4{
-						border: solid purple;
-
+						// border: solid purple;
+						color: #382c14;
 					}
 					p{
-						border: solid green;
-
+						// border: solid green;
 					}
 				}
 		}
@@ -315,9 +316,14 @@ body {
 			margin-right: 30%;
     }
     .imgDiv {
-      border: solid tan;
-      padding-bottom: 200px;
+      // border: solid tan;
+			width: 650px;
+      // margin-bottom: 40px;
 			margin-right: 30%;
+			img{
+				width: 100%;
+					border-radius: 10px;
+			}
     }
   }
 

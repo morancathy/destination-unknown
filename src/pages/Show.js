@@ -10,6 +10,8 @@ export default function Show(props, comms) {
 	const [comments, setComments] = useState([]);
 	const [showForm, setShowForm] = useState(false);
 	const [showUpdateBut, setShowUpdateBut] = useState(true);
+	const [token, setToken] = useState('');
+	const [loggedInUser, setLoggedInUser] = useState('');
 
 	useEffect(() => {
 		(async () => {
@@ -19,6 +21,13 @@ export default function Show(props, comms) {
 				console.error(error);
 			}
 		})();
+	}, []);
+
+	useEffect(() => {
+		if (window.localStorage.getItem('token')) {
+			setToken(window.localStorage.getItem('token'));
+			setLoggedInUser(window.localStorage.getItem('loggedInUser'));
+		}
 	}, []);
 
 	const fetchData = async () => {
@@ -49,10 +58,19 @@ export default function Show(props, comms) {
 		} else {
 			setShowForm(false);
 		}
+		console.log(token);
 	};
 
 	const toggleUpdateBut = () => {
 		setShowUpdateBut(!showUpdateBut);
+	};
+
+	const checkToken = () => {
+		if (token) {
+			return true;
+		} else {
+			alert('Must be logged in. (add link to log in page)');
+		}
 	};
 
 	return (
@@ -65,7 +83,7 @@ export default function Show(props, comms) {
 							{destination.city}, {destination.country}
 						</h2>
 						<div className="imgDiv">
-							<img src=".../public/img/smoothie.png" alt="Card image" />
+							<img src={destination.img} alt="Card image" />
 						</div>
 					</div>
 					<div className="showDescript">
@@ -80,8 +98,7 @@ export default function Show(props, comms) {
 							<button
 								className="update-but float-right"
 								onClick={() => {
-									toggleForm();
-									toggleUpdateBut();
+									checkToken() && (toggleForm(), toggleUpdateBut());
 								}}
 							>
 								Update
@@ -100,20 +117,22 @@ export default function Show(props, comms) {
 						)}
 						{console.log('96comments', comments)}
 
-						{/*<div className="commentDiv">*/}
 						{destination.comments.length ? (
 							<Comments
 								props={props}
 								destination={destination}
 								comments={comments}
 								fetchData={fetchData}
+								checkToken={checkToken}
+								token={token}
+								loggedInUser={loggedInUser}
 							>
 								{' '}
 							</Comments>
 						) : (
 							<CommentForm
-								destination={destination}
 								props={props}
+								destination={destination}
 								fetchData={fetchData}
 							/>
 						)}

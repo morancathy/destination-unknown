@@ -11,6 +11,7 @@ const CreateForm = ({ fetchData }) => {
 		img: '',
 		name: ''
 	});
+	const image = '/img/ImagePlaceholder.jpg';
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -90,8 +91,9 @@ const CreateForm = ({ fetchData }) => {
 					onChange={handleChange}
 				/>
 				<input
-					type="img"
+					type="text"
 					id="img"
+					defaultValue={image}
 					placeholder="insert image"
 					onChange={handleChange}
 				/>

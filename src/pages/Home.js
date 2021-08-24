@@ -7,6 +7,9 @@ import Footer from '../components/Footer';
 export default function Contact(props) {
 	const [destinations, setDestinations] = useState([]);
 	const [showForm, setShowForm] = useState(false);
+	const [showUpdateBut, setShowUpdateBut] = useState(true);
+	const [token, setToken] = useState('');
+	const [loggedInUser, setLoggedInUser] = useState('');
 
 	const fetchData = async () => {
 		const response = await fetch('/api/destinations');
@@ -25,6 +28,13 @@ export default function Contact(props) {
 		})();
 	}, []);
 
+	useEffect(() => {
+		if (window.localStorage.getItem('token')) {
+			setToken(window.localStorage.getItem('token'));
+			setLoggedInUser(window.localStorage.getItem('loggedInUser'));
+		}
+	}, []);
+
 	const toggleForm = () => {
 		if (!showForm) {
 			setShowForm(true);
@@ -32,7 +42,13 @@ export default function Contact(props) {
 			setShowForm(false);
 		}
 	};
-
+	const checkToken = () => {
+		if (token) {
+			return true;
+		} else {
+			alert('Must be logged in. (add link to log in page)');
+		}
+	};
 	return (
 		<div className="HomePage">
 			<div
@@ -54,7 +70,11 @@ export default function Contact(props) {
 					return (
 						<div>
 							<li key={destination._id} id="cards" className="dest-card">
-								<img className="card-image" src="" alt="Card image" />
+								<img
+									className="card-image"
+									src={destination.img}
+									alt="Card image"
+								/>
 								<div className="card-body">
 									<h5>
 										{destination.city}, {destination.country}
@@ -86,7 +106,12 @@ export default function Contact(props) {
 				<h4 style={{ margin: '0 auto', marginTop: '30px' }}>
 					Have an off-the-beaten track suggestion?
 				</h4>
-				<button onClick={toggleForm} style={{ margin: '0px 0px 30px 0px' }}>
+				<button
+					onClick={() => {
+						checkToken() && toggleForm();
+					}}
+					style={{ margin: '0px 0px 30px 0px' }}
+				>
 					Add here!
 				</button>
 			</div>

@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import CommentForm from './CommentForm';
 
-const Comments = ({ props, destination, comments, fetchData }) => {
+const Comments = ({
+	props,
+	destination,
+	comments,
+	fetchData,
+	checkToken,
+	token,
+	loggedInUser
+}) => {
 	const [showComments, setShowComments] = useState(false);
 
 	const toggleShowComments = () => {
@@ -47,7 +55,13 @@ const Comments = ({ props, destination, comments, fetchData }) => {
 			</ul>
 
 			{showComments && (
-				<CommentForm props={props} fetchData={fetchData}>
+				<CommentForm
+					props={props}
+					fetchData={fetchData}
+					checkToken={checkToken}
+					token={token}
+					loggedInUser={loggedInUser}
+				>
 					{' '}
 				</CommentForm>
 			)}

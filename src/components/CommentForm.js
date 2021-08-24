@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const CommentForm = ({ props, destination, fetchData }) => {
+const CommentForm = ({
+	props,
+	destination,
+	fetchData,
+	checkToken,
+	token,
+	loggedInUser
+}) => {
 	const [comment, setComment] = useState({});
 	const [newComment, setNewComment] = useState({
 		name: '',
@@ -39,7 +46,12 @@ const CommentForm = ({ props, destination, fetchData }) => {
 
 	return (
 		<div className="CommentForm">
-			<button className="comment-button2" onClick={toggleCommentForm}>
+			<button
+				className="comment-button2"
+				onClick={() => {
+					checkToken() && toggleCommentForm();
+				}}
+			>
 				{' '}
 				{!showCommentForm ? 'Make a Comment' : 'x'}
 			</button>
