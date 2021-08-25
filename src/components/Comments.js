@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CommentForm from './CommentForm';
 
 const Comments = ({
 	props,
@@ -38,14 +37,6 @@ const Comments = ({
 
 	return (
 		<div className="Comments">
-			<button
-				className="comment-but"
-				onClick={() => {
-					toggleShowComments();
-				}}
-			>
-				{!showComments ? 'Comments' : 'Close'}
-			</button>
 			<ul>
 				{comments.map(comment => {
 					return (
@@ -62,11 +53,12 @@ const Comments = ({
 				})}
 				{destination.comments.length > 2 && (
 					<button
+						className="view-more"
 						onClick={() => {
 							toggleShowMore();
 						}}
 					>
-						...view more
+						{!showMore ? '~~ view more ~~' : '~~ close ~~'}
 					</button>
 				)}
 			</ul>
@@ -93,18 +85,6 @@ const Comments = ({
 						})}
 					</ul>
 				</>
-			)}
-
-			{showComments && (
-				<CommentForm
-					props={props}
-					fetchData={fetchData}
-					checkToken={checkToken}
-					// token={token}
-					// loggedInUser={loggedInUser}
-				>
-					{' '}
-				</CommentForm>
 			)}
 		</div>
 	);

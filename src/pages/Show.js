@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import UpdateForm from '../components/UpdateForm';
 import CommentForm from '../components/CommentForm';
-import Comments from '../components/Comments';
 import Footer from '../components/Footer';
 
 export default function Show(props, comms) {
@@ -96,7 +95,7 @@ export default function Show(props, comms) {
 									checkToken() && (toggleForm(), toggleUpdateBut());
 								}}
 							>
-								Update
+								update
 							</button>
 						)}
 						{showForm && (
@@ -111,26 +110,14 @@ export default function Show(props, comms) {
 							</UpdateForm>
 						)}
 
-						{destination.comments.length ? (
-							<Comments
-								props={props}
-								destination={destination}
-								comments={comments}
-								fetchData={fetchData}
-								checkToken={checkToken}
-								token={token}
-								loggedInUser={loggedInUser}
-							>
-								{' '}
-							</Comments>
-						) : (
-							<CommentForm
-								props={props}
-								destination={destination}
-								fetchData={fetchData}
-								checkToken={checkToken}
-							/>
-						)}
+						<CommentForm
+							props={props}
+							destination={destination}
+							fetchData={fetchData}
+							checkToken={checkToken}
+							comments={comments}
+							loggedInUser={loggedInUser}
+						/>
 						{/*	</div>*/}
 					</div>
 				</>
@@ -141,42 +128,3 @@ export default function Show(props, comms) {
 		</div>
 	);
 }
-
-// {destination.comments.length ? (
-// 	<ul>
-// 		{comments.map(comment => {
-// 			return (
-// 				<li key={comment._id}>
-// 					<div className="comment-box">
-// 						<h5>comments: {comment.message}</h5>
-// 						<h5>written by: {comment.name}</h5>
-// 					</div>
-// 				</li>
-// 			);
-// 		})}
-// 	</ul>
-// ) : (
-// 	<></>
-// )}
-
-// {destination.comments.length ? (
-// 	<div className="comment-box">
-// 		<h5>comments: {comments.message}</h5>
-// 		<h5>written by: {comments.name}</h5>
-// 	</div>
-// ) : (
-// 	<></>
-// )}
-
-// const fetchComment = async comm => {
-// 	try {
-// 		console.log('cathy', comm);
-// 		for (let i = 0; i < comm.length; i++) {
-// 			const response = await fetch(`/api/destinations/comments/${i}`);
-// 			const data = await response.json();
-// 			setComments(data);
-// 		}
-// 	} catch (error) {
-// 		console.error(error);
-// 	}
-// };
