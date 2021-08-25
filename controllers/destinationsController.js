@@ -44,6 +44,17 @@ router.get('/comments/:id', async(req, res) => {
     res.status(400).json({message:error.message})
   }
 });
+// Delete COMMENTS
+router.delete('/comments/:id', async(req, res) => {
+  try {
+    const deletedComment = await Comment.findByIdAndDelete(req.params.id)
+    res.status(200).json(deletedComment)
+  } catch(error){
+    console.error(error)
+    res.status(400).json({message:error.message})
+  }
+});
+
 //##################################################################
 //Read (Show)
 router.get('/:id', async (req, res) => {

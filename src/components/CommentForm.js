@@ -5,6 +5,7 @@ const CommentForm = ({
 	props,
 	destination,
 	comments,
+	setComments,
 	fetchData,
 	checkToken,
 	token,
@@ -42,6 +43,7 @@ const CommentForm = ({
 	const handleChange = e => {
 		setComment({ ...comment, [e.target.id]: e.target.value });
 	};
+
 	const toggleCommentForm = () => {
 		setShowCommentForm(!showCommentForm);
 	};
@@ -57,7 +59,7 @@ const CommentForm = ({
 				>
 					{!showCommentForm ? 'add comment' : 'close'}
 				</button>
-				{console.log('incommentform.js', showCommentForm)}
+
 				{showCommentForm && (
 					<form
 						className="comment-form"

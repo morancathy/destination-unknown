@@ -117,6 +117,7 @@ export default function Show(props, comms) {
 							checkToken={checkToken}
 							comments={comments}
 							loggedInUser={loggedInUser}
+							setComments={setComments}
 						/>
 						{/*	</div>*/}
 					</div>

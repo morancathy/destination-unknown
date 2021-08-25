@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
+import UpdateComments from '../components/UpdateComments';
 
 const Comments = ({
 	props,
 	destination,
 	comments,
+	setComments,
 	fetchData,
 	checkToken,
 	token,
 	loggedInUser
 }) => {
-	const [showComments, setShowComments] = useState(false);
+	// const [showComments, setShowComments] = useState(false);
 	const [showMore, setShowMore] = useState(false);
 
-	const toggleShowComments = () => {
-		setShowComments(!showComments);
-	};
-	const toggleShowMore = () => {
-		setShowMore(!showMore);
+	// const toggleShowComments = () => {
+	// 	setShowComments(!showComments);
+	// };
+	// const toggleShowMore = () => {
+	// 	setShowMore(!showMore);
+	// };
+	const toggle = (a, b) => {
+		a(!b);
 	};
 
 	const iterateThroughDestCommentsArray = (array, comId) => {
@@ -46,6 +51,16 @@ const Comments = ({
 									<h5>{comment.message}</h5>
 									<h5 className="comm-author">written by: {comment.name}</h5>
 									{console.log('lenght', destination.comments.length)}
+									{console.log(comments)}
+
+									{console.log(`${destination.comments}`)}
+									{console.log(`commetnt._id ${comment._id}`)}
+
+									<UpdateComments
+										commentId={comment._id}
+										props={props}
+										comment={comment}
+									/>
 								</li>
 							)}
 						</div>
@@ -55,7 +70,7 @@ const Comments = ({
 					<button
 						className="view-more"
 						onClick={() => {
-							toggleShowMore();
+							toggle(setShowMore, showMore);
 						}}
 					>
 						{!showMore ? '~~ view more ~~' : '~~ close ~~'}
@@ -78,6 +93,11 @@ const Comments = ({
 											<h5 className="comm-author">
 												written by: {comment.name}
 											</h5>
+											<UpdateComments
+												commentId={comment._id}
+												props={props}
+												comment={comment}
+											/>
 										</li>
 									)}
 								</div>
