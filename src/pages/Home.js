@@ -36,12 +36,9 @@ export default function Contact(props) {
 	}, []);
 
 	const toggleForm = () => {
-		if (!showForm) {
-			setShowForm(true);
-		} else {
-			setShowForm(false);
-		}
+		setShowForm(!showForm);
 	};
+
 	const checkToken = () => {
 		if (token) {
 			return true;
@@ -109,8 +106,8 @@ export default function Contact(props) {
 			{showForm && (
 				<CreateForm
 					fetchData={fetchData}
-					toggleForm={toggleForm}
 					loggedInUser={loggedInUser}
+					toggleForm={toggleForm}
 				/>
 			)}
 

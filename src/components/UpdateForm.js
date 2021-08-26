@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import DeleteBut from './DeleteBut';
 
 const UpdateForm = ({
 	props,
@@ -9,7 +8,6 @@ const UpdateForm = ({
 	toggleForm
 }) => {
 	const [updatedDest, setUpdatedDest] = useState({});
-	// const [deleteBut, setDeleteBut] = useState(false);
 	const titleInput = useRef(null);
 	const countryInput = useRef(null);
 	const cityInput = useRef(null);
@@ -80,15 +78,21 @@ const UpdateForm = ({
 
 	return (
 		<div className="UpdateForm">
+			{console.log(destination.name)}
+			<button
+				onClick={() => {
+					toggleForm(), toggleUpdateBut();
+				}}
+				className="closeBut btn btn-sm float-left"
+			>
+				Close
+			</button>
 			<button
 				className="deleteBut btn btn-link btn-sm float-right"
-				onClick={() => {
-					handleDelete(destination._id);
-				}}
+				onClick={() => handleDelete(destination._id)}
 			>
 				Delete
 			</button>
-
 			<form
 				className=""
 				onSubmit={handleUpdate}
@@ -127,7 +131,7 @@ const UpdateForm = ({
 				<label>
 					<h4 className="label">Upload Image: </h4>
 					<input
-						type="text"
+						type="img"
 						id="img"
 						defaultValue={destination.img}
 						// onChange={handleChange}

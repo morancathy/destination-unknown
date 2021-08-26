@@ -448,7 +448,9 @@ body {
 		border-radius: 10px;
 		height: 50px;
 		margin-top: 10px;
+
 	}
+
 }
 
 
@@ -503,6 +505,10 @@ body {
 			border: solid #858585;
 			color: #3C412E;
 		}
+
+			.add-commment-but:hover{
+				box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
+			}
 	}
 }
 //#######################################
@@ -527,6 +533,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+
 		li {
 			padding: 10px;
 			border: solid #858585;
@@ -534,15 +541,57 @@ body {
 			background-color: #B7C68B;
 			border-radius: 20px;
 			margin-bottom: 5px;
+			display: flex;
+			flex-direction: column;
+
 		}
 		h5 {
 			font-size: 16px;
 			color: #3C412E;
+
+		}
+		.message {
+					text-align: right;
+
 		}
 		.comm-author{
 			text-align: right;
+border-bottom: 1px solid grey;
 
 		}
+		.edit-comment-but {
+			border-radius: 10px;
+			font-size: 15px;
+			// margin-right: 7px;
+			// margin-top: -10px;
+			width: 40px;
+			// align-items: flex-end;
+			// align-content: flex-end;
+			// justify-content: flex-end;
+		}
+	.edit-comment-but2 {
+		background-color: #B7C68B;
+		border: transparent;
+border-radius: 10px;
+
+	}
+.edit-comment-but2:hover {
+
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
+
+}
+.close{
+
+	font-size: 22px;
+	border-radius: 10px;
+	border: solid grey;
+	width: 100%;
+	padding: 10px;
+	text-align: center;
+	color: black;
+}
+
+
 		.view-more{
 			border-radius: 10px;
 			font-size: 20px;
@@ -667,6 +716,14 @@ body {
 		margin-bottom: 5px;
 		margin-right: 10px;
 		color: lightgrey;
+	}
+
+	.closeBut{
+		margin-bottom: 5px;
+		margin-right: 10px;
+		color: black;
+		border-radius: 10px;
+		border: solid lightgrey;
 	}
 	form{
 	margin: 20px 0px 20px 0px;

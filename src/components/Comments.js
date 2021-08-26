@@ -11,15 +11,9 @@ const Comments = ({
 	token,
 	loggedInUser
 }) => {
-	// const [showComments, setShowComments] = useState(false);
 	const [showMore, setShowMore] = useState(false);
+	const [updateComments, setUpdateComments] = useState(false);
 
-	// const toggleShowComments = () => {
-	// 	setShowComments(!showComments);
-	// };
-	// const toggleShowMore = () => {
-	// 	setShowMore(!showMore);
-	// };
 	const toggle = (a, b) => {
 		a(!b);
 	};
@@ -48,19 +42,40 @@ const Comments = ({
 						<div>
 							{iterateThroughDestCommentsArray(firstTwoComments(), comment) && (
 								<li key={comment._id} id="comment-cards">
-									<h5>{comment.message}</h5>
-									<h5 className="comm-author">written by: {comment.name}</h5>
+									<button
+										className="edit-comment-but2"
+										onClick={() => {
+											toggle(setUpdateComments, updateComments);
+										}}
+									>
+										{!updateComments ? (
+											<>
+												<h5 className="comm-author">
+													written by: {comment.name}
+												</h5>
+												<h5 className="message">{comment.message}</h5>
+											</>
+										) : (
+											<h5 className="close">close</h5>
+										)}
+									</button>
 									{console.log('lenght', destination.comments.length)}
 									{console.log(comments)}
 
 									{console.log(`${destination.comments}`)}
 									{console.log(`commetnt._id ${comment._id}`)}
 
-									<UpdateComments
-										commentId={comment._id}
-										props={props}
-										comment={comment}
-									/>
+									{updateComments && (
+										<UpdateComments
+											commentId={comment._id}
+											props={props}
+											comment={comment}
+											setUpdateComments={setUpdateComments}
+											toggle={toggle}
+											updateComments={updateComments}
+											fetchData={fetchData}
+										/>
+									)}
 								</li>
 							)}
 						</div>
@@ -89,15 +104,26 @@ const Comments = ({
 										comment
 									) && (
 										<li key={comment._id} id="comment-cards">
-											<h5>{comment.message}</h5>
-											<h5 className="comm-author">
-												written by: {comment.name}
-											</h5>
-											<UpdateComments
-												commentId={comment._id}
-												props={props}
-												comment={comment}
-											/>
+											<button
+												className="edit-comment-but2"
+												onClick={() => {
+													toggle(setUpdateComments, updateComments);
+												}}
+											>
+												<h5 className="comm-author">
+													written by: {comment.name}
+												</h5>
+
+												<h5 className="message">{comment.message}</h5>
+											</button>
+
+											{updateComments && (
+												<UpdateComments
+													commentId={comment._id}
+													props={props}
+													comment={comment}
+												/>
+											)}
 										</li>
 									)}
 								</div>

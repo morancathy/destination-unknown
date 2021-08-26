@@ -1,32 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const UpdateComments = ({ props, commentId, comment }) => {
+const UpdateComments = ({
+	props,
+	commentId,
+	comment,
+	setUpdateComments,
+	updateComments,
+	toggle,
+	fetchData
+}) => {
 	const [updatedDest, setUpdatedDest] = useState({});
 	const [updatedComm, setUpdatedComm] = useState({});
 	const messageInput = useRef(null);
 	const nameInput = useRef(null);
 
-	const handleUpdate = async e => {
+	// `/api/destinations/comments/${props.match.params.id}`,
+	const handleUpdate = async id => {
 		e.preventDefault();
 		try {
-			const response = await fetch(
-				`/api/destinations/comments${props.match.params.id}`,
-				{
-					method: 'PUT',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						name: nameInput.current.value,
-						message: messageInput.current.value
-					})
-				}
-			);
+			const response = await fetch(`/api/destinations/comments/${id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					name: nameInput.current.value,
+					message: messageInput.current.value
+				})
+			});
 			const data = await response.json();
 			setUpdatedComm(data);
 			fetchData();
-			// toggleUpdateBut();
-			// toggleForm();
+			toggle(setUpdateComments, updateComments);
+			// console.log(updateComments);
 		} catch (error) {
 			console.error(error);
 		}
@@ -61,9 +67,12 @@ const UpdateComments = ({ props, commentId, comment }) => {
 			{/*console.log('destComm', destinationComments)*/}
 			{console.log('88', comment.name)}
 			{console.log(props.match.params.id)}
+
 			<form
 				className=""
-				onSubmit={handleUpdate}
+				onSubmit={() => {
+					handleUpdate(commenId);
+				}}
 				style={{ display: 'flex', flexDirection: 'column' }}
 			>
 				<label>
