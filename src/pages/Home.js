@@ -100,6 +100,7 @@ export default function Contact(props) {
 					<form
 						className="explore"
 						// onSubmit={handleUpdate2}
+
 						style={{ display: 'flex', flexDirection: 'row' }}
 					>
 						<input
@@ -113,8 +114,12 @@ export default function Contact(props) {
 							type="submit"
 							value="Explore"
 						></input>
+						;
 					</form>
-					<h4>Need inspiration?</h4>
+					<Link to={'/api'}>
+						{' '}
+						<h4>Need inspiration?</h4>{' '}
+					</Link>
 				</div>
 
 				<div className="toCreateForm">
