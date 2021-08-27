@@ -11,6 +11,7 @@ export default function Show(props, comms) {
 	const [showUpdateBut, setShowUpdateBut] = useState(true);
 	const [token, setToken] = useState('');
 	const [loggedInUser, setLoggedInUser] = useState('');
+	const [logInAlert, setlogInAlert] = useState(false);
 
 	useEffect(() => {
 		(async () => {
@@ -59,11 +60,16 @@ export default function Show(props, comms) {
 		setShowUpdateBut(!showUpdateBut);
 	};
 
+	const toggleLogIn = () => {
+		setlogInAlert(!logInAlert);
+	};
+
 	const checkToken = () => {
 		if (token) {
 			return true;
 		} else {
-			alert('Must be logged in. (add link to log in page)');
+			// alert('Must be logged in. (add link to log in page)');
+			toggleLogIn();
 		}
 	};
 
@@ -97,6 +103,23 @@ export default function Show(props, comms) {
 							>
 								update
 							</button>
+						)}
+						{logInAlert && (
+							<div className="alert">
+								<button
+									className="btn float-right"
+									id="x-but"
+									onClick={() => {
+										toggleLogIn();
+									}}
+								>
+									X
+								</button>
+								<h3>Please log in</h3>
+								<Link to={'/login'}>
+									<h4 className="help btn btn-primary float-center">Log In</h4>
+								</Link>
+							</div>
 						)}
 						{showForm && (
 							<UpdateForm

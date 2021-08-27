@@ -10,6 +10,7 @@ export default function Contact(props) {
 	const [showUpdateBut, setShowUpdateBut] = useState(true);
 	const [token, setToken] = useState('');
 	const [loggedInUser, setLoggedInUser] = useState('');
+	const [logInAlert, setlogInAlert] = useState(false);
 
 	const fetchData = async () => {
 		const response = await fetch('/api/destinations');
@@ -38,12 +39,16 @@ export default function Contact(props) {
 	const toggleForm = () => {
 		setShowForm(!showForm);
 	};
+	const toggleLogIn = () => {
+		setlogInAlert(!logInAlert);
+	};
 
 	const checkToken = () => {
 		if (token) {
 			return true;
 		} else {
-			alert('Must be logged in. (add link to log in page)');
+			// alert('Must be logged in. (add link to log in page)');
+			toggleLogIn();
 		}
 	};
 	return (
@@ -90,17 +95,59 @@ export default function Contact(props) {
 					);
 				})}
 			</ul>
+			<div className="after-cards">
+				<div className="toExplore">
+					<form
+						className="explore"
+						// onSubmit={handleUpdate2}
+						style={{ display: 'flex', flexDirection: 'row' }}
+					>
+						<input
+							type="text"
+							id="place"
+							placeholder="enter city or country"
+							required
+						></input>
+						<input
+							className="explore-but"
+							type="submit"
+							value="Explore"
+						></input>
+					</form>
+					<h4>Need inspiration?</h4>
+				</div>
 
-			<div className="toCreateForm">
-				<h4>Have an off-the-beaten track suggestion?</h4>
-				<button
-					onClick={() => {
-						checkToken() && toggleForm();
-					}}
-				>
-					{' '}
-					{!showForm ? 'Add here!' : 'close form'}
-				</button>
+				<div className="toCreateForm">
+					<div className="add-here-form">
+						<button
+							className="add-here"
+							onClick={() => {
+								checkToken() && toggleForm();
+							}}
+						>
+							{' '}
+							{!showForm ? 'Add here!' : 'close form'}
+						</button>
+					</div>
+					<h4>Have an off-the-beaten track suggestion?</h4>
+					{logInAlert && (
+						<div className="alert">
+							<button
+								className="btn float-right"
+								id="x-but"
+								onClick={() => {
+									toggleLogIn();
+								}}
+							>
+								X
+							</button>
+							<h3>Please log in</h3>
+							<Link to={'/login'}>
+								<h4 className="btn btn-primary">Log In</h4>
+							</Link>
+						</div>
+					)}
+				</div>
 			</div>
 
 			{showForm && (
@@ -111,9 +158,9 @@ export default function Contact(props) {
 				/>
 			)}
 
-			<div className="container-fluid" style={{ background: 'pink' }}>
+			{/*	<div className="container-fluid" style={{ background: 'pink' }}>
 				<h2>Add more stuff</h2>
-			</div>
+			</div>*/}
 			<Footer />
 		</div>
 	);

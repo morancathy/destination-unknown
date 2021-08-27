@@ -50,9 +50,7 @@ const Comments = ({
 									>
 										{!updateComments ? (
 											<>
-												<h5 className="comm-author">
-													written by: {comment.name}
-												</h5>
+												<h5 className="comm-author">{comment.name}</h5>
 												<h5 className="message">{comment.message}</h5>
 											</>
 										) : (
@@ -110,9 +108,7 @@ const Comments = ({
 													toggle(setUpdateComments, updateComments);
 												}}
 											>
-												<h5 className="comm-author">
-													written by: {comment.name}
-												</h5>
+												<h5 className="comm-author">{comment.name}</h5>
 
 												<h5 className="message">{comment.message}</h5>
 											</button>
