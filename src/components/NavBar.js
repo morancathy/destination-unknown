@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LogIn from '../pages/LogIn';
 
@@ -12,7 +12,11 @@ const NavBar = props => {
 			))}
 
 			<Link className="sign-in-btn" to={'/login'}>
-				<button>Sign in </button>
+				<button>
+					{window.localStorage.token
+						? `Hi, ${window.localStorage.loggedInUser}`
+						: `Sign in`}{' '}
+				</button>
 			</Link>
 		</nav>
 	);
