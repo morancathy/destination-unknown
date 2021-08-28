@@ -33,6 +33,8 @@ const LogIn = props => {
 		} catch (error) {
 			console.error(error);
 			alert('Username / password invalid');
+		} finally {
+			window.location.assign('/login');
 		}
 	};
 
@@ -118,7 +120,7 @@ const LogIn = props => {
 						) : (
 							<>
 								<div style={{ textAlign: 'center' }}>
-									Hello {loggedInUser}, you are logged in
+									Hello, {loggedInUser}! You are logged in.
 								</div>
 								<button onClick={logout} className="logOutBut">
 									{' '}

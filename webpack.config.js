@@ -1,3 +1,5 @@
+require('dotenv').config()
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
@@ -36,7 +38,11 @@ module.exports = env => {
 			]
 		},
 		plugins: [
-			new CleanWebpackPlugin(),
+			new webpack.DefinePlugin({
+      	"process.env.API": JSON.stringify(process.env.API),
+				"process.env.ACCID": JSON.stringify(process.env.ACCID)
+    	}),
+			new CleanWebpackPlugin(), //emptys the dist folder everytime
 			new MiniCssExtractPlugin({
 				filename: 'style.[contenthash].css' // 'style.[contenthash].css' put this if you want to get hashed files to cache bust
 			}),

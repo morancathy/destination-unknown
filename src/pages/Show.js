@@ -75,6 +75,7 @@ export default function Show(props, comms) {
 
 	return (
 		<div className="ShowPage">
+			{console.log(props)}
 			{Object.keys(destination).length ? (
 				<>
 					<div className="showTitle">

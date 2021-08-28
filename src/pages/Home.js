@@ -53,6 +53,7 @@ export default function Contact(props) {
 	};
 	return (
 		<div className="HomePage">
+			{console.log(props)}
 			<div
 				className="head topographic wide-container text-white text-center"
 				style={{ backgroundColor: '#759168' }}

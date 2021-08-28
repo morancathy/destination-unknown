@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import '../scss/api.scss';
 
 export default function Api(props) {
 	const [places, setPlaces] = useState({});
-
+	const APIKEY = process.env.API;
+	const ACCID = process.env.ACCID;
 	const city = props.match.params.city || 'Sagada';
 
-	const url = `https://www.triposo.com/api/20210615/location.json?id=${city}&fields=all&account=${acctId}&token=${apiKey}`;
+	const url = `https://www.triposo.com/api/20210615/location.json?id=${city}&fields=all&account=${ACCID}&token=${APIKEY}`;
 
 	//function to fetch place data
 	const getPlaces = async () => {
