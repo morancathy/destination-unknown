@@ -8,8 +8,8 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 		city: '',
 		description: '',
 		howToGetThere: '',
-		img: '',
-		name: ''
+		img: '/img/ImagePlaceholder.jpg',
+		name: `${loggedInUser}`
 	});
 	const image = '/img/ImagePlaceholder.jpg';
 
@@ -89,7 +89,7 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 						type="text"
 						id="img"
 						// defaultValue="/img/ImagePlaceholder.jpg"
-						placeholder="insert image"
+						placeholder="insert image or leave blank"
 						onChange={handleChange}
 					/>
 				</label>
@@ -121,14 +121,14 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 					<input
 						type="text"
 						id="name"
-						// readOnly="readonly"
-						// defaultValue={loggedInUser}
+						required
+						readOnly="readonly"
+						value={loggedInUser}
 						onChange={handleChange}
 					/>
 				</label>
 				<input className="add-but" type="submit" value="add new destination" />
 			</form>
-			{console.log(loggedInUser)}
 		</div>
 	);
 };
