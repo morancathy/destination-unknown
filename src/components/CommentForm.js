@@ -13,7 +13,7 @@ const CommentForm = ({
 }) => {
 	const [comment, setComment] = useState({});
 	const [newComment, setNewComment] = useState({
-		name: '',
+		name: `${loggedInUser}`,
 		message: ''
 	});
 	const [showCommentForm, setShowCommentForm] = useState(false);
@@ -28,20 +28,25 @@ const CommentForm = ({
 					headers: {
 						'Content-Type': 'application/json'
 					},
-					body: JSON.stringify(comment)
+					body: JSON.stringify(newComment)
 				}
 			);
 			const data = await response.json();
-			setComment(data);
+			setNewComment(data);
 			fetchData();
 			toggleCommentForm();
+			setNewComment({
+				name: `${loggedInUser}`,
+				message: ''
+			});
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
 	const handleChange = e => {
-		setComment({ ...comment, [e.target.id]: e.target.value });
+		///t is this suppose to be newcomment?
+		setNewComment({ ...newComment, [e.target.id]: e.target.value });
 	};
 
 	const toggleCommentForm = () => {
@@ -50,6 +55,7 @@ const CommentForm = ({
 
 	return (
 		<>
+			{console.log('llll', newComment)}
 			<div className="CommentForm">
 				<button
 					className="comment-button2"
@@ -76,8 +82,9 @@ const CommentForm = ({
 						<input
 							type="text"
 							id="name"
-							placeholder="name"
 							required
+							readOnly="readonly"
+							value={loggedInUser}
 							onChange={handleChange}
 						/>
 						<input
