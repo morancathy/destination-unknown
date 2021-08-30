@@ -12,7 +12,7 @@ const routes = [
 	},
 	{
 		Component: Cards,
-		key: 'Destination List',
+		key: 'Full Destination List',
 		path: '/cards'
 	},
 	{

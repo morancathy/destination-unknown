@@ -67,7 +67,7 @@ const UpdateComments = ({
 		} catch (error) {
 			console.error(error);
 		} finally {
-			window.location.assign('/');
+			window.location.assign(`/${destinationId}`);
 		}
 	};
 

@@ -57,6 +57,7 @@ export default function Cards(props, context) {
 											: destination.description}
 									</p>
 								</div>
+								<p className="added-by">~ {destination.name}</p>
 							</li>
 						</div>
 					);

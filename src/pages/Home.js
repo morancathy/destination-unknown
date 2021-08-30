@@ -77,13 +77,14 @@ export default function Home(props, context) {
 				<div className="container hero-search-wrapper">
 					<h1 className="head-title display-1">Destination Unknown</h1>
 					<p className="lead">
-						Random, Odd, Unknown, Non-Touristy, Behind-the-Scences...whatever
-						you want to call it, you won't find these suggestions on any top-10
-						travel list. Find weird and inspiring ideas here. Blah blah blah,
-						write more.
+						Random, Odd, Unknown, Non-Touristy, Behind-the-Scences.{' '}
+					</p>{' '}
+					<p className="lead lead2">
+						Whatever you want to call it, find weird and inspiring travel ideas.
 					</p>
 				</div>
 			</div>
+			<h3 className="recently-added">Featured</h3>
 			<ul className="destination-div">
 				{destinations.map((destination, index) => {
 					if (index < 8) {
@@ -96,16 +97,17 @@ export default function Home(props, context) {
 										alt="Card image"
 									/>
 									<div className="card-body">
-										<h5>
-											{destination.city}, {destination.country}
-										</h5>
 										<Link
 											to={`/${destination._id}`}
 											comms={destination.comments}
 										>
+											<h5>
+												{destination.city}, {destination.country}
+											</h5>
+
 											<h4 className="">{destination.title}</h4>
 										</Link>
-										<p className="">
+										<p className="body">
 											{destination.description.length > 200
 												? `${destination.description.substring(0, 200)}...`
 												: destination.description}
@@ -145,6 +147,7 @@ export default function Home(props, context) {
 												: destination.description}
 										</p>
 									</div>
+									<p className="added-by">~ {destination.name}</p>
 								</li>
 							</div>
 						);
