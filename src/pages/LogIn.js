@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 
 const LogIn = props => {
@@ -11,6 +11,7 @@ const LogIn = props => {
 	const [loggedInUser, setLoggedInUser] = useState('');
 	const [toggle, setToggle] = useState(false);
 	const [showForm, setShowForm] = useState(true);
+	const history = useHistory();
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.id]: e.target.value });
@@ -124,6 +125,9 @@ const LogIn = props => {
 							<>
 								<div style={{ textAlign: 'center' }}>
 									Hello, {loggedInUser}! You are logged in.
+								</div>
+								<div className="go-back-log-in">
+									<a href="javascript:history.back()">{'back to page'}</a>
 								</div>
 								<button onClick={logout} className="logOutBut btn btn-danger">
 									{' '}

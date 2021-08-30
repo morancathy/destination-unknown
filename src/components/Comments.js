@@ -26,14 +26,14 @@ const Comments = ({
 		}
 	};
 
-	const firstTwoComments = () => {
-		console.log('30', destination.comments[1], destination.comments[0]);
-		return destination.comments.slice(0, 2);
-	};
-
-	const overTwoComments = () => {
-		return destination.comments.slice(2);
-	};
+	// const firstTwoComments = () => {
+	// 	console.log('30', destination.comments[1], destination.comments[0]);
+	// 	return destination.comments.slice(0, 2);
+	// };
+	//
+	// const overTwoComments = () => {
+	// 	return destination.comments.slice(2);
+	// };
 
 	return (
 		<div className="Comments">
@@ -64,13 +64,10 @@ const Comments = ({
 									{console.log('des.com.length', destination.comments.length)}
 									{console.log('com.length', comments.length)}
 
-									{console.log(`${destination.comments}`)}
-
-									{console.log(`commetnt._id ${comment._id}`)}
-
 									{updateComments && (
 										<UpdateComments
 											commentId={comment._id}
+											destinationId={destination._id}
 											props={props}
 											comment={comment}
 											setUpdateComments={setUpdateComments}

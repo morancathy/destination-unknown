@@ -54,7 +54,6 @@ const CommentForm = ({
 
 	return (
 		<>
-			{console.log('llll', newComment)}
 			<div className="CommentForm">
 				<button
 					className="comment-button2"
@@ -93,7 +92,7 @@ const CommentForm = ({
 						/>
 					</form>
 				)}
-				{destination.comments.length && (
+				{destination.comments.length ? (
 					<Comments
 						props={props}
 						destination={destination}
@@ -105,6 +104,8 @@ const CommentForm = ({
 					>
 						{' '}
 					</Comments>
+				) : (
+					<></>
 				)}
 			</div>
 		</>

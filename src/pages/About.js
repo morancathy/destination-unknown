@@ -10,13 +10,11 @@ export default function About(props) {
 				<div className="info-box">
 					<p className="title">Home page photos:</p>
 					<p>
-						<strong>Humbolt Park, IL</strong> - 'need inspiration' background
-						photo
+						<strong>Humbolt Park, IL</strong> - bottom left
 					</p>
 					<p>
 						{' '}
-						<strong>I want the Uganda Lake</strong> - 'off the beaten track'
-						background photo
+						<strong>Coron Bay, Philippines</strong> - bottom right
 					</p>
 					<p className="disclaimer">
 						*Info and images in 'need inspiration' section pulled from

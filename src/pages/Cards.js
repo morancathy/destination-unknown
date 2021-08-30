@@ -29,13 +29,9 @@ export default function Cards(props, context) {
 				style={{ backgroundColor: '#759168' }}
 			>
 				<div className="container hero-search-wrapper">
-					<h1 className="head-title display-1">Destination Unknown</h1>
-					<p className="lead">
-						Random, Odd, Unknown, Non-Touristy, Behind-the-Scences...whatever
-						you want to call it, you won't find these suggestions on any top-10
-						travel list. Find weird and inspiring ideas here. Blah blah blah,
-						write more.
-					</p>
+					<h1 className="head-title display-1" style={{ fontSize: '40px' }}>
+						Destination Unknown
+					</h1>
 				</div>
 			</div>
 			<ul className="destination-div">

@@ -12,6 +12,8 @@ export default function Home(props, context) {
 	const [place, setPlace] = useState('');
 	const [showForm, setShowForm] = useState(false);
 	const [modal, setModal] = useState(false);
+	const [backBut, setBackBut] = useState(false);
+
 	const siteCreator = 'Cathy M';
 
 	const fetchData = async () => {
@@ -59,10 +61,10 @@ export default function Home(props, context) {
 		setPlace(event.target.value);
 	};
 
-	const listEight = () => {
-		for (let i = 0; i < 9; i++) {
-			console.log(i);
-			return true;
+	const toggleBackBut = () => {
+		setBackBut(!backBut);
+		{
+			backBut && console.log('works');
 		}
 	};
 
@@ -85,8 +87,6 @@ export default function Home(props, context) {
 			<ul className="destination-div">
 				{destinations.map((destination, index) => {
 					if (index < 8) {
-						console.log('true');
-
 						return (
 							<div>
 								<li key={destination._id} id="cards" className="dest-card">
@@ -153,7 +153,9 @@ export default function Home(props, context) {
 			</ul>
 			<div className="text-center">
 				<Link to={'/cards'}>
-					<button className="view-more">view all</button>
+					<button className="view-more" onClick={toggleBackBut}>
+						view all
+					</button>
 				</Link>
 			</div>
 
@@ -205,40 +207,3 @@ export default function Home(props, context) {
 		</div>
 	);
 }
-
-// <div className="after-cards">
-// 	<div className="toExplore">
-// 		<form
-// 			className="explore"
-// 			onSubmit={handleSubmit}
-// 			style={{ display: 'flex', flexDirection: 'row' }}
-// 		>
-// 			<input
-// 				type="text"
-// 				id="place"
-// 				value={place}
-// 				onChange={handleChange}
-// 				placeholder="enter city or country"
-// 				required
-// 			></input>
-// 			<input
-// 				className="explore-but"
-// 				type="submit"
-// 				value="Explore"
-// 			></input>
-// 		</form>
-// 		<Link to={'/api'}>
-// 			{' '}
-// 			<h4>Need inspiration?</h4>{' '}
-// 		</Link>
-// 	</div>
-
-// {
-// 	if (destinations.length > 8) {
-// 		if (i < 8) {
-// 			console.log(i);
-// 			i = i + 1;
-// 			return true;
-// 		}
-// 	}
-// }

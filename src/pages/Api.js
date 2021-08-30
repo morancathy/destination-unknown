@@ -10,7 +10,6 @@ export default function Api(props) {
 
 	// const url = `https://www.triposo.com/api/20210615/location.json?id=${searchTerm}&fields=all&account=${ACCID}&token=${API}`;
 
-	//function to fetch place data
 	const getPlaces = async searchTerm => {
 		try {
 			const response = await fetch(
@@ -24,10 +23,9 @@ export default function Api(props) {
 		}
 	};
 
-	// useEffect to run getPlace when component mounts
-	useEffect(() => {
-		getPlaces('Sagada');
-	}, []);
+	// useEffect(() => {
+	// 	getPlaces();
+	// }, []);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -60,62 +58,57 @@ export default function Api(props) {
 				</form>{' '}
 			</div>
 
-			{Object.keys(places).length ? (
-				<>
-					<div className="header">
-						<h3>
-							{places.id}, {places.country_id}
-						</h3>
-						<p>{places.intro}</p>
-					</div>
-
-					<div className="images-all">
-						{places ? (
-							places.images.map((image, key) => {
-								return (
-									<div className="image" key={key}>
-										<h4>{image.caption}</h4>
-										<img src={image.source_url} alt="suppose to be a pic" />
-									</div>
-								);
-							})
-						) : (
-							<h1>....Loading</h1>
-						)}
-					</div>
-
-					<div className="links-div">
-						<div className="link-box">
-							<form
-								className="link"
-								action={places.attribution[0].url}
-								target="_blank"
-							>
-								<input className="link-but" type="submit" value="view map" />
-							</form>
+			<div className="api-div">
+				{Object.keys(places).length ? (
+					<>
+						<div className="header">
+							<h3>
+								{places.id}, {places.country_id}
+							</h3>
+							<p>{places.intro}</p>
 						</div>
-						<div className="link-box">
-							<form
-								className="link"
-								action={places.attribution[2].url}
-								target="_blank"
-							>
-								<input className="link-but" type="submit" value="more info" />
-							</form>
+
+						<div className="images-all">
+							{places ? (
+								places.images.map((image, key) => {
+									return (
+										<div className="image" key={key}>
+											<h4>{image.caption}</h4>
+											<img src={image.source_url} alt="suppose to be a pic" />
+										</div>
+									);
+								})
+							) : (
+								<h1>....loading</h1>
+							)}
 						</div>
-					</div>
-				</>
-			) : (
-				<h3>....Loading</h3>
-			)}
+
+						<div className="links-div">
+							<div className="link-box">
+								<form
+									className="link"
+									action={places.attribution[0].url}
+									target="_blank"
+								>
+									<input className="link-but" type="submit" value="view map" />
+								</form>
+							</div>
+							<div className="link-box">
+								<form
+									className="link"
+									action={places.attribution[1].url}
+									target="_blank"
+								>
+									<input className="link-but" type="submit" value="more info" />
+								</form>
+							</div>
+						</div>
+					</>
+				) : (
+					<div className="header"></div>
+				)}
+			</div>
 			<Footer />
 		</div>
 	);
 }
-// <a
-// 	className="link"
-// 	href={places.attribution[0].url}
-// 	target="_blank"
-// >
-// 	view map
-// </a>

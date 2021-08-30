@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Moment from 'react-moment';
 import UpdateForm from '../components/UpdateForm';
 import CommentForm from '../components/CommentForm';
@@ -14,6 +14,7 @@ export default function Show(props, comms) {
 	const [token, setToken] = useState('');
 	const [loggedInUser, setLoggedInUser] = useState('');
 	const [modal, setModal] = useState(false);
+	const history = useHistory();
 
 	useEffect(() => {
 		(async () => {
@@ -48,9 +49,6 @@ export default function Show(props, comms) {
 			const response = await fetch(`/api/destinations/comments`);
 			const data = await response.json();
 			setComments(data);
-			{
-				console.log('commenets Show:', comments);
-			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -137,12 +135,15 @@ export default function Show(props, comms) {
 							setComments={setComments}
 						/>
 						{/*	</div>*/}
+						<div className="go-back">
+							<a href="javascript:history.back()">{'<-- go back'}</a>
+						</div>
 					</div>
 				</>
 			) : (
 				<h1> Finding Destination... </h1>
 			)}
-			{console.log('commenets 154 Show:', comments)}
+
 			<Footer />
 		</div>
 	);

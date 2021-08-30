@@ -4,7 +4,7 @@ import LogIn from '../pages/LogIn';
 
 const NavBar = props => {
 	return (
-		<nav className="NavBar">
+		<nav className="NavBar fixed-top">
 			{props.routes.map(({ key, path }) => (
 				<Link className="links" key={key} to={path}>
 					{key}

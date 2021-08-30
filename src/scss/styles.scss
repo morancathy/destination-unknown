@@ -63,6 +63,7 @@ body {
     background: #E5E5E5;
     padding-top: 20px;
 		height: 95vh;
+		margin-top: 50px;
 
     .logInPage{
       background-color: white;
@@ -128,6 +129,11 @@ body {
 		  margin: 0 auto;
 		  margin-top: 30px;
     }
+
+		.go-back-log-in{
+				text-align: center;
+				padding-top: 10px;
+		}
   }
 }
 
@@ -153,7 +159,7 @@ body {
 
 //###################################################### Home Page
 .HomePage {
-
+	margin-top: 50px;
 	.head{
 		background-color: '#759168';
 		padding-top: 15px;
@@ -188,8 +194,6 @@ body {
 			padding-top: 18px;
 				.card-image {
 					// border: solid yellow;
-					// height: 150px;
-					// width: 300px;
 					min-height: 150px;
 					width: 100%;
 				}
@@ -203,11 +207,7 @@ body {
   					color: #888071;
 						color: #382c14;
 					}
-					p{
-						// border: solid green;
-					}
 				}
-
 	}
 
 	.after-cards {
@@ -231,12 +231,8 @@ body {
 						// border: solid purple;
 						color: #382c14;
 					}
-					p{
-						// border: solid green;
-					}
 				}
 		}
-
 
 		.recently-added{
 			text-align: center;
@@ -270,7 +266,7 @@ body {
 		.toExplore, .toCreateForm{
 			display: flex;
 			flex-direction: column;
-			width: 600px;
+			width: 550px;
 			height: 300px;
 			margin: 0 auto;
 			justify-content: center;
@@ -286,8 +282,6 @@ body {
 			// background-position: 0px 0px;
 			// background-size: cover;
 			// background-size: 100vw 100%;
-
-
 
 			.explore, .add-here-form  {
 				// border: solid purple;
@@ -321,15 +315,8 @@ body {
 			background-position: center center;
 			background-size: 100%;
 			padding-bottom: 30px;
-			/* background-position: fixed; */
-			// background-position: 0px 0px;
 			background-size: cover;
-			// background-size: 100vw 100%;
-			 h4{
-				// margin-top: 32px;
-			}
 		}
-
 	}
 //###################################################### Home Page
 
@@ -338,6 +325,7 @@ body {
 	height: 95vh;
 	display: flex;
 	flex-direction: column;
+	margin-top: 50px;
 	.display {
 		flex-grow: 1;
 		background-image: $background-image;
@@ -365,6 +353,7 @@ body {
 	height: 95vh;
 	display: flex;
 	flex-direction: column;
+	margin-top: 50px;
 	.display {
 		flex-grow: 1;
 		background-image: $background-image;
@@ -388,6 +377,7 @@ body {
   font-size: 19px;
   line-height: 1.428571429;
   color: #333333;
+	margin-top: 65px;
   // height: 100vh;
 		// min-height: 100vh;
 
@@ -488,6 +478,12 @@ body {
 			text-align: center;
 			margin-bottom: -10px;
 			padding-bottom: 40px;
+		}
+		.go-back{
+			margin-top: 10px;
+			a{
+				color: grey;
+			}
 		}
   }
 }
