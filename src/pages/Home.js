@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import CreateForm from '../components/CreateForm';
 import Api from './Api';
 import Footer from '../components/Footer';
-import LogInModal from '../components/LogInModal';
+import Modal from '../components/Modal';
 
 export default function Contact(props, context) {
 	const [destinations, setDestinations] = useState([]);
@@ -129,14 +129,14 @@ export default function Contact(props, context) {
 					</div>
 					<h4>Have an off-the-beaten track suggestion?</h4>
 
-					<LogInModal show={modal} handleClose={e => setModal(!modal)}>
+					<Modal show={modal} handleClose={e => setModal(!modal)}>
 						<h2>Please log in</h2>
 						<div className="form-group">
 							<Link to={'/login'}>
 								<h4 className="btn btn-primary">Log In</h4>
 							</Link>
 						</div>
-					</LogInModal>
+					</Modal>
 				</div>
 			</div>
 

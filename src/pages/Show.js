@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import UpdateForm from '../components/UpdateForm';
 import CommentForm from '../components/CommentForm';
 import Footer from '../components/Footer';
-import LogInModal from '../components/LogInModal';
+import Modal from '../components/Modal';
 
 export default function Show(props, comms) {
 	const [destination, setDestination] = useState({});
@@ -102,14 +102,14 @@ export default function Show(props, comms) {
 								update
 							</button>
 						)}
-						<LogInModal show={modal} handleClose={e => setModal(!modal)}>
+						<Modal show={modal} handleClose={e => setModal(!modal)}>
 							<h2>Please log in</h2>
 							<div className="form-group">
 								<Link to={'/login'}>
 									<h4 className="show-go-to btn btn-primary">Log In</h4>
 								</Link>
 							</div>
-						</LogInModal>
+						</Modal>
 
 						{showForm && (
 							<UpdateForm

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LogInModal = ({ handleClose, show, children }) => {
+const Modal = ({ handleClose, show, children }) => {
 	const showHideClassName = show ? 'modal d-block' : 'modal d-none';
 
 	return (
@@ -15,4 +15,4 @@ const LogInModal = ({ handleClose, show, children }) => {
 	);
 };
 
-export default LogInModal;
+export default Modal;

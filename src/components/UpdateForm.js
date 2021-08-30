@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Modal from './Modal';
 
 const UpdateForm = ({
 	props,
@@ -14,6 +15,7 @@ const UpdateForm = ({
 	const descriptionInput = useRef(null);
 	const howToGetThereInput = useRef(null);
 	const imgInput = useRef(null);
+	const [modal, setModal] = useState(false);
 
 	const handleUpdate = async e => {
 		e.preventDefault();
@@ -26,7 +28,6 @@ const UpdateForm = ({
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
-						// updatedDest
 						title: titleInput.current.value,
 						country: countryInput.current.value,
 						city: cityInput.current.value,
@@ -65,17 +66,6 @@ const UpdateForm = ({
 		}
 	};
 
-	// const handleChange = e => {
-	// 	setUpdatedDest({ [e.target.id]: e.target.value });
-	// };
-
-	// const toggleDeleteBut = () => {
-	// 	console.log(deleteBut);
-	// 	setDeleteBut(!deleteBut);
-	// 	toggleForm();
-	// 	console.log(!deleteBut);
-	// };
-
 	return (
 		<div className="UpdateForm">
 			{console.log(destination.name)}
@@ -87,12 +77,26 @@ const UpdateForm = ({
 			>
 				Close
 			</button>
+
 			<button
 				className="deleteBut btn btn-link btn-sm float-right"
-				onClick={() => handleDelete(destination._id)}
+				onClick={() => setModal(!modal)}
 			>
 				Delete
 			</button>
+
+			<Modal show={modal} handleClose={e => setModal(!modal)}>
+				<h2>Are You Sure?</h2>
+				<div className="form-group">
+					<button
+						className="btn btn-danger"
+						onClick={() => handleDelete(destination._id)}
+					>
+						Yes, Delete
+					</button>
+				</div>
+			</Modal>
+
 			<form
 				className=""
 				onSubmit={handleUpdate}
@@ -169,15 +173,3 @@ const UpdateForm = ({
 };
 
 export default UpdateForm;
-
-//
-//
-// {!deleteBut && (
-// 	<DeleteBut
-// 		toDelete={destination._id}
-// 		toggleForm={toggleForm}
-// 		destination={destination}
-// 	>
-// 		{' '}
-// 	</DeleteBut>
-// )}
