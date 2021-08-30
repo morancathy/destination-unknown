@@ -61,8 +61,8 @@ body {
 //###################################################### Log In Page
 .LogIn {
     background: #E5E5E5;
-    height: 95vh;
     padding-top: 20px;
+		height: 95vh;
 
     .logInPage{
       background-color: white;
@@ -75,6 +75,7 @@ body {
       margin-top: 20px;
       max-width: 20vw;
       box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
       #username{
         margin-top: 50px;
       }
@@ -96,10 +97,9 @@ body {
       line-height: 48px;
       padding: 0 16px;
       width: 332px;
-      // display: inline-block;
       font-size: 20px;
-          height: 40px;
-        display: block;
+      height: 40px;
+      display: block;
       width: 100%;
       margin-bottom: 20px;
     }
@@ -120,16 +120,13 @@ body {
       margin-top: 20px;
     }
     .logOutBut{
-      // background-color: blue;
       border-radius: 6px;
       font-size: 15px;
       line-height: 24px;
       padding: 0 8px;
       width: 75px;
-      // text-align:   center;
-  // display: inline-block;
-  margin: 0 auto;
-  margin-top: 30px;
+		  margin: 0 auto;
+		  margin-top: 30px;
     }
   }
 }
@@ -239,19 +236,41 @@ body {
 					}
 				}
 		}
+
+
+		.recently-added{
+			text-align: center;
+			padding: 20px 10% 5px 10%;
+			margin: 40px 27% -12px 27%;
+			border-top: 3px solid #759168;
+			border-bottom: 3px solid #759168;
+			font-size: 25px;
+		}
+
+		.view-more{
+			padding: 5px 30% 5px 30%;
+			background-color: #759168;
+			border-radius: 12px;
+			color: white;
+			font-size: 25px;
+			margin: 20px 0 80px 0;
+		}
+		.view-more:hover {
+			box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
+		}
 	}
 
 	.after-cards {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		padding-left: 10%;
-		padding-right: 10%;
+		padding-left: 14%;
+		padding-right: 14%;
 
 		.toExplore, .toCreateForm{
 			display: flex;
 			flex-direction: column;
-			width: 500px;
+			width: 600px;
 			height: 300px;
 			margin: 0 auto;
 			justify-content: center;
@@ -265,7 +284,7 @@ body {
 			color: white;
 			/* background-position: fixed; */
 			// background-position: 0px 0px;
-			/* background-size: cover; */
+			// background-size: cover;
 			// background-size: 100vw 100%;
 
 
@@ -291,20 +310,53 @@ body {
 					border-radius: 10px;
 					width: 300px;
 				}
+
+				.add-here:hover, .explore-but:hover {
+					box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
+				}
 			}
 		}
 		.toCreateForm{
-			background:  url(../img/NewZealandLake.jpg);
+			background:  url(../img/CoronIs.jpg);
 			background-position: center center;
 			background-size: 100%;
 			padding-bottom: 30px;
+			/* background-position: fixed; */
+			// background-position: 0px 0px;
+			background-size: cover;
+			// background-size: 100vw 100%;
+			 h4{
+				// margin-top: 32px;
+			}
 		}
+
 	}
 //###################################################### Home Page
 
 //###################################################### About Page
 .AboutPage {
-
+	height: 95vh;
+	display: flex;
+	flex-direction: column;
+	.display {
+		flex-grow: 1;
+		background-image: $background-image;
+		.info-box{
+			margin-top: 100px;
+			margin-left: 30%;
+			margin-right: 30%;
+			p{
+				font-size: 18px;
+				margin-bottom: 0px;
+			}
+			.title{
+				text-decoration: underline;
+			}
+			.disclaimer{
+				margin-top: 30px;
+			}
+		}
+	}
 }
 //###################################################### About Page
 

@@ -6,6 +6,7 @@ import Show from '../pages/Show';
 import Contact from '../pages/Contact';
 import LogIn from '../pages/LogIn';
 import Api from '../pages/Api';
+import Cards from '../pages/Cards';
 // const context = createContext(null);
 
 const AppRouter = props => {
@@ -25,6 +26,10 @@ const AppRouter = props => {
 				<Route
 					path={'/login'}
 					render={routerProps => <LogIn {...routerProps} />}
+				></Route>
+				<Route
+					path={'/cards'}
+					render={routerProps => <Cards {...routerProps} />}
 				></Route>
 				<Route
 					path={'/find'}

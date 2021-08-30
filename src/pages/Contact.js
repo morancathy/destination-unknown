@@ -8,9 +8,9 @@ export default function Contact(props) {
 		<div className="ContactPage">
 			<div className="display">
 				<div className="info-box">
-					<h3>Jenny Jenny</h3>
+					<h3>Cathy Diesel</h3>
 					<p>867-5309</p>
-					<p>whoCanIRunTo@tommyTutone.com</p>
+					<p>hunterRuck@marley.com</p>
 				</div>
 			</div>
 			<Footer />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const LogIn = props => {
 	const [token, setToken] = useState('');
@@ -72,7 +73,7 @@ const LogIn = props => {
 
 	const logout = () => {
 		window.localStorage.clear();
-		window.location.assign('/login');
+		window.location.assign('/');
 	};
 
 	const displayForm = () => {
@@ -124,7 +125,7 @@ const LogIn = props => {
 								<div style={{ textAlign: 'center' }}>
 									Hello, {loggedInUser}! You are logged in.
 								</div>
-								<button onClick={logout} className="logOutBut">
+								<button onClick={logout} className="logOutBut btn btn-danger">
 									{' '}
 									Log Out{' '}
 								</button>

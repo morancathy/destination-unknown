@@ -5,13 +5,14 @@ import Api from './Api';
 import Footer from '../components/Footer';
 import Modal from '../components/Modal';
 
-export default function Contact(props, context) {
+export default function Home(props, context) {
 	const [destinations, setDestinations] = useState([]);
 	const [token, setToken] = useState('');
 	const [loggedInUser, setLoggedInUser] = useState('');
 	const [place, setPlace] = useState('');
 	const [showForm, setShowForm] = useState(false);
 	const [modal, setModal] = useState(false);
+	const siteCreator = 'Cathy M';
 
 	const fetchData = async () => {
 		const response = await fetch('/api/destinations');
@@ -58,6 +59,13 @@ export default function Contact(props, context) {
 		setPlace(event.target.value);
 	};
 
+	const listEight = () => {
+		for (let i = 0; i < 9; i++) {
+			console.log(i);
+			return true;
+		}
+	};
+
 	return (
 		<div className="HomePage">
 			<div
@@ -75,33 +83,80 @@ export default function Contact(props, context) {
 				</div>
 			</div>
 			<ul className="destination-div">
-				{destinations.map(destination => {
-					return (
-						<div>
-							<li key={destination._id} id="cards" className="dest-card">
-								<img
-									className="card-image"
-									src={destination.img}
-									alt="Card image"
-								/>
-								<div className="card-body">
-									<h5>
-										{destination.city}, {destination.country}
-									</h5>
-									<Link to={`/${destination._id}`} comms={destination.comments}>
-										<h4 className="">{destination.title}</h4>
-									</Link>
-									<p className="">
-										{destination.description.length > 200
-											? `${destination.description.substring(0, 200)}...`
-											: destination.description}
-									</p>
-								</div>
-							</li>
-						</div>
-					);
+				{destinations.map((destination, index) => {
+					if (index < 8) {
+						console.log('true');
+
+						return (
+							<div>
+								<li key={destination._id} id="cards" className="dest-card">
+									<img
+										className="card-image"
+										src={destination.img}
+										alt="Card image"
+									/>
+									<div className="card-body">
+										<h5>
+											{destination.city}, {destination.country}
+										</h5>
+										<Link
+											to={`/${destination._id}`}
+											comms={destination.comments}
+										>
+											<h4 className="">{destination.title}</h4>
+										</Link>
+										<p className="">
+											{destination.description.length > 200
+												? `${destination.description.substring(0, 200)}...`
+												: destination.description}
+										</p>
+									</div>
+								</li>
+							</div>
+						);
+					}
 				})}
 			</ul>
+			<h3 className="recently-added">Recently Added</h3>
+			<ul className="destination-div">
+				{destinations.map((destination, index) => {
+					if (destination.name !== `${siteCreator}`) {
+						return (
+							<div>
+								<li key={destination._id} id="cards" className="dest-card">
+									<img
+										className="card-image"
+										src={destination.img}
+										alt="Card image"
+									/>
+									<div className="card-body">
+										<h5>
+											{destination.city}, {destination.country}
+										</h5>
+										<Link
+											to={`/${destination._id}`}
+											comms={destination.comments}
+										>
+											<h4 className="">{destination.title}</h4>
+										</Link>
+										<p className="">
+											{destination.description.length > 200
+												? `${destination.description.substring(0, 200)}...`
+												: destination.description}
+										</p>
+									</div>
+								</li>
+							</div>
+						);
+					}
+				})}
+			</ul>
+			<div className="text-center">
+				<Link to={'/cards'}>
+					<button className="view-more">view all</button>
+				</Link>
+			</div>
+
 			<div className="after-cards">
 				<div className="toExplore">
 					<div
@@ -124,7 +179,7 @@ export default function Contact(props, context) {
 							}}
 						>
 							{' '}
-							{!showForm ? 'Add here!' : 'close form'}
+							{!showForm ? 'Add Here' : 'close form'}
 						</button>
 					</div>
 					<h4>Have an off-the-beaten track suggestion?</h4>
@@ -139,7 +194,6 @@ export default function Contact(props, context) {
 					</Modal>
 				</div>
 			</div>
-
 			{showForm && (
 				<CreateForm
 					fetchData={fetchData}
@@ -178,3 +232,13 @@ export default function Contact(props, context) {
 // 			<h4>Need inspiration?</h4>{' '}
 // 		</Link>
 // 	</div>
+
+// {
+// 	if (destinations.length > 8) {
+// 		if (i < 8) {
+// 			console.log(i);
+// 			i = i + 1;
+// 			return true;
+// 		}
+// 	}
+// }
