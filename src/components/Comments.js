@@ -27,6 +27,7 @@ const Comments = ({
 	};
 
 	const firstTwoComments = () => {
+		console.log('30', destination.comments[1], destination.comments[0]);
 		return destination.comments.slice(0, 2);
 	};
 
@@ -40,7 +41,10 @@ const Comments = ({
 				{comments.map(comment => {
 					return (
 						<div>
-							{iterateThroughDestCommentsArray(firstTwoComments(), comment) && (
+							{iterateThroughDestCommentsArray(
+								destination.comments,
+								comment
+							) && (
 								<li key={comment._id} id="comment-cards">
 									<button
 										className="edit-comment-but2"
@@ -49,18 +53,19 @@ const Comments = ({
 										}}
 									>
 										{!updateComments ? (
-											<>
+											<div>
 												<h5 className="comm-author">{comment.name}</h5>
 												<h5 className="message">{comment.message}</h5>
-											</>
+											</div>
 										) : (
 											<h5 className="close">close</h5>
 										)}
 									</button>
-									{console.log('lenght', destination.comments.length)}
-									{console.log(comments)}
+									{console.log('des.com.length', destination.comments.length)}
+									{console.log('com.length', comments.length)}
 
 									{console.log(`${destination.comments}`)}
+
 									{console.log(`commetnt._id ${comment._id}`)}
 
 									{updateComments && (
@@ -79,7 +84,7 @@ const Comments = ({
 						</div>
 					);
 				})}
-				{destination.comments.length > 2 && (
+				{/*			{destination.comments.length > 2 && (
 					<button
 						className="view-more"
 						onClick={() => {
@@ -90,13 +95,16 @@ const Comments = ({
 					</button>
 				)}
 			</ul>
+			*/}
 
+				{/*}
 			{showMore && (
 				<>
 					<ul>
 						{comments.map(comment => {
 							return (
 								<div>
+
 									{iterateThroughDestCommentsArray(
 										overTwoComments(),
 										comment
@@ -118,6 +126,7 @@ const Comments = ({
 													commentId={comment._id}
 													props={props}
 													comment={comment}
+													destinationId={destination._id}
 												/>
 											)}
 										</li>
@@ -128,8 +137,28 @@ const Comments = ({
 					</ul>
 				</>
 			)}
+		*/}
+			</ul>
 		</div>
 	);
 };
 
 export default Comments;
+
+// {iterateThroughDestCommentsArray(firstTwoComments(), comment) && (
+// 	<li key={comment._id} id="comment-cards">
+// 		<button
+// 			className="edit-comment-but2"
+// 			onClick={() => {
+// 				toggle(setUpdateComments, updateComments);
+// 			}}
+// 		>
+// 			{!updateComments ? (
+// 				<>
+// 					<h5 className="comm-author">{comment.name}</h5>
+// 					<h5 className="message">{comment.message}</h5>
+// 				</>
+// 			) : (
+// 				<h5 className="close">close</h5>
+// 			)}
+// 		</button>

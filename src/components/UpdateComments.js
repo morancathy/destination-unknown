@@ -4,6 +4,7 @@ const UpdateComments = ({
 	props,
 	commentId,
 	comment,
+	destinationId,
 	setUpdateComments,
 	updateComments,
 	toggle,
@@ -15,37 +16,54 @@ const UpdateComments = ({
 	const nameInput = useRef(null);
 
 	// `/api/destinations/comments/${props.match.params.id}`,
-	const handleUpdate = async id => {
+	const handleUpdate = async e => {
+		console.log(`dest id: ${e.target.dataset.destination}`);
+		console.log(`com id: ${e.target.dataset.comment}`);
 		e.preventDefault();
-		try {
-			const response = await fetch(`/api/destinations/comments/${id}`, {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					name: nameInput.current.value,
-					message: messageInput.current.value
-				})
-			});
-			const data = await response.json();
-			setUpdatedComm(data);
-			fetchData();
-			toggle(setUpdateComments, updateComments);
-			// console.log(updateComments);
-		} catch (error) {
-			console.error(error);
-		}
+		// try {
+		// 	const response = await fetch(`/api/destinations/comments/${id}`, {
+		// 		method: 'PUT',
+		// 		headers: {
+		// 			'Content-Type': 'application/json'
+		// 		},
+		// 		body: JSON.stringify({
+		// 			name: nameInput.current.value,
+		// 			message: messageInput.current.value
+		// 		})
+		// 	});
+		// 	const data = await response.json();
+		// 	setUpdatedComm(data);
+		// 	fetchData();
+		// 	toggle(setUpdateComments, updateComments);
+		// 	// console.log(updateComments);
+		// } catch (error) {
+		// 	console.error(error);
+		// }
 	};
 
-	const handleDelete = async id => {
+	const handleDelete = async e => {
+		console.log(`dest id: ${e.target.dataset.destination}`);
+		console.log(`com id: ${e.target.dataset.comment}`);
 		try {
-			const response = await fetch(`/api/destinations/comments/${id}`, {
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json'
+			const responseDestination = await fetch(
+				`/api/destinations/${e.target.dataset.destination}/${e.target.dataset.comment}`,
+				{
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json'
+					}
 				}
-			});
+			);
+
+			const responseComment = await fetch(
+				`/api/destinations/comments/${e.target.dataset.comment}`,
+				{
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}
+			);
 			setComments(comment.filter(comm => comm._id !== id));
 		} catch (error) {
 			console.error(error);
@@ -58,9 +76,9 @@ const UpdateComments = ({
 		<div className="UpdateComments">
 			<button
 				className="deleteComBut btn btn-link btn-sm float-right"
-				onClick={() => {
-					handleDelete(commentId);
-				}}
+				data-comment={commentId}
+				data-destination={destinationId}
+				onClick={handleDelete}
 			>
 				Delete
 			</button>
@@ -70,9 +88,9 @@ const UpdateComments = ({
 
 			<form
 				className=""
-				onSubmit={() => {
-					handleUpdate(commenId);
-				}}
+				data-comment={commentId}
+				data-destination={destinationId}
+				onSubmit={handleUpdate}
 				style={{ display: 'flex', flexDirection: 'column' }}
 			>
 				<label>

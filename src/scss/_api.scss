@@ -1,44 +1,92 @@
-  // #app {
-	// 	height: 80vh;
-	//
-  // }
-
-	//#########################################
-	//Api Page
 
 	.ApiPage{
-	  // border: solid red;
+		// height: 80vh;
+		.toExplore {
+			display: flex;
+			flex-direction: column;
+			width: 100vw;
+			height: 15vh;
+			margin: 0 auto;
+			justify-content: center;
+			margin-bottom: 10px;
+			text-align: center;
+			background-color: lightblue;
+	.explore {
+			// border: solid purple;
+				margin: 0 auto;
+				border-radius: 50px;
+				padding: 1.25rem;
+				border-style: solid;
+				border-width: 1px;
+				cursor: default;
+				border: none;
+				background-color: transparent;
+				shadow: transparent;
+				background-color: rgba(255,255,255,0.4);
+				margin-top: 20px;
+				margin-bottom: 20px;
 
+			#entry, .explore-but {
+				border: solid lightgrey;
+				padding: 10px;
+				border-radius: 10px;
+				// width: 60%;
+			}
+			#entry {
+				width: 400px;
+			}
+			.explore-but {
+				width: 25%;
+			}
+		}
+	}
 	  .header{
-	    border: solid red;
+	    // border: solid red;
+			padding-left: 18%;
+			padding-right: 18%;
+			padding-top: 15px;
+
 	    h3{
-	      border: solid green;
+	      // border: solid green;
+				margin-left: 5px;
+				margin-right: 5px;
 	    }
-	    h4{
-	      border: solid purple;
+	    p {
+	      // border: solid purple;
+				margin-left: 5px;
+				margin-right: 5px;
 	    }
 	  }
 
 	  .images-all{
-	    border: solid orange;
+	    // border: solid orange;
+			background-color: lightblue;
 			display: flex;
 			flex-flow: row wrap;
 			justify-content: center;
 			padding-left: 10%;
 			padding-right: 10%;
+			padding-bottom: 10px;
 
 			.image {
-				border: solid red;
+				// border: solid red;
+				border-radius: 10px;
+				background-color: white;
 				display: flex;
 				flex-flow: column wrap;
 				width: 300px;
-				height: 100%;
+				// height: 100%;
+					min-height: 300px;
+				// max-height: 300px;
 				margin-top: 10px;
 				margin-left: 5px;
 				margin-right: 5px;
 				padding-top: 18px;
+				padding-left: 10px;
+				padding-right: 10px;
+				justify-content: center;
 				h4{
-			     border: solid black;
+			     // border: solid black;
 					 wrap: wrap;
 					 background-color: white;
 					 font-size: 17px;
@@ -47,17 +95,59 @@
 						 color: #382c14;
 			   }
 			  img{
-			    border: solid red;
+			    // border: solid blue;
 					min-height: 150px;
 					width: 100%;
 			  }
 			}
 	  }
 
-	  .links{
-	    border: solid pink;
-	    a{
-	      border: solid grey;
-	    }
+	  .links-div{
+			// border: solid red;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			padding-left: 20%;
+			padding-right: 20%;
+
+				background-color: lightblue;
+
+				.link-box {
+					// display: flex;
+					// flex-direction: column;
+					// width: 500px;
+					margin: 0 auto;
+					justify-content: center;
+					// margin-bottom: 10px;
+					// margin-top: 10px;
+					text-align: center;
+					background-color: lightblue;
+								// border: solid purple;
+					.link{
+						margin: 0 auto;
+						border-radius: 50px;
+			    	padding: 1.25rem;
+						border-style: solid;
+						border-width: 1px;
+						cursor: default;
+						border: none;
+						background-color: transparent;
+						shadow: transparent;
+						background-color: rgba(255,255,255,0.4);
+						margin-top: 20px;
+						// border: solid orange;
+						margin-bottom: 20px;
+
+
+						.link-but {
+							border: solid lightgrey;
+							padding: 10px;
+							border-radius: 10px;
+							width: 300px;
+							// border: solid yellow;
+						}
+
+					}
+				}
 	  }
 	}

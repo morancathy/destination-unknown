@@ -58,6 +58,8 @@ const LogIn = props => {
 		} catch (error) {
 			console.error(error);
 			alert('Username already taken');
+		} finally {
+			window.location.assign('/login');
 		}
 	};
 

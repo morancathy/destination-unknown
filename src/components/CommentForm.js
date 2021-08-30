@@ -45,7 +45,6 @@ const CommentForm = ({
 	};
 
 	const handleChange = e => {
-		///t is this suppose to be newcomment?
 		setNewComment({ ...newComment, [e.target.id]: e.target.value });
 	};
 

@@ -26,10 +26,10 @@ body {
   // padding: 5px;
 		// min-height: 100vh;
 		height: 80vh;
-
+		font-family: sans-serif;
 }
 
-
+//###################################################### Nav Bar
 .NavBar {
   display: flex;
   align-items: center;
@@ -39,19 +39,15 @@ body {
   width: 100%;
   font-size: 14px;
 
-
   .links {
     margin-left: 20px;
     margin-right: 20px;
     color: black;
-
   }
 
   .sign-in-btn {
     margin-right: 19%;
     button {
-      // display: inline-block;
-      // vertical-align: middle;
       padding: 7px 22px;
       border-width: 1px;
       border-style: solid;
@@ -60,13 +56,13 @@ body {
     }
   }
 }
+//###################################################### Nav Bar
 
+//###################################################### Log In Page
 .LogIn {
     background: #E5E5E5;
-    // background: red;
     height: 95vh;
     padding-top: 20px;
-
 
     .logInPage{
       background-color: white;
@@ -137,6 +133,7 @@ body {
     }
   }
 }
+
 .regForm {
   p{
   text-align: center;
@@ -155,8 +152,9 @@ body {
 
   }
 }
+//###################################################### Log In Page
 
-
+//###################################################### Home Page
 .HomePage {
 
 	.head{
@@ -182,7 +180,7 @@ body {
 		padding-right: 10%;
 
 		.dest-card{
-			border: solid blue;
+			// border: solid blue;
 			display: flex;
 			flex-flow: column;
 			width: 300px;
@@ -191,7 +189,7 @@ body {
 			margin-left: 5px;
 			margin-right: 5px;
 			padding-top: 18px;
-				.card-image{
+				.card-image {
 					// border: solid yellow;
 					// height: 150px;
 					// width: 300px;
@@ -206,6 +204,31 @@ body {
 						font-size: 17px;
 						margin-top: -11px;
   					color: #888071;
+						color: #382c14;
+					}
+					p{
+						// border: solid green;
+					}
+				}
+
+	}
+
+	.after-cards {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		padding-left: 10%;
+		padding-right: 10%;
+
+		.toExplore, .toCreateForm{
+			display: flex;
+			flex-direction: column;
+			width: 500px;
+			height: 300px;
+			margin: 0 auto;
+			justify-content: center;
+			margin-bottom: 20px;
+			margin-top: 10px;
 					}
 					h4{
 						// border: solid purple;
@@ -245,6 +268,8 @@ body {
 			/* background-size: cover; */
 			// background-size: 100vw 100%;
 
+
+
 			.explore, .add-here-form  {
 				// border: solid purple;
 					margin: 0 auto;
@@ -259,14 +284,7 @@ body {
 					background-color: rgba(255,255,255,0.4);
 					margin-bottom: 20px;
 
-				#place, .explore-but {
-					border: solid lightgrey;
-					padding: 10px;
-					border-radius: 10px;
-					width: 60%;
-				}
-
-				.add-here{
+				.add-here, .explore-but {
 					border: solid purple;
 					border: solid lightgrey;
 					padding: 10px;
@@ -275,15 +293,23 @@ body {
 				}
 			}
 		}
+		.toCreateForm{
+			background:  url(../img/NewZealandLake.jpg);
+			background-position: center center;
+			background-size: 100%;
+			padding-bottom: 30px;
+		}
 	}
-}
-////////////////////////////////////////////////////////////////
+//###################################################### Home Page
+
+//###################################################### About Page
 .AboutPage {
 
 }
+//###################################################### About Page
 
+//###################################################### Contact Page
 .ContactPage{
-
 	height: 95vh;
 	display: flex;
 	flex-direction: column;
@@ -300,12 +326,9 @@ body {
 		}
 	}
 }
+//###################################################### Contact Page
 
-.AppPage {
-
-}
-//#################################################################
-
+//###################################################### Show Page
 .ShowPage {
   // border: solid red;
   height: 90vh;
@@ -382,7 +405,7 @@ body {
 		h5{
 			// border: solid orange;
 			text-align: justify;
-  text-justify: inter-word;
+  		text-justify: inter-word;
 		}
 
     .added-by {
@@ -407,23 +430,18 @@ body {
 			margin-top: -10px;
 		}
 
-		.alert{
-			h3{
-				// margin-bottom: 7px;
-			}
-
-			.help{
-				text-align: center;
-				margin-top: 20px;
-				height: 50px;
-				padding-bottom: 45px;
+		.show-go-to {
+			width: 15%;
+			height: 10px;
+			text-align: center;
+			margin-bottom: -10px;
+			padding-bottom: 40px;
 		}
-	}
   }
-
 }
-//#################################################################
+//###################################################### Show Page
 
+//###################################################### Create Form
 .CreateForm {
 	border: solid pink;
 	background: white;
@@ -500,31 +518,23 @@ body {
 	}
 
 }
+//###################################################### Create Form
 
-
-
-
-//########################### Comment Form
+//###################################################### Comment Form
 .CommentForm {
 	background: #fff;
 	border-radius: 10px;
 	display: inline-block;
-
 	background-color: #e3dac9;
-
 	display: flex;
 	flex-direction: column;
 	width: 31vw;
 
-// border: solid red;
-
 	.comment-button2{
 		border-radius: 10px;
 		font-size: 15px;
-
 		// border: solid #858585;
 		width: 150px;
-		// text-align: cente
 		margin-left: 45px;
 		margin-bottom: 5px;
 		margin-top: 17px;
@@ -537,9 +547,8 @@ body {
 		background-color: #B7C68B;
 		box-shadow: 3px 3px 3px 1px #B7C68B;
 		border-radius: 20px;
-			margin: 0 auto;
+		margin: 0 auto;
 		margin-bottom: 5px;
-
 
 		#name, #message{
 			margin-bottom: 6px;
@@ -554,15 +563,14 @@ body {
 			color: #3C412E;
 		}
 
-			.add-commment-but:hover{
-				box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
-			}
+		.add-commment-but:hover{
+			box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
+		}
 	}
 }
-//#######################################
+//###################################################### Comment Form
 
-
-//########################### Comment Box
+//###################################################### Comments
 .Comments {
 	margin-bottom: 100px;
 	margin-left: 10px;
@@ -571,7 +579,7 @@ body {
 	background: #fff;
 	padding: 15px 20px;
 	border-radius: 10px;
-		border: solid #858585;
+	border: solid #858585;
 	// border: solid tan;
 	box-shadow: 3px 3px 3px 1px #B7C68B;
 	display: inline-block;
@@ -591,65 +599,51 @@ body {
 			margin-bottom: 5px;
 			display: flex;
 			flex-direction: column;
-
 		}
 		h5 {
 			font-size: 16px;
 			color: #3C412E;
-
 		}
 		.message {
-					// text-align: right;
 
 		}
 		.comm-author{
 			text-align: right;
-border-bottom: 1px solid grey;
-
+			border-bottom: 1px solid grey;
 		}
 		.edit-comment-but {
 			border-radius: 10px;
 			font-size: 15px;
-			// margin-right: 7px;
-			// margin-top: -10px;
 			width: 40px;
-			// align-items: flex-end;
-			// align-content: flex-end;
-			// justify-content: flex-end;
 		}
-	.edit-comment-but2 {
-		background-color: #B7C68B;
-		border: transparent;
-border-radius: 10px;
-
-	}
-.edit-comment-but2:hover {
-
-	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
-
-}
-.close{
-
-	font-size: 22px;
-	border-radius: 10px;
-	border: solid grey;
-	width: 100%;
-	padding: 10px;
-	text-align: center;
-	color: black;
-}
-
-
+		.edit-comment-but2 {
+			background-color: #B7C68B;
+			border: transparent;
+			border-radius: 10px;
+		}
+		.edit-comment-but2:hover {
+			box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
+		}
+		.close{
+			font-size: 22px;
+			border-radius: 10px;
+			border: solid grey;
+			width: 100%;
+			padding: 10px;
+			text-align: center;
+			color: black;
+		}
 		.view-more{
 			border-radius: 10px;
 			font-size: 20px;
-			// margin-right: 7px;
 			margin-top: 10px;
 			background-color: #E0EDDA;
 		}
 	}
 }
-//#######################################
+//###################################################### Comments
+
+//###################################################### Update Comments
 .UpdateComments {
 	// margin-left: 100px;
 	// border: solid pink;
@@ -739,8 +733,9 @@ border-radius: 10px;
 	margin-top: 20px;
 }
 }
-//########################### Update Form
+//###################################################### Update Comments
 
+//###################################################### Update Form
 .UpdateForm {
 	// margin-left: 100px;
 	// border: solid pink;
@@ -760,7 +755,6 @@ border-radius: 10px;
 	display: inline-block;
 
 	.deleteBut{
-
 		margin-bottom: 5px;
 		margin-right: 10px;
 		color: lightgrey;
@@ -773,151 +767,83 @@ border-radius: 10px;
 		border-radius: 10px;
 		border: solid lightgrey;
 	}
-	form{
-	margin: 20px 0px 20px 0px;
+	form {
+		margin: 20px 0px 20px 0px;
 	    // border: solid green;
-	    width: 100%;
-	label {
-	display: flex;
-	flex-direction: row;
-	// border: solid blue;
-		height: 40px;
+	  width: 100%;
+		label {
+			display: flex;
+			flex-direction: row;
+			// border: solid blue;
+			height: 40px;
 
-	.label {
-		// border: solid orange;
-		width: 190px;
-		white-space: nowrap;
-		padding-left: 10px;
-		text-align: left;
-		height: 40px;
+			.label {
+				// border: solid orange;
+				width: 190px;
+				white-space: nowrap;
+				padding-left: 10px;
+				text-align: left;
+				height: 40px;
+			}
+			input, textarea  {
+				// margin: 5px;
+				padding: 0 10px 0px 5px;
+				color: #5E6547;
+				// border: solid red;
+				// margin-top: -10px;
+				font-size: 15px;
+				width: 100%;
+				height: 40px;
+				margin-right: 10px;
+			}
+		}
 	}
-	input, textarea  {
-		// margin: 5px;
-		padding: 0 10px 0px 5px;
-		color: #5E6547;
-		// border: solid red;
-		// margin-top: -10px;
-		font-size: 15px;
-		width: 100%;
-		height: 40px;
-		margin-right: 10px;
-	}
+	.entry {
+		display: flex;
+		flex-direction: row;
+		.label {
+			width: 190px;
+			white-space: nowrap;
+			padding-left: 10px;
+			text-align: left;
+			height: 40px;
+		}
+		textarea  {
+			// border: solid red;
+			padding: 0 10px 0px 5px;
+				color: #5E6547;
+			font-size: 15px;
+			width: 100%;
+			margin-bottom: 16px;
+			margin-right: 10px;
+		}
 	}
 }
-.entry {
-	display: flex;
-	flex-direction: row;
-	.label {
-		width: 190px;
-		white-space: nowrap;
-		padding-left: 10px;
-		text-align: left;
-		height: 40px;
-	}
-	textarea  {
-		// border: solid red;
-		padding: 0 10px 0px 5px;
-			color: #5E6547;
-		font-size: 15px;
-		width: 100%;
-		margin-bottom: 16px;
-		margin-right: 10px;
-	}
-}
-}
-//#######################################
+//###################################################### Update Form
 
-//###############################Footer
+//###################################################### Footer
 .Footer {
   background-color: #d1bea8;
   color: white;
   font-weight: bolder;
-
 }
-//#######################################
-.alert{
-  width: 20vw;
-  position: absolute;
-  transform: translateY(-50%);
-  margin: 0 auto;
-	background-image: $background-image;
-  box-shadow: 5px 2.5px 10px 0px rgba(0,0,0,0.3);
-	 // border-radius: 400px;
-  text-align: center;
-  margin-top: -10px;
+//###################################################### Footer
 
-	h3{
-		padding-top: 20px;
-		padding-bottom: 15px;
-		border-bottom: 1px solid grey;
-		margin-bottom: -5px;
-	}
-	h4{
-		border-radius: 20px;
-		width: 100px;
+//###################################################### Modal
+
+.modal {
+  background: rgba(0, 0, 0, 0.6);
+
+	.modal-container {
+	  position: absolute;
+	  width: 40%;
+	  background: #ffffff;
+	  left: 25%;
+	  top: 30%;
+	  padding: 20px;
+		color: black;
 		text-align: center;
-	}
-	#x-but{
-		width: 20px;
-		margin-left: -5px;
-		border: transparent;
+		justify-content: center;
 	}
 }
-// //#########################################
-// //Api Page
-//
-// .ApiPage{
-//   // border: solid red;
-//
-//   .header{
-//     border: solid red;
-//     h3{
-//       border: solid green;
-//     }
-//     h4{
-//       border: solid purple;
-//     }
-//   }
-//
-//   .images-all{
-//     border: solid orange;
-// 		display: flex;
-// 		flex-flow: row wrap;
-// 		justify-content: center;
-// 		padding-left: 10%;
-// 		padding-right: 10%;
-//
-// 		.image {
-// 			border: solid red;
-// 			display: flex;
-// 			flex-flow: column wrap;
-// 			width: 300px;
-// 			height: 100%;
-// 			margin-top: 10px;
-// 			margin-left: 5px;
-// 			margin-right: 5px;
-// 			padding-top: 18px;
-// 			h4{
-// 		     border: solid black;
-// 				 wrap: wrap;
-// 				 background-color: white;
-// 				 font-size: 17px;
-// 				 margin-top: -11px;
-// 				 color: #888071;
-// 					 color: #382c14;
-// 		   }
-// 		  img{
-// 		    border: solid red;
-// 				min-height: 150px;
-// 				width: 100%;
-// 		  }
-// 		}
-//   }
-//
-//   .links{
-//     border: solid pink;
-//     a{
-//       border: solid grey;
-//     }
-//   }
-// }
+//###################################################### Modal

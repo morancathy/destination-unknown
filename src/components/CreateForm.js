@@ -35,7 +35,7 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 				description: '',
 				howToGetThere: '',
 				img: '',
-				name: ''
+				name: `${loggedInUser}`
 			});
 		} catch (error) {
 			console.error(error);

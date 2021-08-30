@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CreateForm from '../components/CreateForm';
-// import CommentForm from '../components/CommentForm';
+import Api from './Api';
 import Footer from '../components/Footer';
+import LogInModal from '../components/LogInModal';
 
-export default function Contact(props) {
+export default function Contact(props, context) {
 	const [destinations, setDestinations] = useState([]);
-	const [showForm, setShowForm] = useState(false);
-	const [showUpdateBut, setShowUpdateBut] = useState(true);
 	const [token, setToken] = useState('');
 	const [loggedInUser, setLoggedInUser] = useState('');
-	const [logInAlert, setlogInAlert] = useState(false);
+	const [place, setPlace] = useState('');
+	const [showForm, setShowForm] = useState(false);
+	const [modal, setModal] = useState(false);
 
 	const fetchData = async () => {
 		const response = await fetch('/api/destinations');
@@ -39,21 +40,26 @@ export default function Contact(props) {
 	const toggleForm = () => {
 		setShowForm(!showForm);
 	};
-	const toggleLogIn = () => {
-		setlogInAlert(!logInAlert);
-	};
 
 	const checkToken = () => {
 		if (token) {
 			return true;
 		} else {
-			// alert('Must be logged in. (add link to log in page)');
-			toggleLogIn();
+			setModal(!modal);
 		}
 	};
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		setPlace('');
+	};
+
+	const handleChange = e => {
+		setPlace(event.target.value);
+	};
+
 	return (
 		<div className="HomePage">
-			{console.log(props)}
 			<div
 				className="head topographic wide-container text-white text-center"
 				style={{ backgroundColor: '#759168' }}
@@ -98,29 +104,15 @@ export default function Contact(props) {
 			</ul>
 			<div className="after-cards">
 				<div className="toExplore">
-					<form
+					<div
 						className="explore"
-						// onSubmit={handleUpdate2}
-
 						style={{ display: 'flex', flexDirection: 'row' }}
 					>
-						<input
-							type="text"
-							id="place"
-							placeholder="enter city or country"
-							required
-						></input>
-						<input
-							className="explore-but"
-							type="submit"
-							value="Explore"
-						></input>
-						;
-					</form>
-					<Link to={'/api'}>
-						{' '}
-						<h4>Need inspiration?</h4>{' '}
-					</Link>
+						<Link to={'/find'}>
+							<button className="explore-but">Explore</button>
+						</Link>
+					</div>{' '}
+					<h4>Need inspiration?</h4>{' '}
 				</div>
 
 				<div className="toCreateForm">
@@ -136,23 +128,15 @@ export default function Contact(props) {
 						</button>
 					</div>
 					<h4>Have an off-the-beaten track suggestion?</h4>
-					{logInAlert && (
-						<div className="alert">
-							<button
-								className="btn float-right"
-								id="x-but"
-								onClick={() => {
-									toggleLogIn();
-								}}
-							>
-								X
-							</button>
-							<h3>Please log in</h3>
+
+					<LogInModal show={modal} handleClose={e => setModal(!modal)}>
+						<h2>Please log in</h2>
+						<div className="form-group">
 							<Link to={'/login'}>
 								<h4 className="btn btn-primary">Log In</h4>
 							</Link>
 						</div>
-					)}
+					</LogInModal>
 				</div>
 			</div>
 
@@ -163,11 +147,34 @@ export default function Contact(props) {
 					toggleForm={toggleForm}
 				/>
 			)}
-
-			{/*	<div className="container-fluid" style={{ background: 'pink' }}>
-				<h2>Add more stuff</h2>
-			</div>*/}
 			<Footer />
 		</div>
 	);
 }
+
+// <div className="after-cards">
+// 	<div className="toExplore">
+// 		<form
+// 			className="explore"
+// 			onSubmit={handleSubmit}
+// 			style={{ display: 'flex', flexDirection: 'row' }}
+// 		>
+// 			<input
+// 				type="text"
+// 				id="place"
+// 				value={place}
+// 				onChange={handleChange}
+// 				placeholder="enter city or country"
+// 				required
+// 			></input>
+// 			<input
+// 				className="explore-but"
+// 				type="submit"
+// 				value="Explore"
+// 			></input>
+// 		</form>
+// 		<Link to={'/api'}>
+// 			{' '}
+// 			<h4>Need inspiration?</h4>{' '}
+// 		</Link>
+// 	</div>

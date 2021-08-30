@@ -55,6 +55,17 @@ router.delete('/comments/:id', async(req, res) => {
   }
 });
 
+// Delete Single Comment
+router.delete('/:id/:commentId', async(req, res) => {
+  try {
+    const updatedDestination = await Destination.updateOne( {_id: req.params.id}, { $pullAll: {comments: [req.params.commentId] } } )
+    res.status(200).json(updatedDestination)
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({message: error.message});
+  }
+})
+
 //##################################################################
 //Read (Show)
 router.get('/:id', async (req, res) => {
