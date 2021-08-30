@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 import UpdateForm from '../components/UpdateForm';
 import CommentForm from '../components/CommentForm';
 import Footer from '../components/Footer';
@@ -91,7 +92,10 @@ export default function Show(props, comms) {
 							<p className="getting-there">{destination.howToGetThere}</p>
 						</h5>
 						<p className="added-by">added by: {destination.name}</p>
-						<p className="date">{destination.createdAt}</p>
+						<p className="date">
+							<Moment format="MMM YYYY">{destination.createdAt}</Moment>
+						</p>
+
 						{showUpdateBut && (
 							<button
 								className="update-but float-right"
