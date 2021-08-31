@@ -18,6 +18,7 @@ export default function Show(props, comms) {
 
 	useEffect(() => {
 		(async () => {
+			window.scrollTo(0, 0);
 			try {
 				fetchData();
 			} catch (error) {
@@ -37,15 +38,12 @@ export default function Show(props, comms) {
 		const response = await fetch(`/api/destinations/${props.match.params.id}`);
 		const data = await response.json();
 		setDestination(data); //this needs to be here, not in useeffect for update to work properly
-		// fetchComment(data.comments);
 		fetchComment();
 		return data;
 	};
 
-	// const fetchComment = async comm => {
 	const fetchComment = async () => {
 		try {
-			// const response = await fetch(`/api/destinations/comments/${comm}`);
 			const response = await fetch(`/api/destinations/comments`);
 			const data = await response.json();
 			setComments(data);
@@ -108,7 +106,7 @@ export default function Show(props, comms) {
 							<h2>Please log in</h2>
 							<div className="form-group">
 								<Link to={'/login'}>
-									<h4 className="show-go-to btn btn-primary">Log In</h4>
+									<p className="show-go-to btn btn-primary">Log In</p>
 								</Link>
 							</div>
 						</Modal>
@@ -134,7 +132,6 @@ export default function Show(props, comms) {
 							loggedInUser={loggedInUser}
 							setComments={setComments}
 						/>
-						{/*	</div>*/}
 						<div className="go-back">
 							<a href="javascript:history.back()">{'<-- go back'}</a>
 						</div>
