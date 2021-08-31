@@ -105,7 +105,7 @@ export default function Api(props) {
 						</div>
 					</>
 				) : (
-					<div className="header"></div>
+					<></>
 				)}
 			</div>
 			<Footer />

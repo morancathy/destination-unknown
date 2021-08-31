@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.js')
 const SECRET = process.env.SECRET;
 
-
 // Hashing function
 const hash = (password) => {
   const levelOne = crypto.createHmac('sha256', process.env.SECRET)

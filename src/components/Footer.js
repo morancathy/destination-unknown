@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 
 const Footer = props => {
 	return (
@@ -12,4 +11,3 @@ const Footer = props => {
 };
 
 export default Footer;
-// <footer class="text-center text-lg-start bg-light text-muted">

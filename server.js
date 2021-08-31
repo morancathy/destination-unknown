@@ -30,7 +30,6 @@ app.post('/register', register)
 app.use('/register', require('./controllers/userController'));
 
 
-
 app.get('/test', (req, res)=>{
 	res.status(200).json({
 		website: 'My Website',

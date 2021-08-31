@@ -1,6 +1,7 @@
 .ApiPage{
 	// border: solid red;
 	margin-top: 50px;
+	background-color: lightblue;
 	.toExplore {
 		display: flex;
 		flex-direction: column;
@@ -13,7 +14,7 @@
 		background-color: lightblue;
 
 		.explore {
-			border: solid purple;
+
 			margin: 0 auto;
 			border-radius: 50px;
 			padding: 1.25rem;
@@ -26,6 +27,7 @@
 			background-color: rgba(255,255,255,0.4);
 			margin-top: 20px;
 			margin-bottom: 20px;
+				// border: solid purple;
 
 			#entry, .explore-but {
 				border: solid lightgrey;
@@ -45,13 +47,14 @@
 	.api-div{
 		min-height: 70vh;
 		background-color: inherit;
-		// border: solid red;
+		// border: solid blue;
 
 	  .header{
 	    // border: solid red;
 			padding-left: 18%;
 			padding-right: 18%;
 			padding-top: 15px;
+			background: white;
 
 	    h3{
 	      // border: solid green;
@@ -74,9 +77,11 @@
 			padding-left: 10%;
 			padding-right: 10%;
 			padding-bottom: 10px;
+			flex-grow: 1;
+			height: 100%;
 
 			.image {
-				// border: solid red;
+				// border: solid yellow;
 				border-radius: 10px;
 				background-color: white;
 				display: flex;
@@ -110,7 +115,7 @@
 	  }
 
 	  .links-div{
-			// border: solid red;
+			// border: solid black;
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
@@ -123,7 +128,7 @@
 				justify-content: center;
 				text-align: center;
 				background-color: lightblue;
-							// border: solid purple;
+
 				.link{
 					margin: 0 auto;
 					border-radius: 50px;
@@ -137,14 +142,12 @@
 					background-color: rgba(255,255,255,0.4);
 					margin-top: 20px;
 					margin-bottom: 20px;
-					// border: solid orange;
 
 					.link-but {
 						border: solid lightgrey;
 						padding: 10px;
 						border-radius: 10px;
 						width: 300px;
-						// border: solid yellow;
 					}
 				}
 			}
