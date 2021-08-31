@@ -10,6 +10,8 @@ const CommentForm = ({
 	checkToken,
 	token,
 	loggedInUser
+	// setModal,
+	// modal
 }) => {
 	const [comment, setComment] = useState({});
 	const [newComment, setNewComment] = useState({
@@ -17,6 +19,7 @@ const CommentForm = ({
 		message: ''
 	});
 	const [showCommentForm, setShowCommentForm] = useState(false);
+	// const [token, setToken] = useState('');
 
 	const handleUpdate = async e => {
 		e.preventDefault();
@@ -51,6 +54,13 @@ const CommentForm = ({
 	const toggleCommentForm = () => {
 		setShowCommentForm(!showCommentForm);
 	};
+
+	// const checkToken = () => {
+	// 	if (token) {
+	// 		return true;
+	// 	}
+	// 	setModal(!modal);
+	// };
 
 	return (
 		<>
@@ -98,9 +108,9 @@ const CommentForm = ({
 						destination={destination}
 						comments={comments}
 						fetchData={fetchData}
-						checkToken={checkToken}
-						token={token}
-						loggedInUser={loggedInUser}
+						// checkToken={checkToken}
+						// token={token}
+						// loggedInUser={loggedInUser}
 					>
 						{' '}
 					</Comments>

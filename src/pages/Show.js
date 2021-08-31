@@ -15,6 +15,7 @@ export default function Show(props, comms) {
 	const [loggedInUser, setLoggedInUser] = useState('');
 	const [modal, setModal] = useState(false);
 	const history = useHistory();
+	const [modalText, setModalText] = useState('Please log in');
 
 	useEffect(() => {
 		(async () => {
@@ -59,12 +60,28 @@ export default function Show(props, comms) {
 	const toggleUpdateBut = () => {
 		setShowUpdateBut(!showUpdateBut);
 	};
-
 	const checkToken = () => {
 		if (token) {
 			return true;
+		}
+		setModal(!modal);
+	};
+
+	const checkTokenUpdate = () => {
+		if (token) {
+			if (setText()) {
+				return true;
+			}
+		}
+		setModal(!modal);
+	};
+
+	const setText = () => {
+		if (loggedInUser === destination.name) {
+			return true;
 		} else {
-			setModal(!modal);
+			setModalText('Only creater of the entry is allowed to edit.');
+			return false;
 		}
 	};
 
@@ -96,14 +113,14 @@ export default function Show(props, comms) {
 							<button
 								className="update-but float-right"
 								onClick={() => {
-									checkToken() && (toggleForm(), toggleUpdateBut());
+									checkTokenUpdate() && (toggleForm(), toggleUpdateBut());
 								}}
 							>
 								update
 							</button>
 						)}
 						<Modal show={modal} handleClose={e => setModal(!modal)}>
-							<h2>Please log in</h2>
+							<h4 className="modal-text">{modalText}</h4>
 							<div className="form-group">
 								<Link to={'/login'}>
 									<p className="show-go-to btn btn-primary">Log In</p>
@@ -131,6 +148,8 @@ export default function Show(props, comms) {
 							comments={comments}
 							loggedInUser={loggedInUser}
 							setComments={setComments}
+							// setModal={setModal}
+							// modal={modal}
 						/>
 						<div className="go-back">
 							<a href="javascript:history.back()">{'<-- go back'}</a>

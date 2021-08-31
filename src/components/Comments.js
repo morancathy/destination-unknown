@@ -6,10 +6,10 @@ const Comments = ({
 	destination,
 	comments,
 	setComments,
-	fetchData,
-	checkToken,
-	token,
-	loggedInUser
+	fetchData
+	// checkToken,
+	// token,
+	// loggedInUser
 }) => {
 	const [showMore, setShowMore] = useState(false);
 	const [updateComments, setUpdateComments] = useState(false);
