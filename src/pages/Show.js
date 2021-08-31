@@ -105,9 +105,9 @@ export default function Show(props, comms) {
 							<p className="getting-there">{destination.howToGetThere}</p>
 						</h5>
 						<p className="added-by">added by: {destination.name}</p>
-					{/*	<p className="date">
-							<Moment format="MMM YYYY">{destination.createdAt}</Moment>
-						</p>*/}
+						<p className="date">
+							<p>{destination.createdAt}</p>
+						</p>
 
 						{showUpdateBut && (
 							<button
