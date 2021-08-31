@@ -12,8 +12,6 @@ export default function Home(props, context) {
 	const [place, setPlace] = useState('');
 	const [showForm, setShowForm] = useState(false);
 	const [modal, setModal] = useState(false);
-	// const [backBut, setBackBut] = useState(false);
-
 	const siteCreator = 'Cathy M';
 
 	const fetchData = async () => {
@@ -25,7 +23,6 @@ export default function Home(props, context) {
 
 	useEffect(() => {
 		(async () => {
-			// window.scrollTo(0, 0);
 			try {
 				fetchData();
 			} catch (error) {
@@ -61,13 +58,6 @@ export default function Home(props, context) {
 	const handleChange = e => {
 		setPlace(event.target.value);
 	};
-
-	// const toggleBackBut = () => {
-	// 	setBackBut(!backBut);
-	// 	{
-	// 		backBut && console.log('works');
-	// 	}
-	// };
 
 	return (
 		<div className="HomePage">

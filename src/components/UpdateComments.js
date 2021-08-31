@@ -15,42 +15,57 @@ const UpdateComments = ({
 	const messageInput = useRef(null);
 	const nameInput = useRef(null);
 
-	// `/api/destinations/comments/${props.match.params.id}`,
-	const handleUpdate = async e => {
-		console.log(`dest id: ${e.target.dataset.destination}`);
-		console.log(`com id: ${e.target.dataset.comment}`);
-		e.preventDefault();
-		try {
-			const response = await fetch(`/api/destinations/comments/${id}`, {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					name: nameInput.current.value,
-					message: messageInput.current.value
-				})
-			});
-			const data = await response.json();
-			setUpdatedComm(data);
-			fetchData();
-			toggle(setUpdateComments, updateComments);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	// Unable to update comments in both destination and comments model.
+
+	// const handleUpdate = async e => {
+	// 	console.log(`dest id: ${e.target.dataset.destination}`);
+	// 	console.log('comid', `com id: ${e.target.dataset.comment}`);
+	// 	e.preventDefault();
+	// 	try {
+	// 		const responseDestination = await fetch(
+	// 			`/api/destinations/${e.target.dataset.destination}/${e.target.dataset.comment}`,
+	// 			{
+	// 				method: 'PUT',
+	// 				headers: {
+	// 					'Content-Type': 'application/json'
+	// 				},
+	// 				body: JSON.stringify({
+	// 					name: nameInput.current.value,
+	// 					message: messageInput.current.value
+	// 				})
+	// 			}
+	// 		);
+	//
+	// 		const responseComment = await fetch(
+	// 			`/api/destinations/comments/${e.target.dataset.comment}`,
+	// 			{
+	// 				method: 'PUT',
+	// 				headers: {
+	// 					'Content-Type': 'application/json'
+	// 				},
+	// 				body: JSON.stringify({
+	// 					name: nameInput.current.value,
+	// 					message: messageInput.current.value
+	// 				})
+	// 			}
+	// 		);
+	//
+	// 		const data = await response.json();
+	// 		setUpdatedComm(data);
+	// 		fetchData();
+	// 		toggle(setUpdateComments, updateComments);
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 	}
+	// };
 
 	const handleDelete = async e => {
-		// console.log(`dest id: ${e.target.dataset.destination}`);
-		// console.log(`com id: ${e.target.dataset.comment}`);
 		try {
 			const responseDestination = await fetch(
 				`/api/destinations/${e.target.dataset.destination}/${e.target.dataset.comment}`,
 				{
 					method: 'DELETE',
-					headers: {
-						'Content-Type': 'application/json'
-					}
+					headers: { 'Content-Type': 'application/json' }
 				}
 			);
 
@@ -58,9 +73,7 @@ const UpdateComments = ({
 				`/api/destinations/comments/${e.target.dataset.comment}`,
 				{
 					method: 'DELETE',
-					headers: {
-						'Content-Type': 'application/json'
-					}
+					headers: { 'Content-Type': 'application/json' }
 				}
 			);
 			setComments(comment.filter(comm => comm._id !== id));
@@ -81,9 +94,8 @@ const UpdateComments = ({
 			>
 				Delete
 			</button>
-			{console.log('destID', destinationId)}
+			{/*			{console.log('destID', destinationId)}
 			{console.log('88', comment.name)}
-
 			{console.log(props.match.params.id)}
 
 			<form
@@ -113,9 +125,8 @@ const UpdateComments = ({
 						ref={messageInput}
 					/>
 				</div>
-
 				<input className="update" type="submit" value="update" />
-			</form>
+			</form> */}
 		</div>
 	);
 };

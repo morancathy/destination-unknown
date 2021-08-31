@@ -26,7 +26,6 @@ Need 12 routes, which I think may be too many for this app.
 
 ## Will Pull From Following Third Party API
 
-[__Atlas Obscura__](https://github.com/TruitMeGood/node-atlas-obscura)
-[__Atlas Obscura__](https://github.com/csshen/atlas-obscura-api)
+ www.triposo.com/api.
 
-Atlas Obscura is a well known travel resource for unusual/bizarre places.
+Triposo pulls information and images related to a particular city or country, including links to maps page and wiki page.

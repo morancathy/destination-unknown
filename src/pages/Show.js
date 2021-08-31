@@ -144,12 +144,11 @@ export default function Show(props, comms) {
 							props={props}
 							destination={destination}
 							fetchData={fetchData}
+							checkTokenUpdate={checkTokenUpdate}
 							checkToken={checkToken}
 							comments={comments}
 							loggedInUser={loggedInUser}
 							setComments={setComments}
-							// setModal={setModal}
-							// modal={modal}
 						/>
 						<div className="go-back">
 							<a href="javascript:history.back()">{'<-- go back'}</a>

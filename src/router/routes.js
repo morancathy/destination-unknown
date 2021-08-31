@@ -1,7 +1,6 @@
 import React from 'react';
 import About from '../pages/About';
 import Home from '../pages/Home';
-import Contact from '../pages/Contact';
 import Cards from '../pages/Cards';
 
 const routes = [
@@ -14,11 +13,6 @@ const routes = [
 		Component: Cards,
 		key: 'Full Destination List',
 		path: '/cards'
-	},
-	{
-		Component: Contact,
-		key: 'Contact',
-		path: '/contact'
 	},
 	{
 		Component: About,

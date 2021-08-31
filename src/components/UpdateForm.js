@@ -108,7 +108,6 @@ const UpdateForm = ({
 						type="text"
 						id="title"
 						defaultValue={destination.title}
-						// onChange={handleChange}
 						ref={titleInput}
 					/>
 				</label>
@@ -118,7 +117,6 @@ const UpdateForm = ({
 						type="text"
 						id="country"
 						defaultValue={destination.country}
-						// onChange={handleChange}
 						ref={countryInput}
 					/>
 				</label>
@@ -128,7 +126,6 @@ const UpdateForm = ({
 						type="text"
 						id="city"
 						defaultValue={destination.city}
-						// onChange={handleChange}
 						ref={cityInput}
 					/>
 				</label>
@@ -138,7 +135,6 @@ const UpdateForm = ({
 						type="img"
 						id="img"
 						defaultValue={destination.img}
-						// onChange={handleChange}
 						ref={imgInput}
 					/>
 				</label>
@@ -149,7 +145,6 @@ const UpdateForm = ({
 						type="text"
 						id="howToGetThere"
 						defaultValue={destination.howToGetThere}
-						// onChange={handleChange}
 						ref={howToGetThereInput}
 					/>
 				</div>
@@ -161,7 +156,6 @@ const UpdateForm = ({
 						type="text"
 						id="description"
 						defaultValue={destination.description}
-						// onChange={handleChange}
 						ref={descriptionInput}
 					/>
 				</div>

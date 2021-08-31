@@ -32,6 +32,7 @@ export default function Cards(props, context) {
 					<h1 className="head-title display-1" style={{ fontSize: '40px' }}>
 						Destination Unknown
 					</h1>
+					<p className="lead">~ Full Destination List ~</p>
 				</div>
 			</div>
 			<ul className="destination-div">
