@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//Update (Create comment in comment and destination model)
+//Update (Creates comment in both comment and destination model)
 router.put('/:id/addComment', (req, res) => {
   Comment.create(req.body, (err, createdComment) => {
     if (err){
@@ -55,7 +55,7 @@ router.put('/:id/addComment', (req, res) => {
   });
 });
 
-// Update (comment in destination)
+// Update (updates comment in destination)
 router.put('/:id/:commentId', async(req, res) => {
   try {
     const updatedDestination = await Destination.updateOne( {_id: req.params.id}, { $pullAll: {comments: [req.params.commentId] } } )
@@ -66,7 +66,7 @@ router.put('/:id/:commentId', async(req, res) => {
   }
 });
 
-//Update (destination)
+//Update (updates destination)
 router.put('/:id', async (req, res) => {
   try {
     const updatedDestination =
@@ -78,7 +78,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-//Delete (destination)
+//Delete (deletes destination)
 router.delete('/:id', async (req, res) => {
   try {
     const deletedDestination = await Destination.findByIdAndDelete(req.params.id);
@@ -89,7 +89,7 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-// Delete (comment in destination)
+// Delete (deletes comment in destination)
 router.delete('/:id/:commentId', async(req, res) => {
   try {
     const updatedDestination = await Destination.updateOne( {_id: req.params.id}, { $pullAll: {comments: [req.params.commentId] } } )

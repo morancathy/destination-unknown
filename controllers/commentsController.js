@@ -2,7 +2,7 @@ const Destination = require('../models/destination.js');
 const Comment = require('../models/comment');
 const router = require('express').Router();
 
-// Create is in destinationsController
+// Create route is in destinationsController
 
 // /Read (Index)
 router.get('/', async(req, res) => {
@@ -25,7 +25,7 @@ router.get('/:id', async(req, res) => {
   }
 });
 
-// Update (comment in comment model)
+// Update (updates comment in comment model)
 router.put('/:id', async (req, res) => {
   try {
     const updatedComment =
@@ -36,7 +36,7 @@ router.put('/:id', async (req, res) => {
     res.status(400).json({message: error.message})
   }
 });
-// //Update (destination)
+// //Update (updates destination)
 router.put('/:id', async (req, res) => {
   try {
     const updatedComment =
@@ -48,7 +48,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete (comment in comment model)
+// Delete (deletes comment in comment model)
 router.delete('/:id', async(req, res) => {
   try {
     const deletedComment = await Comment.findByIdAndDelete(req.params.id)
