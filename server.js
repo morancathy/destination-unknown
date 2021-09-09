@@ -23,11 +23,13 @@ if (process.env.NODE_ENV !== 'development'){
 }
 
 /* Controller Goes Here Remove the test*/
+app.use('/api/destinations/comments', require('./controllers/commentsController.js'));
 app.use('/api/destinations', require('./controllers/destinationsController.js'));
-// app.use('/api/destinations/comments', require('./controllers/commentsController.js'));
+app.use('/register', require('./controllers/userController'));
+
 app.post('/login', login)
 app.post('/register', register)
-app.use('/register', require('./controllers/userController'));
+
 
 
 app.get('/test', (req, res)=>{

@@ -36,7 +36,7 @@ export default function Cards(props, context) {
 				</div>
 			</div>
 			<ul className="destination-div">
-				{destinations.map((destination, index) => {
+				{destinations.reverse().map((destination, index) => {
 					return (
 						<div>
 							<li key={destination._id} id="cards" className="dest-card">

@@ -17,47 +17,47 @@ const UpdateComments = ({
 
 	// Unable to update comments in both destination and comments model.
 
-	// const handleUpdate = async e => {
-	// 	console.log(`dest id: ${e.target.dataset.destination}`);
-	// 	console.log('comid', `com id: ${e.target.dataset.comment}`);
-	// 	e.preventDefault();
-	// 	try {
-	// 		const responseDestination = await fetch(
-	// 			`/api/destinations/${e.target.dataset.destination}/${e.target.dataset.comment}`,
-	// 			{
-	// 				method: 'PUT',
-	// 				headers: {
-	// 					'Content-Type': 'application/json'
-	// 				},
-	// 				body: JSON.stringify({
-	// 					name: nameInput.current.value,
-	// 					message: messageInput.current.value
-	// 				})
-	// 			}
-	// 		);
-	//
-	// 		const responseComment = await fetch(
-	// 			`/api/destinations/comments/${e.target.dataset.comment}`,
-	// 			{
-	// 				method: 'PUT',
-	// 				headers: {
-	// 					'Content-Type': 'application/json'
-	// 				},
-	// 				body: JSON.stringify({
-	// 					name: nameInput.current.value,
-	// 					message: messageInput.current.value
-	// 				})
-	// 			}
-	// 		);
-	//
-	// 		const data = await response.json();
-	// 		setUpdatedComm(data);
-	// 		fetchData();
-	// 		toggle(setUpdateComments, updateComments);
-	// 	} catch (error) {
-	// 		console.error(error);
-	// 	}
-	// };
+	const handleUpdate = async e => {
+		console.log(`dest id: ${e.target.dataset.destination}`);
+		console.log('comid', `com id: ${e.target.dataset.comment}`);
+		e.preventDefault();
+		try {
+			const responseDestination = await fetch(
+				`/api/destinations/${e.target.dataset.destination}/${e.target.dataset.comment}`,
+				{
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						name: nameInput.current.value,
+						message: messageInput.current.value
+					})
+				}
+			);
+
+			const responseComment = await fetch(
+				`/api/destinations/comments/${e.target.dataset.comment}`,
+				{
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						name: nameInput.current.value,
+						message: messageInput.current.value
+					})
+				}
+			);
+
+			const data = await response.json();
+			setUpdatedComm(data);
+			fetchData();
+			toggle(setUpdateComments, updateComments);
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	const handleDelete = async e => {
 		try {
@@ -94,7 +94,7 @@ const UpdateComments = ({
 			>
 				Delete
 			</button>
-			{/*			{console.log('destID', destinationId)}
+			{console.log('destID', destinationId)}
 			{console.log('88', comment.name)}
 			{console.log(props.match.params.id)}
 
@@ -126,7 +126,7 @@ const UpdateComments = ({
 					/>
 				</div>
 				<input className="update" type="submit" value="update" />
-			</form> */}
+			</form>
 		</div>
 	);
 };

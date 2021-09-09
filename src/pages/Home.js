@@ -13,6 +13,7 @@ export default function Home(props, context) {
 	const [showForm, setShowForm] = useState(false);
 	const [modal, setModal] = useState(false);
 	const siteCreator = 'Cathy M';
+	let counter = 0;
 
 	const fetchData = async () => {
 		const response = await fetch('/api/destinations');
@@ -57,6 +58,11 @@ export default function Home(props, context) {
 
 	const handleChange = e => {
 		setPlace(event.target.value);
+	};
+
+	const addOne = () => {
+		counter = counter + 1;
+		console.log('winnie the pooh');
 	};
 
 	return (
@@ -112,36 +118,40 @@ export default function Home(props, context) {
 			</ul>
 			<h3 className="recently-added">Recently Added</h3>
 			<ul className="destination-div">
-				{destinations.map((destination, index) => {
+				{destinations.reverse().map((destination, index) => {
 					if (destination.name !== `${siteCreator}`) {
-						return (
-							<div>
-								<li key={destination._id} id="cards" className="dest-card">
-									<img
-										className="card-image"
-										src={destination.img}
-										alt="Card image"
-									/>
-									<div className="card-body">
-										<h5>
-											{destination.city}, {destination.country}
-										</h5>
-										<Link
-											to={`/${destination._id}`}
-											comms={destination.comments}
-										>
-											<h4 className="">{destination.title}</h4>
-										</Link>
-										<p className="">
-											{destination.description.length > 200
-												? `${destination.description.substring(0, 200)}...`
-												: destination.description}
-										</p>
-									</div>
-									<p className="added-by">~ {destination.name}</p>
-								</li>
-							</div>
-						);
+						addOne();
+
+						if (counter < 5) {
+							return (
+								<div>
+									<li key={destination._id} id="cards" className="dest-card">
+										<img
+											className="card-image"
+											src={destination.img}
+											alt="Card image"
+										/>
+										<div className="card-body">
+											<h5>
+												{destination.city}, {destination.country}
+											</h5>
+											<Link
+												to={`/${destination._id}`}
+												comms={destination.comments}
+											>
+												<h4 className="">{destination.title}</h4>
+											</Link>
+											<p className="">
+												{destination.description.length > 200
+													? `${destination.description.substring(0, 200)}...`
+													: destination.description}
+											</p>
+										</div>
+										<p className="added-by">~ {destination.name}</p>
+									</li>
+								</div>
+							);
+						}
 					}
 				})}
 			</ul>
