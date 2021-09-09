@@ -15,27 +15,12 @@ const UpdateComments = ({
 	const messageInput = useRef(null);
 	const nameInput = useRef(null);
 
-	// Unable to update comments in both destination and comments model.
-
 	const handleUpdate = async e => {
-		console.log(`dest id: ${e.target.dataset.destination}`);
-		console.log('comid', `com id: ${e.target.dataset.comment}`);
+		console.log(`DEST ID: ${e.target.dataset.destination}`);
+		console.log(`COM ID: ${e.target.dataset.comment}`);
 		e.preventDefault();
-		try {
-			const responseDestination = await fetch(
-				`/api/destinations/${e.target.dataset.destination}/${e.target.dataset.comment}`,
-				{
-					method: 'PUT',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						name: nameInput.current.value,
-						message: messageInput.current.value
-					})
-				}
-			);
 
+		try {
 			const responseComment = await fetch(
 				`/api/destinations/comments/${e.target.dataset.comment}`,
 				{
@@ -50,7 +35,7 @@ const UpdateComments = ({
 				}
 			);
 
-			const data = await response.json();
+			const data = await responseComment.json();
 			setUpdatedComm(data);
 			fetchData();
 			toggle(setUpdateComments, updateComments);
@@ -94,9 +79,6 @@ const UpdateComments = ({
 			>
 				Delete
 			</button>
-			{console.log('destID', destinationId)}
-			{console.log('88', comment.name)}
-			{console.log(props.match.params.id)}
 
 			<form
 				className=""

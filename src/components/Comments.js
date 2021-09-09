@@ -23,7 +23,7 @@ const Comments = ({
 			}
 		}
 	};
-	//
+
 	// const firstTwoComments = () => {
 	// 	console.log('30', destination.comments[1], destination.comments[0]);
 	// 	return destination.comments.slice(0, 2);
@@ -32,6 +32,7 @@ const Comments = ({
 	// const overTwoComments = () => {
 	// 	return destination.comments.slice(2);
 	// };
+
 	return (
 		<div className="Comments">
 			<ul>
@@ -79,7 +80,7 @@ const Comments = ({
 						</div>
 					);
 				})}
-				{/*
+				{/*						I want to show only up to 2 comments, then a "show more button" for the rest...not working...yet
 				{destination.comments.length > 2 && (
 					<button
 						className="view-more"

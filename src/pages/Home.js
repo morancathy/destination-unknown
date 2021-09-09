@@ -62,7 +62,6 @@ export default function Home(props, context) {
 
 	const addOne = () => {
 		counter = counter + 1;
-		console.log('winnie the pooh');
 	};
 
 	return (

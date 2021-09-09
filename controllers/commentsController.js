@@ -36,6 +36,17 @@ router.put('/:id', async (req, res) => {
     res.status(400).json({message: error.message})
   }
 });
+// //Update (destination)
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedComment =
+      await Comment.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    res.status(200).json(updatedComment)
+  } catch(error) {
+    console.error(error)
+    res.status(400).json({message: error.message})
+  }
+});
 
 // Delete (comment in comment model)
 router.delete('/:id', async(req, res) => {

@@ -93,6 +93,10 @@ const CommentForm = ({
 						/>
 					</form>
 				)}
+				{console.log(
+					'Destimation.comments.length',
+					destination.comments.length
+				)}
 				{destination.comments.length ? (
 					<Comments
 						props={props}

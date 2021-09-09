@@ -37,8 +37,6 @@ router.get('/:id', async (req, res) => {
 
 //Update (Create comment in comment and destination model)
 router.put('/:id/addComment', (req, res) => {
-  // const createCommentQuery = Comment.create(req.body);
-
   Comment.create(req.body, (err, createdComment) => {
     if (err){
       console.error(err);
@@ -104,9 +102,3 @@ router.delete('/:id/:commentId', async(req, res) => {
 
 
 module.exports = router;
-
-
-/*
-  const createdComment = await Comment.create(req.body)
-  const updatedBlog = await Blog.findByIdAndUpdate()
-*/
