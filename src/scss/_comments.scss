@@ -1,0 +1,214 @@
+//###################################################### Comment Form
+.CommentForm {
+	background: #fff;
+	border-radius: 10px;
+	display: inline-block;
+	background-color: #e3dac9;
+	display: flex;
+	flex-direction: column;
+	width: 31vw;
+	// border: solid red;
+
+	.comment-button2{
+		border-radius: 10px;
+		font-size: 15px;
+		// border: solid #858585;
+		width: 150px;
+		margin-left: 45px;
+		margin-bottom: 5px;
+		// margin-top: 17px;
+	}
+	.comment-form{
+		padding: 20px;
+		width: 27vw;
+		border: solid #858585;
+		// border: solid #9D9D9D;
+		background-color: #B7C68B;
+		box-shadow: 3px 3px 3px 1px #B7C68B;
+		border-radius: 20px;
+		margin: 0 auto;
+		margin-bottom: 5px;
+
+		#name, #message{
+			margin-bottom: 6px;
+			border-radius: 10px;
+			height: 40px;
+			border: solid #858585;
+			padding-left: 8px;
+		}
+		.add-commment-but{
+			background-color: tan;
+			border: solid #858585;
+			color: #3C412E;
+		}
+
+		.add-commment-but:hover{
+			box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
+		}
+	}
+}
+//###################################################### Comment Form
+
+//###################################################### Comments
+.Comments {
+	margin-bottom: 100px;
+	margin-left: 10px;
+	margin-top: 5px;
+	width: 30vw;
+	background: #fff;
+	padding: 15px 20px;
+	border-radius: 10px;
+	border: solid #858585;
+	box-shadow: 3px 3px 3px 1px #B7C68B;
+	display: inline-block;
+ 	background-color: tan;
+
+	ul {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+
+		li {
+			padding: 10px;
+			border: solid #858585;
+			// border: solid #9D9D9D;
+			background-color: #B7C68B;
+			border-radius: 20px;
+			margin-bottom: 5px;
+			display: flex;
+			flex-direction: column;
+		}
+		h5 {
+			font-size: 16px;
+			color: #3C412E;
+		}
+		.date {
+
+		}
+		.comm-author{
+			text-align: right;
+			border-bottom: 1px solid grey;
+		}
+		.edit-comment-but {
+			border-radius: 10px;
+			font-size: 15px;
+			width: 40px;
+		}
+		.edit-comment-but2 {
+			background-color: #B7C68B;
+			border: transparent;
+			border-radius: 10px;
+		}
+		.edit-comment-but2:hover {
+			box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 138px, rgba(0, 0, 0, 0.22) 0px 15px 112px;
+		}
+		.close{
+			font-size: 22px;
+			border-radius: 10px;
+			border: solid grey;
+			width: 100%;
+			padding: 10px;
+			text-align: center;
+			color: black;
+		}
+		.view-more{
+			border-radius: 10px;
+			font-size: 20px;
+			margin-top: 10px;
+			background-color: #E0EDDA;
+		}
+	}
+}
+//###################################################### Comments
+
+//###################################################### Update Comments
+.UpdateComments {
+	// margin-left: 100px;
+	// border: solid pink;
+	background: white;
+	// width: 200vw;
+  // max-width: 700px;
+	height: auto;
+  // margin: 0 auto;
+  margin-top: 30px;
+  padding: 10px;
+
+  text-align: center;
+  border-radius: 15px;
+	// background: linear-gradient(to bottom, Indigo, Thistle);
+	// color: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+	display: inline-block;
+
+	.deleteComBut{
+
+		margin-bottom: 5px;
+		margin-right: 10px;
+		color: lightgrey;
+	}
+	form{
+	margin: 0px 0px 20px 0px;
+	    // border: solid green;
+	    width: 100%;
+	label {
+	display: flex;
+	flex-direction: row;
+	// border: solid blue;
+		height: 40px;
+
+	.label {
+		// background-color: solid orange;
+		width: 190px;
+		white-space: nowrap;
+		padding-left: 10px;
+		text-align: left;
+		height: 40px;
+	}
+	input, textarea  {
+		// margin: 5px;
+		padding: 0px 10px 0px 5px;
+		color: #5E6547;
+		// border: solid red;
+		// margin-top: -10px;
+		font-size: 15px;
+		width: 100%;
+		height: 40px;
+		margin-right: 10px;
+		margin-left: -50px;
+	}
+	textarea{
+		// border: solid red;
+		height: 100px;
+
+	}
+
+	}
+}
+.entry {
+	display: flex;
+	flex-direction: row;
+		// border: solid orange;
+
+	.label {
+		width: 190px;
+		white-space: nowrap;
+		padding-left: 10px;
+		text-align: left;
+		height: 40px;
+	}
+	textarea  {
+		// border: solid orange;
+		padding: 10px 10px 0px 5px;
+			color: #5E6547;
+		font-size: 15px;
+		width: 100%;
+		// margin-bottom: 16px;
+		margin-right: 10px;
+		margin-left: -50px;
+	}
+}
+.update{
+	margin-top: 20px;
+}
+}
+//###################################################### Update Comments

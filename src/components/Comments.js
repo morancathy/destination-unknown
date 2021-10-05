@@ -11,6 +11,7 @@ const Comments = ({
 }) => {
 	const [showMore, setShowMore] = useState(false);
 	const [updateComments, setUpdateComments] = useState(false);
+	let commentCode = '';
 
 	const toggle = (a, b) => {
 		a(!b);
@@ -33,6 +34,12 @@ const Comments = ({
 	// 	return destination.comments.slice(2);
 	// };
 
+	const checkId = param => {
+		commentCode = param;
+		console.log('commentCode: ', commentCode);
+		return commentCode;
+	};
+
 	return (
 		<div className="Comments">
 			<ul>
@@ -48,20 +55,25 @@ const Comments = ({
 									<button
 										className="edit-comment-but2"
 										onClick={() => {
-											checkToken() && toggle(setUpdateComments, updateComments);
+											checkToken() &&
+												checkId(comment._id) === comment._id &&
+												toggle(setUpdateComments, updateComments),
+												console.log('comment._id: ', comment._id);
 										}}
 									>
 										{!updateComments ? (
 											<div>
 												<h5 className="comm-author">{comment.name}</h5>
 												<h5 className="message">{comment.message}</h5>
+												<h5 className="date">
+													{' '}
+													{moment(comment.createdAt).format('MMM DD, YY')}
+												</h5>
 											</div>
 										) : (
 											<h5 className="close">close</h5>
 										)}
 									</button>
-									{console.log('des.com.length', destination.comments.length)}
-									{console.log('com.length', comments.length)}
 
 									{updateComments && (
 										<UpdateComments
@@ -144,3 +156,6 @@ const Comments = ({
 };
 
 export default Comments;
+// put this right before UpdateComments, and after button
+// {console.log('des.com.length', destination.comments.length)}
+// {console.log('com.length', comments.length)}
