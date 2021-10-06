@@ -6,7 +6,9 @@ const UpdateForm = ({
 	destination,
 	fetchData,
 	toggleUpdateBut,
-	toggleForm
+	toggleForm,
+	setShowCommentFormComp,
+	showCommentFormComp
 }) => {
 	const [updatedDest, setUpdatedDest] = useState({});
 	const titleInput = useRef(null);
@@ -42,6 +44,7 @@ const UpdateForm = ({
 			fetchData();
 			toggleUpdateBut();
 			toggleForm();
+			setShowCommentFormComp(!showCommentFormComp);
 		} catch (error) {
 			console.error(error);
 		}
@@ -71,7 +74,9 @@ const UpdateForm = ({
 			{console.log(destination.name)}
 			<button
 				onClick={() => {
-					toggleForm(), toggleUpdateBut();
+					toggleForm(),
+						toggleUpdateBut(),
+						setShowCommentFormComp(!showCommentFormComp);
 				}}
 				className="closeBut btn btn-sm float-left"
 			>
@@ -149,7 +154,7 @@ const UpdateForm = ({
 					/>
 				</div>
 				<div className="entry">
-					<h4 className="label">Description: </h4>
+					<h4 className="label description">Description: </h4>
 					<textarea
 						rows="7"
 						cols="40"

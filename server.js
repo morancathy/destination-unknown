@@ -31,7 +31,6 @@ app.post('/login', login)
 app.post('/register', register)
 
 
-
 app.get('/test', (req, res)=>{
 	res.status(200).json({
 		website: 'My Website',
@@ -39,7 +38,6 @@ app.get('/test', (req, res)=>{
 	})
 })
 /* Controller Ends here */
-
 
 
 // for react router

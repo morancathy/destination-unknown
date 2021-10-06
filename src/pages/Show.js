@@ -16,6 +16,7 @@ export default function Show(props, comms) {
 	const [modal, setModal] = useState(false);
 	const history = useHistory();
 	const [modalText, setModalText] = useState('Please log in');
+	const [showCommentFormComp, setShowCommentFormComp] = useState(true);
 
 	let date = destination.createdAt;
 
@@ -116,7 +117,10 @@ export default function Show(props, comms) {
 							<button
 								className="update-but float-right"
 								onClick={() => {
-									checkTokenUpdate() && (toggleForm(), toggleUpdateBut());
+									checkTokenUpdate() &&
+										(toggleForm(),
+										toggleUpdateBut(),
+										setShowCommentFormComp(!showCommentFormComp));
 								}}
 							>
 								update
@@ -138,21 +142,25 @@ export default function Show(props, comms) {
 								fetchData={fetchData}
 								toggleUpdateBut={toggleUpdateBut}
 								toggleForm={toggleForm}
+								setShowCommentFormComp={setShowCommentFormComp}
+								showCommentFormComp={showCommentFormComp}
 							>
 								{' '}
 							</UpdateForm>
 						)}
 
-						<CommentForm
-							props={props}
-							destination={destination}
-							fetchData={fetchData}
-							checkTokenUpdate={checkTokenUpdate}
-							checkToken={checkToken}
-							comments={comments}
-							loggedInUser={loggedInUser}
-							setComments={setComments}
-						/>
+						{showCommentFormComp && (
+							<CommentForm
+								props={props}
+								destination={destination}
+								fetchData={fetchData}
+								checkTokenUpdate={checkTokenUpdate}
+								checkToken={checkToken}
+								comments={comments}
+								loggedInUser={loggedInUser}
+								setComments={setComments}
+							/>
+						)}
 						<div className="go-back">
 							<a href="javascript:history.back()">{'<-- go back'}</a>
 						</div>

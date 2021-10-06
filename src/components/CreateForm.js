@@ -105,7 +105,7 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 					/>
 				</div>
 				<div className="entry">
-					<h4 className="label">Description: </h4>
+					<h4 className="label description">Description: </h4>
 					<textarea
 						rows="7"
 						cols="40"
