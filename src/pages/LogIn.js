@@ -83,6 +83,17 @@ const LogIn = props => {
 
 	return (
 		<div className="LogIn">
+			<div
+				className="head topographic wide-container text-white text-center"
+				style={{ backgroundColor: '#759168' }}
+			>
+				<div className="container hero-search-wrapper">
+					<h1 className="head-title display-1" style={{ fontSize: '40px' }}>
+						Destination Unknown
+					</h1>
+					<p className="lead">~ Sign In ~</p>
+				</div>
+			</div>
 			<div className="logInPage">
 				{showForm && (
 					<>
@@ -106,7 +117,7 @@ const LogIn = props => {
 									<input
 										className="logInBut btn btn-primary"
 										type="submit"
-										value="Log In"
+										value="Sign In"
 									/>
 									<div className="addLine"></div>
 								</form>
