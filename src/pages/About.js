@@ -31,7 +31,7 @@ export default function About(props) {
 			</div>
 			<div className="display">
 				<ul className="user-div">
-					<h2>Contributors:</h2>
+					<h4>Contributors:</h4>
 					{users.map((user, index) => {
 						return (
 							<div>
@@ -42,22 +42,21 @@ export default function About(props) {
 						);
 					})}
 				</ul>
-				<div className="info-box">
-					<h4 className="title">Home page photos:</h4>
-					<p>
-						<strong>Humbolt Park, Chicago, IL, USA</strong> - bottom left
-					</p>
-					<p>
-						{' '}
-						<strong>Coron Bay, Philippines</strong> - bottom right
-					</p>
-					<p className="disclaimer">
-						<h4 className="title">API:</h4>
-						Info and images in 'need inspiration' section pulled from
-						www.triposo.com/api.
-					</p>
+				<div className="not-user-div">
+					<div className="info-box">
+						<h4>Home page photos:</h4>
+						<p>Humbolt Park, Chicago, IL, USA - bottom left</p>
+						<p> Coron Bay, Philippines - bottom right</p>
+					</div>
+					<div className="disclaimer">
+						<h4>API:</h4>
+						<p>
+							Info and images in 'need inspiration' section pulled from
+							www.triposo.com/api.
+						</p>
+					</div>
 					<div className="contact">
-						<h4 className="title">Contact:</h4>
+						<h4>Contact:</h4>
 						<p>Cathy Diesel</p>
 						<p>867-5309</p>
 						<p>hunterRuck@marley.com</p>

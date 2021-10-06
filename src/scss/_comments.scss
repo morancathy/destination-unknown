@@ -47,13 +47,25 @@
 		}
 	}
 }
+@media screen and (max-width: 400px) {
+	.CommentForm{
+		// width: 250px;
+		// font-size: 8px;
+
+		.comment-form {
+			padding: 5px;
+			margin-left: 20px;
+			margin-right: -300px;
+			width: 220px;
+			// border: solid red;
+		}
+	}
+}
 //###################################################### Comment Form
 
 //###################################################### Comments
 .Comments {
-	margin-bottom: 100px;
-	margin-left: 10px;
-	margin-top: 5px;
+	margin: 5px 0px 100px 10px;
 	width: 30vw;
 	background: #fff;
 	padding: 15px 20px;
@@ -62,6 +74,8 @@
 	box-shadow: 3px 3px 3px 1px #B7C68B;
 	display: inline-block;
  	background-color: tan;
+	width: 500px;
+	width: 30vw;
 
 	ul {
 	display: flex;
@@ -71,7 +85,6 @@
 		li {
 			padding: 10px;
 			border: solid #858585;
-			// border: solid #9D9D9D;
 			background-color: #B7C68B;
 			border-radius: 20px;
 			margin-bottom: 5px;
@@ -116,6 +129,38 @@
 			font-size: 20px;
 			margin-top: 10px;
 			background-color: #E0EDDA;
+		}
+	}
+}
+@media screen and (max-width: 900px) {
+	.Comments{
+		width: 60vw;
+		font-size: calc(12px + 1vw);
+		text-align: left;
+		h5 {
+			font-size: calc(12px + 1vw);
+			text-align: left;
+		}
+	}
+}
+@media screen and (max-width: 400px) {
+	.Comments{
+		width: 275px;
+		font-size: 8px;
+
+		#comment-cards {
+				padding: 5px;
+				margin-left: -10px;
+				margin-right: -300px;
+				width: 250px;
+		}
+		h5.message, h5.comm-author {
+			font-size: calc(11px + 1vw);
+			margin-bottom: 5px;
+		}
+		h5.message {
+			margin-bottom: 15px;
+				text-align: left;
 		}
 	}
 }
