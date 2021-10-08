@@ -70,7 +70,7 @@ const UpdateForm = ({
 	};
 
 	return (
-		<div className="UpdateForm">
+		<div className="UpdateForm" id="update-form">
 			{console.log(destination.name)}
 			<button
 				onClick={() => {

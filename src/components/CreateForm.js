@@ -48,6 +48,7 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 
 	return (
 		<div className="CreateForm">
+			>
 			<form
 				className=""
 				onSubmit={handleSubmit}

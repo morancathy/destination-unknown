@@ -17,7 +17,9 @@ db.on('open', () => {
     console.log('Mongo is Connected');
 });
 /* Middleware */
+ //used to process json data      
 app.use(express.json());
+
 if (process.env.NODE_ENV !== 'development'){
   app.use(express.static('public'))
 }

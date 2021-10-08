@@ -175,17 +175,20 @@ export default function Home(props, context) {
 
 				<div className="toCreateForm">
 					<div className="add-here-form">
-						<button
-							className="add-here"
-							onClick={() => {
-								checkToken() && toggleForm();
-							}}
-						>
-							{' '}
-							{!showForm ? 'Add Here' : 'close form'}
-						</button>
+						<a href="#create-form">
+							<button
+								className="add-here"
+								onClick={() => {
+									checkToken() && toggleForm();
+								}}
+							>
+								{' '}
+								{!showForm ? 'Add Here' : 'close form'}
+							</button>
+						</a>
 					</div>
-					<h4>Have an off-the-beaten track suggestion?</h4>
+
+					<h4 id="create-form">Have an off-the-beaten track suggestion?</h4>
 
 					<Modal show={modal} handleClose={e => setModal(!modal)}>
 						<h2>Please log in</h2>

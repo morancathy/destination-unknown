@@ -4,11 +4,11 @@ import Footer from '../components/Footer';
 export default function Api(props) {
 	const [entry, setEntry] = useState('');
 	const [places, setPlaces] = useState({});
+	const [map, setMap] = useState('');
+	const [wiki, setWiki] = useState('');
 	const API = process.env.API;
 	const ACCID = process.env.ACCID;
 	// const city = props.match.params.city || 'Sagada';
-
-	// const url = `https://www.triposo.com/api/20210615/location.json?id=${searchTerm}&fields=all&account=${ACCID}&token=${API}`;
 
 	const getPlaces = async searchTerm => {
 		try {
@@ -18,6 +18,8 @@ export default function Api(props) {
 			const data = await response.json();
 			// setPlaces({ ...data });
 			setPlaces(data.results[0]);
+			setMap(`https${data.results[0].attribution[0].url.substring(4)}`);
+			setWiki(`https${data.results[0].attribution[1].url.substring(4)}`);
 		} catch (error) {
 			console.log('error ', error);
 		}
@@ -85,27 +87,22 @@ export default function Api(props) {
 
 						<div className="links-div">
 							<div className="link-box">
-								<form
-									className="link"
-									action={places.attribution[0].url}
-									target="_blank"
-								>
+								<form className="link" action={map} target="_blank">
 									<input className="link-but" type="submit" value="view map" />
 								</form>
 							</div>
 							<div className="link-box">
-								<form
-									className="link"
-									action={places.attribution[1].url}
-									target="_blank"
-								>
+								<form className="link" action={wiki} target="_blank">
 									<input className="link-but" type="submit" value="more info" />
 								</form>
 							</div>
 						</div>
 					</>
 				) : (
-					<></>
+					<div>
+						Oops, I think there was a typo. Please try again. Remember to
+						capitalize :){' '}
+					</div>
 				)}
 			</div>
 			<Footer />

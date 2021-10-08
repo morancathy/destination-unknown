@@ -114,17 +114,19 @@ export default function Show(props, comms) {
 						</p>
 
 						{showUpdateBut && (
-							<button
-								className="update-but float-right"
-								onClick={() => {
-									checkTokenUpdate() &&
-										(toggleForm(),
-										toggleUpdateBut(),
-										setShowCommentFormComp(!showCommentFormComp));
-								}}
-							>
-								update
-							</button>
+							<a href="#update-form">
+								<button
+									className="update-but float-right"
+									onClick={() => {
+										checkTokenUpdate() &&
+											(toggleForm(),
+											toggleUpdateBut(),
+											setShowCommentFormComp(!showCommentFormComp));
+									}}
+								>
+									update
+								</button>
+							</a>
 						)}
 						<Modal show={modal} handleClose={e => setModal(!modal)}>
 							<h4 className="modal-text">{modalText}</h4>
