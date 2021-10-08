@@ -1,5 +1,4 @@
 .ApiPage{
-	// border: solid red;
 	margin-top: 50px;
 	background-color: lightblue;
 	.toExplore {
@@ -14,8 +13,8 @@
 		background-color: lightblue;
 
 		.explore {
-
-			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
 			border-radius: 50px;
 			padding: 1.25rem;
 			border-style: solid;
@@ -25,21 +24,20 @@
 			background-color: transparent;
 			shadow: transparent;
 			background-color: rgba(255,255,255,0.4);
-			margin-top: 20px;
-			margin-bottom: 20px;
-				// border: solid purple;
+			margin: 20px auto;
+			margin-top: 50px;
 
 			#entry, .explore-but {
 				border: solid lightgrey;
 				padding: 10px;
 				border-radius: 10px;
-				// width: 60%;
 			}
 			#entry {
 				width: 400px;
+				margin-right: 10px;
 			}
 			.explore-but {
-				width: 25%;
+				width: 100px;
 			}
 		}
 	}
@@ -47,29 +45,19 @@
 	.api-div{
 		min-height: 70vh;
 		background-color: inherit;
-		// border: solid blue;
 
 	  .header{
-	    // border: solid red;
 			padding-left: 18%;
 			padding-right: 18%;
 			padding-top: 15px;
 			background: white;
 
-	    h3{
-	      // border: solid green;
-				margin-left: 5px;
-				margin-right: 5px;
-	    }
-	    p {
-	      // border: solid purple;
-				margin-left: 5px;
-				margin-right: 5px;
+	    h3, p {
+				margin: 0 5px 0 5px;
 	    }
 	  }
 
 	  .images-all{
-	    // border: solid orange;
 			background-color: lightblue;
 			display: flex;
 			flex-flow: row wrap;
@@ -81,15 +69,12 @@
 			height: 100%;
 
 			.image {
-				// border: solid yellow;
 				border-radius: 10px;
 				background-color: white;
 				display: flex;
 				flex-flow: column wrap;
 				width: 300px;
-				// height: 100%;
-					min-height: 300px;
-				// max-height: 300px;
+				min-height: 300px;
 				margin-top: 10px;
 				margin-left: 5px;
 				margin-right: 5px;
@@ -98,7 +83,6 @@
 				padding-right: 10px;
 				justify-content: center;
 				h4 {
-			     // border: solid black;
 					 wrap: wrap;
 					 background-color: white;
 					 font-size: 17px;
@@ -107,7 +91,6 @@
 					 color: #382c14;
 			  }
 			  img {
-			    // border: solid blue;
 					min-height: 150px;
 					width: 100%;
 			  }
@@ -115,7 +98,6 @@
 	  }
 
 	  .links-div{
-			// border: solid black;
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
@@ -148,9 +130,25 @@
 						padding: 10px;
 						border-radius: 10px;
 						width: 300px;
+
+						@media screen and (max-width: 900px) {
+							padding: 5px;
+							border-radius: 5px;
+							width: 200px;
+							font-size: 15px;
+						}
 					}
 				}
 			}
 	  }
+	}
+}
+@media screen and (max-width: 900px) {
+	.explore {
+		justify-content: center;
+		width: 350px;
+	}
+	.header{
+		margin-top: 30px;
 	}
 }
