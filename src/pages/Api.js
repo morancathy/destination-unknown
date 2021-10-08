@@ -6,11 +6,13 @@ export default function Api(props) {
 	const [places, setPlaces] = useState({});
 	const [map, setMap] = useState('');
 	const [wiki, setWiki] = useState('');
+	// const [capitalizedPlace, setCaptializedPlace] = useState('');
 	const API = process.env.API;
 	const ACCID = process.env.ACCID;
 	// const city = props.match.params.city || 'Sagada';
 
 	const getPlaces = async searchTerm => {
+		searchTerm = searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1);
 		try {
 			const response = await fetch(
 				`https://www.triposo.com/api/20210615/location.json?id=${searchTerm}&fields=all&account=${ACCID}&token=${API}`

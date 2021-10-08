@@ -39,6 +39,9 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 			});
 		} catch (error) {
 			console.error(error);
+			alert('Unique title required. Please try again');
+			// } finally {
+			// 	window.location.assign('/login');
 		}
 	};
 
