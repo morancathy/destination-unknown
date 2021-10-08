@@ -48,7 +48,6 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 
 	return (
 		<div className="CreateForm">
-			>
 			<form
 				className=""
 				onSubmit={handleSubmit}
@@ -89,8 +88,8 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 					<input
 						type="text"
 						id="img"
-						// defaultValue="/img/ImagePlaceholder.jpg"
-						placeholder="insert image or leave blank"
+						defaultValue="/img/ImagePlaceholder.jpg"
+						placeholder={image}
 						onChange={handleChange}
 					/>
 				</label>

@@ -8,7 +8,7 @@ export default function Cards(props, context) {
 	const fetchData = async () => {
 		const response = await fetch('/api/destinations');
 		const data = await response.json();
-		setDestinations(data);
+		setDestinations(data.reverse());
 		return data;
 	};
 
@@ -36,7 +36,7 @@ export default function Cards(props, context) {
 				</div>
 			</div>
 			<ul className="destination-div">
-				{destinations.reverse().map((destination, index) => {
+				{destinations.map((destination, index) => {
 					return (
 						<div>
 							<li key={destination._id} id="cards" className="dest-card">

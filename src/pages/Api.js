@@ -99,10 +99,7 @@ export default function Api(props) {
 						</div>
 					</>
 				) : (
-					<div>
-						Oops, I think there was a typo. Please try again. Remember to
-						capitalize :){' '}
-					</div>
+					<></>
 				)}
 			</div>
 			<Footer />

@@ -50,7 +50,7 @@ export default function Show(props, comms) {
 		try {
 			const response = await fetch(`/api/destinations/comments`);
 			const data = await response.json();
-			setComments(data);
+			setComments(data.reverse());
 		} catch (error) {
 			console.error(error);
 		}
