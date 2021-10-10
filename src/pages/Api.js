@@ -6,10 +6,20 @@ export default function Api(props) {
 	const [places, setPlaces] = useState({});
 	const [map, setMap] = useState('');
 	const [wiki, setWiki] = useState('');
-	// const [capitalizedPlace, setCaptializedPlace] = useState('');
+	let place = [
+		`Portugal`,
+		`Chicago`,
+		`Boracay`,
+		`Nerja`,
+		`Cairns`,
+		`Paris`,
+		`Uganda`,
+		`Arusha`,
+		`Florence`
+	];
+	let defaultPlace = `${place[Math.floor(Math.random() * place.length)]}`;
 	const API = process.env.API;
 	const ACCID = process.env.ACCID;
-	// const city = props.match.params.city || 'Sagada';
 
 	const getPlaces = async searchTerm => {
 		searchTerm = searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1);
@@ -18,18 +28,21 @@ export default function Api(props) {
 				`https://www.triposo.com/api/20210615/location.json?id=${searchTerm}&fields=all&account=${ACCID}&token=${API}`
 			);
 			const data = await response.json();
-			// setPlaces({ ...data });
 			setPlaces(data.results[0]);
 			setMap(`https${data.results[0].attribution[0].url.substring(4)}`);
 			setWiki(`https${data.results[0].attribution[1].url.substring(4)}`);
 		} catch (error) {
-			console.log('error ', error);
+			console.error(error);
+			alert(
+				'Destination not recognized.\nPlease check spelling and try again.'
+			);
+			window.location.assign('/find');
 		}
 	};
 
-	// useEffect(() => {
-	// 	getPlaces();
-	// }, []);
+	useEffect(() => {
+		getPlaces(defaultPlace);
+	}, []);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -39,6 +52,14 @@ export default function Api(props) {
 
 	const handleChange = e => {
 		setEntry(event.target.value);
+	};
+
+	const text = () => {
+		if (places.id === undefined) {
+			return '';
+		} else {
+			return `enter city/country (i.e. ${places.id})`;
+		}
 	};
 
 	return (
@@ -54,7 +75,7 @@ export default function Api(props) {
 						id="entry"
 						value={entry}
 						onChange={handleChange}
-						placeholder="enter city name"
+						placeholder={text()}
 						required
 					></input>
 
@@ -78,7 +99,7 @@ export default function Api(props) {
 									return (
 										<div className="image" key={key}>
 											<h4>{image.caption}</h4>
-											<img src={image.source_url} alt="suppose to be a pic" />
+											<img src={image.source_url} alt="image" />
 										</div>
 									);
 								})
