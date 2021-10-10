@@ -2,34 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CreateForm from '../components/CreateForm';
 import Api from './Api';
-import Footer from '../components/Footer';
 import Modal from '../components/Modal';
 
 export default function Home(props, context) {
 	const [destinations, setDestinations] = useState([]);
 	const [token, setToken] = useState('');
 	const [loggedInUser, setLoggedInUser] = useState('');
-	const [place, setPlace] = useState('');
 	const [showForm, setShowForm] = useState(false);
 	const [modal, setModal] = useState(false);
 	const siteCreator = 'Cathy M';
 	let counter = 0;
 
 	const fetchData = async () => {
-		const response = await fetch('/api/destinations');
-		const data = await response.json();
-		setDestinations(data);
-		return data;
+		try {
+			const response = await fetch('/api/destinations');
+			const data = await response.json();
+			setDestinations(data);
+			return data;
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	useEffect(() => {
-		(async () => {
-			try {
-				fetchData();
-			} catch (error) {
-				console.error(error);
-			}
-		})();
+		window.scrollTo(0, 0);
+		fetchData();
 	}, []);
 
 	useEffect(() => {
@@ -49,15 +46,6 @@ export default function Home(props, context) {
 		} else {
 			setModal(!modal);
 		}
-	};
-
-	const handleSubmit = e => {
-		e.preventDefault();
-		setPlace('');
-	};
-
-	const handleChange = e => {
-		setPlace(event.target.value);
 	};
 
 	const addOne = () => {
@@ -207,7 +195,6 @@ export default function Home(props, context) {
 					toggleForm={toggleForm}
 				/>
 			)}
-			<Footer />
 		</div>
 	);
 }

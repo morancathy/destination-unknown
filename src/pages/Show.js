@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import moment from 'moment';
 import UpdateForm from '../components/UpdateForm';
 import CommentForm from '../components/CommentForm';
-import Footer from '../components/Footer';
 import Modal from '../components/Modal';
 
 export default function Show(props, comms) {
@@ -11,14 +10,12 @@ export default function Show(props, comms) {
 	const [comments, setComments] = useState([]);
 	const [showForm, setShowForm] = useState(false);
 	const [showUpdateBut, setShowUpdateBut] = useState(true);
+	const [showCommentFormComp, setShowCommentFormComp] = useState(true);
 	const [token, setToken] = useState('');
 	const [loggedInUser, setLoggedInUser] = useState('');
 	const [modal, setModal] = useState(false);
-	const history = useHistory();
 	const [modalText, setModalText] = useState('Please log in');
-	const [showCommentFormComp, setShowCommentFormComp] = useState(true);
-
-	let date = destination.createdAt;
+	const history = useHistory();
 
 	useEffect(() => {
 		(async () => {
@@ -39,11 +36,17 @@ export default function Show(props, comms) {
 	}, []);
 
 	const fetchData = async () => {
-		const response = await fetch(`/api/destinations/${props.match.params.id}`);
-		const data = await response.json();
-		setDestination(data); //this needs to be here, not in useeffect for update to work properly
-		fetchComment();
-		return data;
+		try {
+			const response = await fetch(
+				`/api/destinations/${props.match.params.id}`
+			);
+			const data = await response.json();
+			setDestination(data); //this needs to be here, not in useeffect for update to work properly
+			fetchComment();
+			return data;
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	const fetchComment = async () => {
@@ -56,13 +59,12 @@ export default function Show(props, comms) {
 		}
 	};
 
-	const toggleForm = () => {
+	const toggleUpdate = () => {
 		setShowForm(!showForm);
+		setShowUpdateBut(!showUpdateBut);
+		setShowCommentFormComp(!showCommentFormComp);
 	};
 
-	const toggleUpdateBut = () => {
-		setShowUpdateBut(!showUpdateBut);
-	};
 	const checkToken = () => {
 		if (token) {
 			return true;
@@ -70,17 +72,17 @@ export default function Show(props, comms) {
 		setModal(!modal);
 	};
 
-	const checkTokenUpdate = () => {
+	const checkTokenUpdate = entry => {
 		if (token) {
-			if (setText()) {
+			if (setText(entry)) {
 				return true;
 			}
 		}
 		setModal(!modal);
 	};
 
-	const setText = () => {
-		if (loggedInUser === destination.name) {
+	const setText = entry => {
+		if (loggedInUser === entry.name) {
 			return true;
 		} else {
 			setModalText('Only creater of the entry is allowed to edit.');
@@ -118,10 +120,7 @@ export default function Show(props, comms) {
 								<button
 									className="update-but float-right"
 									onClick={() => {
-										checkTokenUpdate() &&
-											(toggleForm(),
-											toggleUpdateBut(),
-											setShowCommentFormComp(!showCommentFormComp));
+										checkTokenUpdate(destination) && toggleUpdate();
 									}}
 								>
 									update
@@ -142,10 +141,7 @@ export default function Show(props, comms) {
 								props={props}
 								destination={destination}
 								fetchData={fetchData}
-								toggleUpdateBut={toggleUpdateBut}
-								toggleForm={toggleForm}
-								setShowCommentFormComp={setShowCommentFormComp}
-								showCommentFormComp={showCommentFormComp}
+								toggleUpdate={toggleUpdate}
 							>
 								{' '}
 							</UpdateForm>
@@ -155,12 +151,11 @@ export default function Show(props, comms) {
 							<CommentForm
 								props={props}
 								destination={destination}
-								fetchData={fetchData}
-								checkTokenUpdate={checkTokenUpdate}
-								checkToken={checkToken}
 								comments={comments}
+								fetchData={fetchData}
+								checkToken={checkToken}
+								checkTokenUpdate={checkTokenUpdate}
 								loggedInUser={loggedInUser}
-								setComments={setComments}
 							/>
 						)}
 						<div className="go-back">
@@ -171,8 +166,6 @@ export default function Show(props, comms) {
 			) : (
 				<h1> Finding Destination... </h1>
 			)}
-
-			<Footer />
 		</div>
 	);
 }

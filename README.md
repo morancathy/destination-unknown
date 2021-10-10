@@ -1,7 +1,7 @@
 # Destination Unknown
 A working full-stack application using the MERN stack (Node.js, MongoDB/Mongoose, Express, React).
 
-App highlights off-the-beaten-track destinations.
+App highlights off-the-beaten-track destinations. Browse suggestions, create your own or search a 3rd party API.
 Come to this site for random travel suggestions. These suggestions are not on any top 10 travel list.
 
 ## Highlights

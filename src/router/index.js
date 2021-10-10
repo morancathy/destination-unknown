@@ -1,5 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import routes from './routes';
 import Show from '../pages/Show';
@@ -37,6 +38,7 @@ const AppRouter = props => {
 					render={routerProps => <Show {...routerProps} />}
 				></Route>
 			</Switch>
+			<Footer />
 		</Router>
 	);
 };

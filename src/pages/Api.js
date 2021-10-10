@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Footer from '../components/Footer';
 
 export default function Api(props) {
 	const [entry, setEntry] = useState('');
 	const [places, setPlaces] = useState({});
 	const [map, setMap] = useState('');
 	const [wiki, setWiki] = useState('');
-	let place = [
+	const place = [
 		`Portugal`,
 		`Chicago`,
 		`Boracay`,
@@ -41,6 +40,7 @@ export default function Api(props) {
 	};
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		getPlaces(defaultPlace);
 	}, []);
 
@@ -125,7 +125,6 @@ export default function Api(props) {
 					<></>
 				)}
 			</div>
-			<Footer />
 		</div>
 	);
 }

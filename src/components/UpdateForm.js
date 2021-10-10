@@ -1,23 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Modal from './Modal';
 
-const UpdateForm = ({
-	props,
-	destination,
-	fetchData,
-	toggleUpdateBut,
-	toggleForm,
-	setShowCommentFormComp,
-	showCommentFormComp
-}) => {
+const UpdateForm = ({ props, destination, fetchData, toggleUpdate }) => {
 	const [updatedDest, setUpdatedDest] = useState({});
+	const [modal, setModal] = useState(false);
 	const titleInput = useRef(null);
 	const countryInput = useRef(null);
 	const cityInput = useRef(null);
 	const descriptionInput = useRef(null);
 	const howToGetThereInput = useRef(null);
 	const imgInput = useRef(null);
-	const [modal, setModal] = useState(false);
 
 	const handleUpdate = async e => {
 		e.preventDefault();
@@ -41,13 +33,11 @@ const UpdateForm = ({
 			);
 			const data = await response.json();
 			setUpdatedDest(data);
-			fetchData();
-			toggleUpdateBut();
-			toggleForm();
-			setShowCommentFormComp(!showCommentFormComp);
+			toggleUpdate();
 		} catch (error) {
 			console.error(error);
 		}
+		fetchData();
 	};
 
 	const handleDelete = async id => {
@@ -71,12 +61,9 @@ const UpdateForm = ({
 
 	return (
 		<div className="UpdateForm" id="update-form">
-			{console.log(destination.name)}
 			<button
 				onClick={() => {
-					toggleForm(),
-						toggleUpdateBut(),
-						setShowCommentFormComp(!showCommentFormComp);
+					toggleUpdate();
 				}}
 				className="closeBut btn btn-sm float-left"
 			>

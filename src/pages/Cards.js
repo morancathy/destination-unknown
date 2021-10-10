@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../components/Footer';
 
 export default function Cards(props, context) {
 	const [destinations, setDestinations] = useState([]);
 
 	const fetchData = async () => {
-		const response = await fetch('/api/destinations');
-		const data = await response.json();
-		setDestinations(data.reverse());
-		return data;
+		try {
+			const response = await fetch('/api/destinations');
+			const data = await response.json();
+			setDestinations(data.reverse());
+			return data;
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	useEffect(() => {
@@ -64,8 +67,6 @@ export default function Cards(props, context) {
 					);
 				})}
 			</ul>
-
-			<Footer />
 		</div>
 	);
 }

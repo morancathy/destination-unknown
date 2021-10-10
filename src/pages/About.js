@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Footer from '../components/Footer';
 
 export default function About(props) {
 	const [users, setUsers] = useState([]);
@@ -63,7 +62,6 @@ export default function About(props) {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</div>
 	);
 }
