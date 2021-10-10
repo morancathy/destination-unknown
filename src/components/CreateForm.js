@@ -15,7 +15,6 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-
 		try {
 			const response = await fetch('/api/destinations', {
 				method: 'POST',
@@ -25,24 +24,13 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 				body: JSON.stringify(newDestination)
 			});
 			const data = await response.json();
+			if (data.message) throw new Error(data.message);
 			setDestinations([...destinations, data]);
-			fetchData();
 			toggleForm();
-			setNewDestination({
-				title: '',
-				country: '',
-				city: '',
-				description: '',
-				howToGetThere: '',
-				img: '',
-				name: `${loggedInUser}`
-			});
 		} catch (error) {
-			console.error(error);
-			alert('Unique title required. Please try again');
-			// } finally {
-			// 	window.location.assign('/login');
+			alert('Unique title required.');
 		}
+		fetchData();
 	};
 
 	const handleChange = e => {
