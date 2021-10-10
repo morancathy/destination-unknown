@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import UpdateComments from '../components/UpdateComments';
 
-const Comments = ({
-	props,
-	destination,
-	comments,
-	setComments,
-	fetchData,
-	checkToken
-}) => {
-	const [showMore, setShowMore] = useState(false);
+const Comments = ({ props, destination, comments, fetchData, checkToken }) => {
+	// const [showMore, setShowMore] = useState(false);
+	const [showComments, setShowComments] = useState(true);
 	const [updateComments, setUpdateComments] = useState(false);
-	let commentCode = '';
+	const [commentToUpdate, setCommentToUpdate] = useState({});
 
-	const toggle = (a, b) => {
-		a(!b);
+	const showUpdateCommentForm = id => {
+		toggleUpdateForm();
+		setCommentToUpdate(id);
+	};
+
+	const toggleUpdateForm = () => {
+		setUpdateComments(!updateComments);
+		setShowComments(!showComments);
 	};
 
 	const iterateThroughDestCommentsArray = (array, comId) => {
@@ -34,64 +34,43 @@ const Comments = ({
 	// 	return destination.comments.slice(2);
 	// };
 
-	const checkId = param => {
-		commentCode = param;
-		console.log('commentCode: ', commentCode);
-		return commentCode;
-	};
-
 	return (
 		<div className="Comments">
 			<ul>
-				{/*{comments.reverse().map(comment => {*/}
-				{comments.map(comment => {
-					return (
-						<div>
-							{iterateThroughDestCommentsArray(
-								destination.comments,
-								comment
-							) && (
-								<li key={comment._id} id="comment-cards">
-									<button
-										className="edit-comment-but2"
-										onClick={() => {
-											checkToken() &&
-												checkId(comment._id) === comment._id &&
-												toggle(setUpdateComments, updateComments),
-												console.log('comment._id: ', comment._id);
-										}}
-									>
-										{!updateComments ? (
-											<div>
-												<h5 className="comm-author">{comment.name}</h5>
-												<h5 className="message">{comment.message}</h5>
-												<h5 className="date">
-													{' '}
-													{moment(comment.createdAt).format('MMM DD, YY')}
-												</h5>
-											</div>
-										) : (
-											<h5 className="close">close</h5>
-										)}
-									</button>
-
-									{updateComments && (
-										<UpdateComments
-											commentId={comment._id}
-											destinationId={destination._id}
-											props={props}
-											comment={comment}
-											setUpdateComments={setUpdateComments}
-											toggle={toggle}
-											updateComments={updateComments}
-											fetchData={fetchData}
-										/>
+				{showComments && (
+					<>
+						{comments.map(comment => {
+							return (
+								<div>
+									{iterateThroughDestCommentsArray(
+										destination.comments,
+										comment
+									) && (
+										<li key={comment._id} id="comment-cards">
+											<button
+												className="edit-comment-but2"
+												onClick={() => {
+													checkToken() && showUpdateCommentForm(comment);
+												}}
+											>
+												{!updateComments && (
+													<div>
+														<h5 className="comm-author">{comment.name}</h5>
+														<h5 className="message">{comment.message}</h5>
+														<h5 className="date">
+															{' '}
+															{moment(comment.createdAt).format('MMM DD, YY')}
+														</h5>
+													</div>
+												)}
+											</button>
+										</li>
 									)}
-								</li>
-							)}
-						</div>
-					);
-				})}
+								</div>
+							);
+						})}
+					</>
+				)}
 				{/*						I want to show only up to 2 comments, then a "show more button" for the rest...not working...yet
 				{destination.comments.length > 2 && (
 					<button
@@ -150,12 +129,24 @@ const Comments = ({
 				</>
 			)}
 			*/}
+
+				{updateComments && (
+					<UpdateComments
+						props={props}
+						fetchData={fetchData}
+						destinationId={destination._id}
+						commentToUpdate={commentToUpdate}
+						toggleUpdateForm={toggleUpdateForm}
+					/>
+				)}
 			</ul>
 		</div>
 	);
 };
 
 export default Comments;
+// comment={comment}
+// {/*commentId={comment._id}*/}
 // put this right before UpdateComments, and after button
 // {console.log('des.com.length', destination.comments.length)}
 // {console.log('com.length', comments.length)}

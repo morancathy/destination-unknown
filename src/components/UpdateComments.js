@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 const UpdateComments = ({
 	props,
-	commentId,
-	comment,
+	fetchData,
 	destinationId,
-	setUpdateComments,
-	updateComments,
-	toggle,
-	fetchData
+	commentToUpdate,
+	toggleUpdateForm
 }) => {
 	const [updatedDest, setUpdatedDest] = useState({});
 	const [updatedComm, setUpdatedComm] = useState({});
@@ -16,8 +13,6 @@ const UpdateComments = ({
 	const nameInput = useRef(null);
 
 	const handleUpdate = async e => {
-		console.log(`DEST ID: ${e.target.dataset.destination}`);
-		console.log(`COM ID: ${e.target.dataset.comment}`);
 		e.preventDefault();
 
 		try {
@@ -38,7 +33,7 @@ const UpdateComments = ({
 			const data = await responseComment.json();
 			setUpdatedComm(data);
 			fetchData();
-			toggle(setUpdateComments, updateComments);
+			toggleUpdateForm();
 		} catch (error) {
 			console.error(error);
 		}
@@ -72,8 +67,16 @@ const UpdateComments = ({
 	return (
 		<div className="UpdateComments">
 			<button
+				onClick={() => {
+					toggleUpdateForm();
+				}}
+				className="closeBut btn btn-sm float-left"
+			>
+				Close
+			</button>
+			<button
 				className="deleteComBut btn btn-link btn-sm float-right"
-				data-comment={commentId}
+				data-comment={commentToUpdate._id}
 				data-destination={destinationId}
 				onClick={handleDelete}
 			>
@@ -82,7 +85,7 @@ const UpdateComments = ({
 
 			<form
 				className=""
-				data-comment={commentId}
+				data-comment={commentToUpdate._id}
 				data-destination={destinationId}
 				onSubmit={handleUpdate}
 				style={{ display: 'flex', flexDirection: 'column' }}
@@ -92,7 +95,7 @@ const UpdateComments = ({
 					<input
 						type="text"
 						id="name"
-						defaultValue={comment.name}
+						defaultValue={commentToUpdate.name}
 						ref={nameInput}
 					/>
 				</label>
@@ -103,7 +106,7 @@ const UpdateComments = ({
 						cols="40"
 						type="text"
 						id="message"
-						defaultValue={comment.message}
+						defaultValue={commentToUpdate.message}
 						ref={messageInput}
 					/>
 				</div>

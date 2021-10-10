@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Comments from '../components/Comments';
 
 const CommentForm = ({
 	props,
 	destination,
 	comments,
-	setComments,
 	fetchData,
-	checkTokenUpdate,
 	checkToken,
-	token,
 	loggedInUser
 }) => {
-	const [comment, setComment] = useState({});
 	const [newComment, setNewComment] = useState({
 		name: `${loggedInUser}`,
 		message: ''
@@ -34,8 +30,7 @@ const CommentForm = ({
 			);
 			const data = await response.json();
 			setNewComment(data);
-			fetchData();
-			toggleCommentForm();
+			setShowCommentForm(!showCommentForm);
 			setNewComment({
 				name: `${loggedInUser}`,
 				message: ''
@@ -43,14 +38,11 @@ const CommentForm = ({
 		} catch (error) {
 			console.error(error);
 		}
+		fetchData();
 	};
 
 	const handleChange = e => {
 		setNewComment({ ...newComment, [e.target.id]: e.target.value });
-	};
-
-	const toggleCommentForm = () => {
-		setShowCommentForm(!showCommentForm);
 	};
 
 	return (
@@ -59,7 +51,7 @@ const CommentForm = ({
 				<button
 					className="comment-button2"
 					onClick={() => {
-						checkToken() && toggleCommentForm();
+						checkToken() && setShowCommentForm(!showCommentForm);
 					}}
 				>
 					{!showCommentForm ? 'add comment' : 'close'}
@@ -92,10 +84,6 @@ const CommentForm = ({
 							value="Add Comment"
 						/>
 					</form>
-				)}
-				{console.log(
-					'Destimation.comments.length',
-					destination.comments.length
 				)}
 				{destination.comments.length ? (
 					<Comments
