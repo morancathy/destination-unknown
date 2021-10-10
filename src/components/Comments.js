@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import UpdateComments from '../components/UpdateComments';
 
-const Comments = ({ props, destination, comments, fetchData, checkToken }) => {
+const Comments = ({
+	props,
+	destination,
+	comments,
+	fetchData,
+	checkToken,
+	checkTokenUpdate
+}) => {
 	// const [showMore, setShowMore] = useState(false);
 	const [showComments, setShowComments] = useState(true);
 	const [updateComments, setUpdateComments] = useState(false);
@@ -50,7 +57,8 @@ const Comments = ({ props, destination, comments, fetchData, checkToken }) => {
 											<button
 												className="edit-comment-but2"
 												onClick={() => {
-													checkToken() && showUpdateCommentForm(comment);
+													checkTokenUpdate(comment) &&
+														showUpdateCommentForm(comment);
 												}}
 											>
 												{!updateComments && (

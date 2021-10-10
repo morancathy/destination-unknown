@@ -7,6 +7,7 @@ const CommentForm = ({
 	comments,
 	fetchData,
 	checkToken,
+	checkTokenUpdate,
 	loggedInUser
 }) => {
 	const [newComment, setNewComment] = useState({
@@ -92,6 +93,7 @@ const CommentForm = ({
 						comments={comments}
 						fetchData={fetchData}
 						checkToken={checkToken}
+						checkTokenUpdate={checkTokenUpdate}
 					>
 						{' '}
 					</Comments>
