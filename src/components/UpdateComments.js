@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import Modal from './Modal';
 
 const UpdateComments = ({
 	props,
@@ -9,6 +10,7 @@ const UpdateComments = ({
 }) => {
 	const [updatedDest, setUpdatedDest] = useState({});
 	const [updatedComm, setUpdatedComm] = useState({});
+	const [modal, setModal] = useState(false);
 	const messageInput = useRef(null);
 	const nameInput = useRef(null);
 
@@ -76,12 +78,24 @@ const UpdateComments = ({
 			</button>
 			<button
 				className="deleteComBut btn btn-link btn-sm float-right"
-				data-comment={commentToUpdate._id}
-				data-destination={destinationId}
-				onClick={handleDelete}
+				onClick={() => setModal(!modal)}
 			>
 				Delete
 			</button>
+
+			<Modal show={modal} handleClose={e => setModal(!modal)}>
+				<h2>Are You Sure?</h2>
+				<div className="form-group">
+					<button
+						className="btn btn-danger"
+						data-comment={commentToUpdate._id}
+						data-destination={destinationId}
+						onClick={handleDelete}
+					>
+						Yes, Delete
+					</button>
+				</div>
+			</Modal>
 
 			<form
 				className=""
