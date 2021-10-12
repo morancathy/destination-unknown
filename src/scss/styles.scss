@@ -273,3 +273,11 @@ $background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/
 	}
 }
 //###################################################### Modal
+.alert {
+	background-color: #d1bea8;
+	color: black;
+	padding: 20px;
+	font-size: 20px;
+	text-align: center;
+	border-radius: 25px;
+}

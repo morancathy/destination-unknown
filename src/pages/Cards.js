@@ -9,20 +9,13 @@ export default function Cards(props, context) {
 			const response = await fetch('/api/destinations');
 			const data = await response.json();
 			setDestinations(data.reverse());
-			return data;
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
 	useEffect(() => {
-		(async () => {
-			try {
-				fetchData();
-			} catch (error) {
-				console.error(error);
-			}
-		})();
+		fetchData();
 	}, []);
 
 	return (
@@ -41,8 +34,8 @@ export default function Cards(props, context) {
 			<ul className="destination-div">
 				{destinations.map((destination, index) => {
 					return (
-						<div>
-							<li key={destination._id} id="cards" className="dest-card">
+						<div key={destination._id}>
+							<li id="cards" className="dest-card">
 								<img
 									className="card-image"
 									src={destination.img}

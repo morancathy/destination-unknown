@@ -18,14 +18,8 @@ export default function Show(props, comms) {
 	const history = useHistory();
 
 	useEffect(() => {
-		(async () => {
-			window.scrollTo(0, 0);
-			try {
-				fetchData();
-			} catch (error) {
-				console.error(error);
-			}
-		})();
+		window.scrollTo(0, 0);
+		fetchData();
 	}, []);
 
 	useEffect(() => {
@@ -43,7 +37,6 @@ export default function Show(props, comms) {
 			const data = await response.json();
 			setDestination(data); //this needs to be here, not in useeffect for update to work properly
 			fetchComment();
-			return data;
 		} catch (error) {
 			console.error(error);
 		}

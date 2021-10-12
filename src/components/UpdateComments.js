@@ -34,11 +34,11 @@ const UpdateComments = ({
 
 			const data = await responseComment.json();
 			setUpdatedComm(data);
-			fetchData();
 			toggleUpdateForm();
 		} catch (error) {
 			console.error(error);
 		}
+		fetchData();
 	};
 
 	const handleDelete = async e => {

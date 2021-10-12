@@ -48,12 +48,12 @@ const Comments = ({
 					<>
 						{comments.map(comment => {
 							return (
-								<div>
+								<div key={comment._id}>
 									{iterateThroughDestCommentsArray(
 										destination.comments,
 										comment
 									) && (
-										<li key={comment._id} id="comment-cards">
+										<li id="comment-cards">
 											<button
 												className="edit-comment-but2"
 												onClick={() => {

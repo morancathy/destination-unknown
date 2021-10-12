@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useAlert } from 'react-alert';
 
 const LogIn = props => {
 	const [token, setToken] = useState('');
@@ -11,6 +12,7 @@ const LogIn = props => {
 	const [toggle, setToggle] = useState(false);
 	const [showForm, setShowForm] = useState(true);
 	const history = useHistory();
+	const alerts = useAlert();
 
 	const handleChange = e => {
 		setUser({ ...user, [e.target.id]: e.target.value });
@@ -33,9 +35,12 @@ const LogIn = props => {
 			window.localStorage.setItem('loggedInUser', data.user.username);
 		} catch (error) {
 			console.error(error);
-			alert('Username / password invalid');
+			alerts.show('Username / password invalid');
 		} finally {
-			window.location.assign('/login');
+			setUser({
+				username: '',
+				password: ''
+			});
 		}
 	};
 

@@ -33,11 +33,9 @@ export default function About(props) {
 					<h4>Contributors:</h4>
 					{users.map((user, index) => {
 						return (
-							<div>
-								<li key={user._id} className="user">
-									<p>{user.username}</p>
-								</li>
-							</div>
+							<li key={user._id} className="user">
+								<p>{user.username}</p>
+							</li>
 						);
 					})}
 				</ul>

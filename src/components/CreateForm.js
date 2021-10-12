@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
+import { useAlert } from 'react-alert';
 
 const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 	const [destinations, setDestinations] = useState([]);
+	const image = '/img/ImagePlaceholder.jpg';
+	const alert = useAlert();
 	const [newDestination, setNewDestination] = useState({
 		title: '',
 		country: '',
 		city: '',
 		description: '',
 		howToGetThere: '',
-		img: '/img/ImagePlaceholder.jpg',
+		img: image,
 		name: `${loggedInUser}`
 	});
-	const image = '/img/ImagePlaceholder.jpg';
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -28,7 +30,7 @@ const CreateForm = ({ fetchData, toggleForm, loggedInUser }) => {
 			setDestinations([...destinations, data]);
 			toggleForm();
 		} catch (error) {
-			alert('Unique title required.');
+			alert.show('Unique title required');
 		}
 		fetchData();
 	};

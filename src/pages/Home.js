@@ -18,7 +18,6 @@ export default function Home(props, context) {
 			const response = await fetch('/api/destinations');
 			const data = await response.json();
 			setDestinations(data);
-			return data;
 		} catch (error) {
 			console.error(error);
 		}
@@ -73,8 +72,8 @@ export default function Home(props, context) {
 				{destinations.map((destination, index) => {
 					if (index < 8) {
 						return (
-							<div>
-								<li key={destination._id} id="cards" className="dest-card">
+							<div key={destination._id}>
+								<li id="cards" className="dest-card">
 									<img
 										className="card-image"
 										src={destination.img}
@@ -111,8 +110,8 @@ export default function Home(props, context) {
 
 						if (counter < 5) {
 							return (
-								<div>
-									<li key={destination._id} id="cards" className="dest-card">
+								<div key={destination._id}>
+									<li id="cards" className="dest-card">
 										<img
 											className="card-image"
 											src={destination.img}
