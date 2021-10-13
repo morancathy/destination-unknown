@@ -39,7 +39,7 @@
 
   .showDescript {
     background-color: #e3dac9;
-     //If I want grey to fill bottom screen
+    min-height: 40vh;//If I want grey to fill bottom screen
     font-family: "Freight Pro", Georgia, "Times New Roman", serif;
     font-variant-ligatures: common-ligatures;
     letter-spacing: normal;
@@ -96,6 +96,9 @@
   }
 
   @media screen and (max-width: 1100px) {
+    .showDescript {
+      min-height: 60vh;
+    }
     .showTitle {
       h1{
         	font-size: calc(18px + 1vw);

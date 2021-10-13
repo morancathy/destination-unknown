@@ -31,7 +31,6 @@ const UpdateComments = ({
 					})
 				}
 			);
-
 			const data = await responseComment.json();
 			setUpdatedComm(data);
 			toggleUpdateForm();
@@ -109,6 +108,7 @@ const UpdateComments = ({
 					<input
 						type="text"
 						id="name"
+						readOnly="readonly"
 						defaultValue={commentToUpdate.name}
 						ref={nameInput}
 					/>
