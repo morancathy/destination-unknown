@@ -37,10 +37,7 @@ const LogIn = props => {
 			console.error(error);
 			alerts.show('Username / password invalid');
 		} finally {
-			setUser({
-				username: '',
-				password: ''
-			});
+			window.location.assign('/login');
 		}
 	};
 
